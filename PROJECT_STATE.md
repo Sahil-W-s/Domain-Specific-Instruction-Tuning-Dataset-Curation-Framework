@@ -282,3 +282,35 @@ P4.3 — Review rights, privacy, redistribution terms, and archive contents. Kee
 - Expected outputs: `archive_summary.csv`, `archive_entries.csv`, and `inspection_summary.json`.
 - Tooling checkpoint: `a97250ba08ad4459e1eb6d527611513e4c9d5748`.
 - Execution and review of generated local outputs are pending; P4.3 is not complete.
+
+
+## Authoritative current status — Phase 4 P4.3 ZIP metadata review
+
+**Updated:** 2026-11-17  
+**Current task:** P4.3 Step 2 — bounded README-content review.
+
+This section supersedes earlier Phase 4 status blocks above where they conflict. Historical records and caveats remain preserved.
+
+### P4.3 Step 1 results
+
+- Script: `scripts/storage/inspect_large_archives.py`.
+- 17 ZIP inventory records grouped into 9 unique SHA-256 content groups.
+- All 9 unique archives metadata-listed successfully; 115 entry-metadata records; zero inspection errors.
+- Filename/structure checks: 0 license/notice matches, 9 README entries, 0 manifest/config matches, 0 potentially sensitive filename matches, 0 encrypted entries, 0 unsafe paths, and 0 symlinks.
+- Safety: no extraction, no entry-payload reads, no source archive modification, and no new source hashes.
+- Review report: `docs/phase_reports/PHASE_04_P4_3_ZIP_METADATA_REVIEW.md`.
+
+### Interpretation
+
+Zero filename-level flags do not establish absence of private data/secrets or permission to redistribute. README contents and upstream source terms remain unreviewed. Rights, redistribution, and sensitivity remain unknown for all affected artifacts. No canonical B2–B5 adapter/checkpoint has been selected.
+
+### Current restrictions
+
+- `manifests/storage_map.yml` remains `migration_authorized: false`.
+- No DVC setup or artifact migration.
+- Preserve all original paths and copies; no source artifact may be moved, deleted, renamed, overwritten, extracted over, or uploaded.
+- Do not publish local inspection outputs; they may contain internal filenames or README content.
+
+### Next action
+
+Run `python scripts/storage/inspect_archive_readmes.py` after pulling `origin/main`. The bounded script reads only README-named entries up to 64 KiB each and writes local-only outputs to `.local/phase4_archive_inspection/`: `archive_readmes_local.md` and `readme_inspection_summary.json`. Review locally for sensitive content before sharing. P4.3 remains in progress.
