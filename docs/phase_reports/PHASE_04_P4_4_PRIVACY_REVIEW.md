@@ -63,3 +63,28 @@ This first pass does **not** inspect ZIP/archive payloads, PDFs, model weights, 
 ## Next bounded task
 
 Produce a local aggregate of phone-like indicators by artifact ID/path (no matched values), then triage only the highest-concentration files and explain the 33 skipped records. Do not rerun the full scan or inspect unrelated payloads.
+
+
+## First-pass indicator concentration review — 2026-11-17
+
+Owner supplied local aggregate counts by artifact ID, relative path, and source root. The 87,508 indicators are heavily concentrated in structured audit/inventory files and training checkpoint state files, consistent with numeric-field false positives from the broad phone-like heuristic.
+
+Highest concentrations by path:
+- `docs/audit/master_file_inventory.csv` in two roots: 26,027 each (52,054 combined).
+- `docs/audit/script_catalogue.csv` in two roots: 11,410 each (22,820 combined).
+- `outputs/iot_cp_experiments/runs/B2/checkpoints/checkpoint-339/trainer_state.json`: 1,154.
+- `phase0_artifact_registry/known_existing_artifacts*.csv` and corresponding inventory copies: 1,002 each across three listed paths.
+- Other high-count paths include additional checkpoint `trainer_state.json` files, project audit inventories, data-artifact inventories, recovery logs, and evaluation JSONL/CSV files.
+
+Highest counts by source root:
+- `MLCP_RECOVERY`: 42,114
+- `MLCP_UPLOAD`: 41,255
+- `MLCP_KAGGLE_WORK`: 3,465
+- `MLCP_PHASE1_DRAFTS`: 489
+- `MLCP_REVIEW_SUBSET`: 185
+
+This distribution supports prioritizing schema/field-context checks on inventory CSVs and trainer-state JSON, rather than treating the matches as confirmed phone numbers. It does not prove that every match is a false positive. Counts for repeated-looking paths across roots are separate source records; do not deduplicate, delete, or select a canonical copy based on these counts.
+
+### Next bounded triage
+
+Inspect only headers/field names and safe structural context for the two highest-concentration file classes (master inventory CSV and script catalogue CSV), plus one B2 trainer-state JSON. Do not print cell values, matched strings, or full records. Then decide whether the phone-like rule is unsuitable for these structured numeric fields and document any targeted exclusions or detector refinement as a new version; preserve the original scan outputs and source files. Separately inspect the scanner's sanitized skip diagnostics to identify the 31 unavailable and 2 path/size mismatch records.
