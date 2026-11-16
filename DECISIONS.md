@@ -86,3 +86,13 @@ Important qualifications:
 - Git staging, committing, and pushing require explicit project-owner approval.
 
 **Risk acceptance:** The project owner accepts the risk of not maintaining an independent physical backup.
+
+
+## D-012 — Provisional Phase 4 artifact-storage architecture and migration hold
+
+**Date:** 2026-11-17  
+**Decision:** Use DVC with a restricted, dedicated Google Drive folder as the preferred primary store for large artifacts. Keep GitHub for code, safe manifests, reports, and DVC metadata. Do not add new bulk artifacts to Git LFS under the zero-additional-spend constraint.  
+**Reason:** The owner reported 5 TB of available Google Drive space, confirmed a dedicated folder can be created, and selected zero additional spending. The large-file inventory contains 41 verified records representing 21 unique SHA-256 contents.  
+**Conditions:** This is an architecture decision, not migration authorization. All 41 records currently have unknown sensitivity and unknown redistribution status. Rights/privacy review, reproducibility-package inspection, canonical model/checkpoint selection, Drive access configuration, and a recorded storage map are required before upload.  
+**Preservation:** Preserve every source path and copy. Matching SHA-256 values may be deduplicated in DVC storage, but do not delete, move, or consolidate source files.  
+**Risk:** An independent physical backup has not been verified. The historical Phase 0 risk acceptance does not constitute evidence of an independent backup.
