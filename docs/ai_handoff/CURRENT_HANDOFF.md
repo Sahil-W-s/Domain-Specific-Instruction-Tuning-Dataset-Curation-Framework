@@ -263,3 +263,16 @@ Do not install/configure DVC or migrate any source artifact until rights/privacy
 - No artifact migration has started.
 - An independent physical backup has not been verified.
 - Use the risk-based Phase 3 validation approach; do not repeat completed audits.
+
+
+### P4.3 Step 1 — Read-only ZIP metadata inspection
+
+- Script: `scripts/storage/inspect_large_archives.py`.
+- Tooling commit: `a97250ba08ad4459e1eb6d527611513e4c9d5748`.
+- Run from the local repository root after `git pull --ff-only origin main`:
+  `python scripts/storage/inspect_large_archives.py`.
+- Reads local `.local/source_roots.local.yml` and tracked `reports/inventory/large_files.csv`.
+- Groups the 17 ZIP records by their pre-existing SHA-256 and inspects one representative per unique content group.
+- Reads central-directory metadata only; does not extract entries, read entry payloads, modify source archives, or recompute hashes.
+- Writes local-only outputs to `.local/phase4_archive_inspection/`: `archive_summary.csv`, `archive_entries.csv`, `inspection_summary.json`.
+- Execution and inspection of those outputs remain pending. Do not commit generated local outputs before review; internal filenames may be sensitive.
