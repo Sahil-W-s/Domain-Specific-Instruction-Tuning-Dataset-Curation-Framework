@@ -167,6 +167,14 @@ phases:
       iot_pdf_source_rights: unknown
       payload_privacy_review: pending
       migration_clearance: blocked
+    p4_3_package_metadata_review:
+      status: completed
+      report: docs/phase_reports/PHASE_04_P4_3_SOURCE_RIGHTS_REVIEW.md
+      files_reviewed: 6
+      dataset_preparation_validation: PASS;_B3_600_B4_577_zero_evidence_mismatches
+      source_hashes_before_after: identical
+      split_manifest: 519_shared_iot_train_58_shared_iot_validation_23_b3_only_train
+      run_metadata: B2_B3_B4_B5_counts_and_configs_reconciled;_input_hashes_and_immutable_model_revision_absent
     next_task: P4.3 Step 3E source-first rights and acquisition-record review; obtain only existing local source terms/provenance records
     migration_started: false
     limitations:
