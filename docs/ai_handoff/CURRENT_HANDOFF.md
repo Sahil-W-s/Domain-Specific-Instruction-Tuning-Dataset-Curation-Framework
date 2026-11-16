@@ -401,3 +401,12 @@ The owner uploaded the four original IoT PDFs from the project inventory. A boun
 Some B3/B4 source IDs have plausible title-level matches to the supplied PDFs, but no original provenance or reuse rights are established. Held-out evaluation refers to `iot_unit5_pdf`, which is not among the four supplied PDFs or four inventoried titles. The Unit II PDF's training/evaluation relationship is also unknown.
 
 Do not use prior external licence lookups as project-source evidence or clearance. Continue source-first with the owner's own records. Next request: upload the existing `source_manifest` spreadsheet and identify/provide the Unit 5 source or its acquisition record. Migration remains unauthorized; do not configure DVC or move/upload source artifacts.
+
+
+## 2026-11-17 continuation — source manifest and Unit 5 PDF reviewed
+
+Owner supplied `source_manifest(2).csv` and `IOT Unit 5-webofthingsandcloudofthings.pdf`. The manifest contains four training rows: Unit 1 (canonical; the PPTX PDF duplicate is to be excluded), Unit 2 (eligible), Unit 4 protocols/security (eligible), and IoT cloud/case studies (eligible). It contains no Unit 5 row and no author, publisher, acquisition, copyright, or licence fields. These statuses are curation decisions, not rights clearance.
+
+The Unit 5 PDF is 81 pages and its title matches `iot_unit5_pdf` at title/topic level. PDF author/title metadata are blank. Pages 25–27 show the footer “Jaydeep Patil- AISSMS IOIT Pune”; this does not establish a licence or ownership. No explicit copyright/licence/permission text was found in extracted text. It is a plausible match for the held-out source identifier, but its use in the held-out test still needs confirmation from test manifest/row metadata. Do not add Unit 5 to training.
+
+Next: inspect the local held-out IoT test manifest/source IDs, then the exact Dolly/MMLU revision and sampling metadata. Keep rights unknown and migration unauthorized. Preserve all files and paths.
