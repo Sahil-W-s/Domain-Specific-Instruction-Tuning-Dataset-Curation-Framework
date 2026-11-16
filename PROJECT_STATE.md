@@ -314,3 +314,37 @@ Zero filename-level flags do not establish absence of private data/secrets or pe
 ### Next action
 
 Run `python scripts/storage/inspect_archive_readmes.py` after pulling `origin/main`. The bounded script reads only README-named entries up to 64 KiB each and writes local-only outputs to `.local/phase4_archive_inspection/`: `archive_readmes_local.md` and `readme_inspection_summary.json`. Review locally for sensitive content before sharing. P4.3 remains in progress.
+
+
+## Authoritative current status — Phase 4 P4.3 README review
+
+**Updated:** 2026-11-17  
+**Current task:** P4.3 Step 3 — source-specific rights and provenance checks.
+
+This section supersedes earlier Phase 4 status blocks above where they conflict. Historical records and caveats remain preserved.
+
+### P4.3 Step 2 evidence
+
+- Script: `scripts/storage/inspect_archive_readmes.py`.
+- Owner supplied both local outputs: README text report and JSON summary.
+- 17 ZIP inventory records, 9 unique archive groups, 9 archives opened, 9 README entries read, zero skipped by the 64 KiB limit, zero errors.
+- Only README-named entries were read. No extraction, source archive modification, or new source hashing occurred.
+- Report: `docs/phase_reports/PHASE_04_P4_3_README_REVIEW.md`.
+
+### Findings and limits
+
+- Adapter README model cards identify `Qwen/Qwen2.5-1.5B-Instruct` and PEFT/LoRA, but leave licence and key provenance fields as `[More Information Needed]`.
+- The reproducibility README describes code, datasets, adapters, predictions, evaluation outputs, and provenance artifacts; it does not establish item-level licences or redistribution rights.
+- The README records evaluation limitations, including reconstructed B3 candidate-pool status, a 35-example IoT held-out test, a 50-question MMLU retention subset, preliminary manual unanswerable labels, and differing validation compositions. See the P4.3 README review report for the full caveats.
+- README inspection is not a payload-wide privacy clearance. Rights, redistribution, and sensitivity remain unknown.
+
+### Current restrictions
+
+- Do not publish adapters, datasets, source documents, predictions, or archive contents.
+- Keep `manifests/storage_map.yml` at `migration_authorized: false`.
+- No DVC configuration or artifact migration.
+- Preserve all source paths and copies. Do not move, delete, rename, overwrite, or extract over source artifacts.
+
+### Next action
+
+Use existing manifests and provenance artifacts to identify exact upstream sources and terms for the named base model and each identifiable dataset/source family. Record whether terms permit private storage, derivative training, and redistribution as separate questions. Retain unknown where evidence is absent or ambiguous. Identify payload classes requiring privacy review without exposing secrets or performing broad payload inspection.
