@@ -392,3 +392,12 @@ Use the existing metadata-only ZIP entry listing for the reproducibility package
 - No DVC setup or artifact migration.
 - No publication of adapters, datasets, predictions, or source documents.
 - Preserve every source path and copy; no moves, deletions, renames, overwrites, or extraction over source artifacts.
+
+
+## 2026-11-17 continuation — original IoT PDFs supplied and reviewed
+
+The owner uploaded the four original IoT PDFs from the project inventory. A bounded inspection of opening pages, extracted text, and basic PDF metadata is recorded in `docs/phase_reports/PHASE_04_P4_3_SOURCE_RIGHTS_REVIEW.md`. Visible titles identify Unit I Introduction to IoT (151 pages), Unit II IoT Platform Design Methodology (60 pages), Unit 4 IoT Protocols and Security (119 pages), and IoT Physical Servers/Cloud Offerings/Case Studies (99 pages). The inspected source text and basic metadata did not establish author, publisher, acquisition URL, edition, copyright notice, licence, or permission. All such rights remain unknown.
+
+Some B3/B4 source IDs have plausible title-level matches to the supplied PDFs, but no original provenance or reuse rights are established. Held-out evaluation refers to `iot_unit5_pdf`, which is not among the four supplied PDFs or four inventoried titles. The Unit II PDF's training/evaluation relationship is also unknown.
+
+Do not use prior external licence lookups as project-source evidence or clearance. Continue source-first with the owner's own records. Next request: upload the existing `source_manifest` spreadsheet and identify/provide the Unit 5 source or its acquisition record. Migration remains unauthorized; do not configure DVC or move/upload source artifacts.
