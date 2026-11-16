@@ -113,7 +113,37 @@ phases:
       rights_status: unknown_for_all_41_records
       sensitivity_status: unknown_for_all_41_records
       migration_authorized: false
-    next_task: P4.3 rights, privacy, redistribution, and archive-content review
+    p4_3_zip_metadata_inspection:
+      status: completed
+      script: scripts/storage/inspect_large_archives.py
+      report: docs/phase_reports/PHASE_04_P4_3_ZIP_METADATA_REVIEW.md
+      inventory_zip_records: 17
+      unique_archive_groups: 9
+      unique_archives_inspected: 9
+      entry_metadata_records: 115
+      inspection_errors: 0
+      filename_flags:
+        license_or_notice_matches: 0
+        readme_entries: 9
+        manifest_or_config_matches: 0
+        potentially_sensitive_filename_matches: 0
+        encrypted_entries: 0
+        unsafe_paths: 0
+        symlinks: 0
+      payloads_read: false
+      extraction_performed: false
+      source_archives_modified: false
+      new_hashes_computed: false
+      interpretation: README contents and upstream licence/terms remain unreviewed; zero filename flags do not establish privacy or redistribution clearance
+    p4_3_readme_content_review:
+      status: pending
+      script: scripts/storage/inspect_archive_readmes.py
+      max_bytes_per_entry: 65536
+      reads_only_readme_named_entries: true
+      outputs_local_only:
+      - .local/phase4_archive_inspection/archive_readmes_local.md
+      - .local/phase4_archive_inspection/readme_inspection_summary.json
+    next_task: P4.3 Step 2 bounded README-content review
     migration_started: false
     limitations:
     - Do not infer redistribution permission from file names or public availability
