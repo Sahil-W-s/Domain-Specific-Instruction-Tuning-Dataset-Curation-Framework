@@ -188,3 +188,78 @@ Phase 1's historical reconciliation remains path-and-size based, and its SHA-256
 Read `AI_WORK_PROTOCOL.md`, `docs/ai_handoff/AI_START_HERE.md`, `PROJECT_CONTEXT.md`, `PROJECT_STATE.md`, `NEXT_ACTION.md`, `state/phase_status.yml`, and this handoff.
 
 Continue with the Phase 2 owner review specified in `NEXT_ACTION.md`. Do not repeat completed phases or commit files without explicit owner approval.
+
+
+## Authoritative continuation — Phase 4 P4.2 complete
+
+**Updated:** 2026-11-17  
+**Project:** ML CP — Domain-Specific Instruction-Tuning Dataset Curation Framework  
+**Current task:** P4.3 rights, privacy, redistribution, and archive-content review
+
+This is the latest handoff section and supersedes all earlier continuation instructions above where they conflict. Historical caveats remain preserved.
+
+### Current Git checkpoint
+
+- Repository: `Sahil-W-s/Domain-Specific-Instruction-Tuning-Dataset-Curation-Framework`.
+- Branch: `main`.
+- Phase 4 classification and decision artifacts were committed through GitHub.
+- Latest commit before this handoff update: `a43949a509778e75d78421ab21e0c5bf401fd04c`.
+
+### Phase status
+
+- Phase 0 and Phase 1: owner-approved complete.
+- Phase 2: owner-approved complete.
+- Phase 3: completed and checkpointed.
+- Phase 4 P4.1: feasibility assessment complete.
+- Phase 4 P4.2: large-artifact classification complete.
+- Phase 4 P4.3: next.
+
+### P4.1 decisions
+
+- Owner-reported 5 TB available in Google Drive.
+- Owner-reported GitHub LFS usage/quota 7/10; unclear whether storage or bandwidth.
+- Zero additional LFS spending.
+- Owner confirmed a dedicated Google Drive folder can be created.
+- Preferred architecture: DVC with a restricted Google Drive remote.
+- GitHub is for code, safe manifests, reports, and DVC metadata; do not add new bulk LFS artifacts.
+
+### P4.2 verified inventory results
+
+The 41 rows in `reports/inventory/large_files.csv` were cross-matched against the Phase 2 artifact inventory. All 41 matched and have verified SHA-256 values.
+
+- 17 archives and 24 adapter/model files.
+- 8 experiment backup ZIP archives.
+- 8 adapter backup ZIP archives.
+- 1 reproducibility-package ZIP.
+- 4 active-run final adapters.
+- 8 final-adapter backup copies.
+- 12 adapter checkpoint files.
+- 21 unique SHA-256 objects and 8 duplicate-hash groups in this large-file subset.
+- Physical size across records: 3,186,397,696 bytes.
+- Unique content size: 1,735,016,404 bytes.
+- Duplicate replica overhead: 1,451,381,292 bytes.
+
+Every one of the 41 records has `sensitivity=unknown` and `redistribution_status=unknown` in the source registry. Do not infer rights or privacy clearance.
+
+### P4.2 committed outputs
+
+- `reports/storage/large_file_classification.csv`
+- `manifests/storage_map.yml`
+- `docs/phase_reports/PHASE_04_P4_2_CLASSIFICATION.md`
+- `DECISIONS.md` appended with D-012.
+
+The storage map is provisional and sets `migration_authorized: false`.
+
+### Next task — P4.3
+
+Review source licences and redistribution terms, inspect archive manifests/file listings without modifying source locations, assess privacy/secrets/third-party content, and record evidence or unresolved status. Do not expose secret values. Do not extract over source files.
+
+Do not install/configure DVC or migrate any source artifact until rights/privacy review and per-artifact storage decisions are approved.
+
+### Preservation rules
+
+- Do not move, delete, rename, or overwrite source artifacts.
+- Matching hashes do not establish a canonical copy and do not authorize deletion.
+- No artifact migration has started.
+- An independent physical backup has not been verified.
+- Use the risk-based Phase 3 validation approach; do not repeat completed audits.
