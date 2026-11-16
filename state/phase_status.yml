@@ -1,7 +1,7 @@
 project: ML CP
 project_title: Domain-Specific Instruction-Tuning Dataset Curation Framework
 plan_version: '2.0'
-current_phase: 3
+current_phase: 4
 last_updated: '2026-11-17'
 phases:
   phase_00:
@@ -70,9 +70,10 @@ phases:
 
   phase_03:
     name: Establish durable workspace, project memory, and checkpoint tooling
-    status: owner_review_pending
+    status: completed
     technical_status: completed
-    owner_approval: pending
+    owner_approval: completed
+    git_checkpoint: d756bbb
     report: docs/phase_reports/PHASE_03_REPORT.md
     outputs_manifest: manifests/phase_03_outputs.json
     validation: reports/validation/phase_03_validation.json
@@ -81,3 +82,41 @@ phases:
     - SQLite index is a rebuildable local artifact and is excluded from Git
     - JSON schemas were syntax-checked; full instance validation was not run
     - Phase 3 Git staging and publication await owner review
+
+  phase_04:
+    name: Durable artifact storage and retrieval
+    status: in_progress
+    owner_approval: pending
+    p4_1_storage_feasibility:
+      status: completed
+      owner_inputs:
+        google_drive_available_capacity: 5 TB
+        github_lfs_usage_quota: 7/10
+        lfs_additional_spend: 0
+        dedicated_drive_folder_available: true
+      decision: DVC with restricted Google Drive remote; GitHub for code and metadata; no new bulk LFS tracking
+      caveat: LFS 7/10 usage metric has not been identified as storage or bandwidth
+    p4_2_large_artifact_classification:
+      status: completed
+      report: docs/phase_reports/PHASE_04_P4_2_CLASSIFICATION.md
+      classification_csv: reports/storage/large_file_classification.csv
+      storage_map: manifests/storage_map.yml
+      records: 41
+      verified_sha256_records: 41
+      archives: 17
+      adapter_model_files: 24
+      unique_sha256_objects: 21
+      duplicate_hash_groups: 8
+      physical_bytes: 3186397696
+      unique_content_bytes: 1735016404
+      duplicate_replica_bytes: 1451381292
+      rights_status: unknown_for_all_41_records
+      sensitivity_status: unknown_for_all_41_records
+      migration_authorized: false
+    next_task: P4.3 rights, privacy, redistribution, and archive-content review
+    migration_started: false
+    limitations:
+    - Do not infer redistribution permission from file names or public availability
+    - No canonical B2-B5 model/checkpoint selected
+    - Independent physical backup not verified
+    - Preserve all source paths and copies; duplicate hashes do not authorize deletion
