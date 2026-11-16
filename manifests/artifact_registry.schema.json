@@ -1,0 +1,197 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/ml-cp/artifact-registry.schema.json",
+  "title": "ML CP Artifact Registry Record",
+  "description": "One record per discovered project artifact.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "artifact_id",
+    "source_root_id",
+    "relative_path",
+    "file_name",
+    "extension",
+    "size_bytes",
+    "last_write_time_utc",
+    "artifact_type",
+    "lifecycle",
+    "phase",
+    "sensitivity",
+    "redistribution_status",
+    "hash_algorithm",
+    "sha256",
+    "hash_status",
+    "first_seen_run_id",
+    "last_verified_utc"
+  ],
+  "properties": {
+    "artifact_id": {
+      "type": "string",
+      "pattern": "^art-[0-9a-f]{16}$"
+    },
+    "source_root_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "relative_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "file_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "extension": {
+      "type": "string"
+    },
+    "size_bytes": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "last_write_time_utc": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "artifact_type": {
+      "type": "string",
+      "enum": [
+        "dataset",
+        "notebook",
+        "script",
+        "model",
+        "adapter",
+        "configuration",
+        "documentation",
+        "evaluation_output",
+        "archive",
+        "log",
+        "environment",
+        "other",
+        "unclassified"
+      ]
+    },
+    "lifecycle": {
+      "type": "string",
+      "enum": [
+        "source",
+        "intermediate",
+        "final",
+        "backup",
+        "temporary",
+        "unknown"
+      ]
+    },
+    "phase": {
+      "type": "string"
+    },
+    "sensitivity": {
+      "type": "string",
+      "enum": [
+        "public",
+        "internal",
+        "sensitive",
+        "unknown"
+      ]
+    },
+    "redistribution_status": {
+      "type": "string",
+      "enum": [
+        "allowed",
+        "restricted",
+        "prohibited",
+        "unknown"
+      ]
+    },
+    "hash_algorithm": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "SHA256",
+        null
+      ]
+    },
+    "sha256": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[0-9a-fA-F]{64}$"
+    },
+    "hash_status": {
+      "type": "string",
+      "enum": [
+        "verified",
+        "pending",
+        "failed",
+        "not_applicable"
+      ]
+    },
+    "first_seen_run_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "last_verified_utc": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "hash_status": {
+            "const": "verified"
+          }
+        },
+        "required": [
+          "hash_status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "hash_algorithm": {
+            "const": "SHA256"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-fA-F]{64}$"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "hash_status": {
+            "enum": [
+              "pending",
+              "failed",
+              "not_applicable"
+            ]
+          }
+        },
+        "required": [
+          "hash_status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "sha256": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  ]
+}

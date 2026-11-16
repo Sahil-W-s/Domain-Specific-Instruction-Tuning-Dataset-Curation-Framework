@@ -1,19 +1,20 @@
 project: ML CP
 project_title: Domain-Specific Instruction-Tuning Dataset Curation Framework
 plan_version: '2.0'
-current_phase: 1
+current_phase: 2
 last_updated: '2026-11-17'
 phases:
   phase_00:
     name: Preserve current state and establish a recovery point
-    status: partial
+    status: completed
+    owner_approval: completed
     report: docs/phase_reports/PHASE_00_REPORT.md
     outputs_manifest: manifests/phase_00_outputs.json
     validation: reports/validation/phase_00_validation.json
-    blockers:
-    - Local SHA-256 registration of master implementation plan pending
-    - Separate original guide identity/location pending
-    - Independent physical backup destination not verified
+    historical_caveats:
+    - Master implementation plan local SHA-256 registration was previously recorded as pending
+    - Separate original guide identity/location was previously recorded as pending
+    - Independent physical backup destination was not verified in the historical closeout
     git_checkpoint: previously_committed_in_5268229
   phase_01:
     name: Discover all project source locations
@@ -29,3 +30,39 @@ phases:
     - Historical reconciliation is path-and-size based
     - SHA-256 verification was targeted to candidates and archives
     - No source files were moved, deleted, or extracted
+
+  phase_02:
+    name: Build the content-aware artifact registry and large-file map
+    status: owner_review_pending
+    report: docs/phase_reports/PHASE_02_REPORT.md
+    registry: manifests/artifact_registry.jsonl
+    schema: manifests/artifact_registry.schema.json
+    outputs:
+    - reports/inventory/artifact_inventory.csv
+    - reports/inventory/exact_duplicates.csv
+    - reports/inventory/possible_duplicates_review_v2.csv
+    - reports/inventory/large_files.csv
+    - reports/inventory/hash_failures.csv
+    builder: scripts/build_phase2_deliverables.py
+    completed_at: '2026-11-17'
+    validation_results:
+      registry_records: 1531
+      schema_valid_records: 1531
+      schema_invalid_records: 0
+      verified_hashes: 1496
+      not_applicable_hashes: 2
+      historical_failed_records: 33
+      verified_replacement_links: 33
+      unresolved_historical_failures: 0
+      independent_sha256_sample_passed: '15/15'
+      artifact_inventory_rows: 1531
+      large_file_rows: 41
+      exact_duplicate_groups: 564
+      exact_duplicate_memberships: 1373
+      possible_duplicate_groups: 11
+      possible_duplicate_candidates: 138
+    limitations:
+    - Independent SHA-256 recomputation was a targeted 15-file sample, not exhaustive
+    - Possible duplicate candidates remain pending manual review
+    - Historical failed registry records are retained and superseded by verified replacement records
+    - No source files were moved, deleted, renamed, or extracted

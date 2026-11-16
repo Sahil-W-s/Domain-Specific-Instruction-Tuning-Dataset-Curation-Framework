@@ -126,3 +126,71 @@ The seven-root source discovery was executed before those Phase 0 blockers were 
 ### Preservation status
 
 No source files were moved, deleted, extracted, or consolidated. No duplicate removal is authorized. The inventory scope is the seven roots confirmed by the owner and is not independently exhaustive.
+
+
+## Authoritative current status — Phase 2
+
+**Updated:** 2026-11-17  
+**Current phase:** Phase 2 — Build the content-aware artifact registry and large-file map  
+**Phase 0:** Owner-approved complete  
+**Phase 1:** Owner-approved complete  
+**Phase 2:** Technical deliverables generated and validated; owner review pending
+
+This section supersedes earlier status statements in this file where they conflict.
+Earlier entries are retained as historical records.
+
+### Git checkpoint
+
+- Branch: `main`.
+- Latest verified commit: `50b9f3054fa0d3ba99c56e97450d918e63a9e2ba`.
+- Commit message: `Complete Phase 1 source discovery and reconciliation`.
+- Remote: `origin`.
+- Phase 2 files and supporting evidence are untracked.
+- No Phase 2 files have been staged, committed, or pushed.
+
+### Phase 0 and Phase 1
+
+- Phase 0 and Phase 1 are complete by owner approval.
+- Phase 1 covered the seven owner-confirmed source roots.
+- Historical reconciliation was path-and-size based.
+- SHA-256 verification was targeted, not exhaustive.
+- No source files were moved, deleted, or extracted.
+- Previously recorded caveats concerning the independent physical backup destination, original guide identification, and master-plan hash registration remain historical caveats. They do not reopen the approved phases.
+
+### Phase 2 — registry and inventory results
+
+- Registry: `manifests/artifact_registry.jsonl`.
+- Schema: `manifests/artifact_registry.schema.json`.
+- Registry records: 1,531; unique artifact IDs: 1,531.
+- Schema validation: 1,531 valid records, zero invalid.
+- Hash status: 1,496 verified; 2 not applicable; 33 historical failed records.
+- All 33 historical failed records have verified replacement records; zero unresolved.
+- Independent SHA-256 sample recomputation: 15/15 passed. This is a sample, not exhaustive independent rehashing of all verified records.
+- Canonical artifact inventory: 1,531 rows, exact registry match.
+- Large-file report: 41 files at or above 50 MiB, exact registry coverage.
+- Exact duplicate report: 564 groups, 1,373 artifact memberships; exact registry membership validation passed.
+- Possible-duplicate review: 11 groups, 138 candidate records. All remain `pending_manual_review`; they are not confirmed duplicates.
+- Hash-failure report: 33 historical superseded records, zero unresolved.
+- Phase 2 report: `docs/phase_reports/PHASE_02_REPORT.md`.
+
+### Phase 2 deliverables
+
+- `manifests/artifact_registry.schema.json`
+- `manifests/artifact_registry.jsonl`
+- `reports/inventory/artifact_inventory.csv`
+- `reports/inventory/exact_duplicates.csv`
+- `reports/inventory/possible_duplicates_review.csv`
+- `reports/inventory/large_files.csv`
+- `reports/inventory/hash_failures.csv`
+- `docs/phase_reports/PHASE_02_REPORT.md`
+- Builder: `scripts/build_phase2_deliverables.py`
+
+### Phase 2 limitations and safeguards
+
+- Possible duplicates require manual review; no duplicate files were deleted.
+- Historical failed registry records remain preserved for auditability.
+- Independent SHA-256 recomputation was targeted to a 15-file sample, not exhaustive.
+- Phase 1's 1,498 initial inventory records plus 33 corrected-path replacement records account for the 1,531 registry records.
+- No source files were moved, deleted, renamed, or extracted.
+- No DVC, Git LFS, cloud storage, or data migration was configured.
+- Phase 2 is not marked complete until the owner reviews the exit gate and approves completion.

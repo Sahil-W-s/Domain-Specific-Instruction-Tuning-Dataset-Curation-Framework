@@ -134,3 +134,57 @@ Do not mark Phase 0 complete without evidence for these items.
 ### Preservation constraints
 
 Do not delete or move source files, extract archives, or remove duplicate copies. The seven-root scope is owner-confirmed, not independently exhaustive. The next action is Phase 1 owner review and Phase 0 closeout as specified in `NEXT_ACTION.md`.
+
+
+## Authoritative continuation — Phase 2 owner review
+
+**Updated:** 2026-11-17  
+**Project:** ML CP — Domain-Specific Instruction-Tuning Dataset Curation Framework  
+**Current work:** Phase 2 owner review  
+**Status:** Phase 0 and Phase 1 owner-approved complete; Phase 2 deliverables generated and validated, owner review pending.
+
+This section supersedes earlier handoff statements where they conflict. Earlier entries are retained as historical records.
+
+### Current Git checkpoint
+
+- Branch: `main`.
+- Latest verified commit: `50b9f3054fa0d3ba99c56e97450d918e63a9e2ba`.
+- Remote: `origin`.
+- Phase 2 outputs and supporting evidence are untracked.
+- No Phase 2 files have been staged, committed, or pushed.
+
+### Phase status
+
+- Phase 0: completed by owner approval.
+- Phase 1: completed by owner approval.
+- Phase 2: technical deliverables generated and validated; owner review pending.
+
+Do not reopen Phases 0 or 1 unless requested by the owner or new evidence requires it.
+
+### Phase 2 verified results
+
+- Registry: 1,531 records and 1,531 unique artifact IDs.
+- Schema validation: 1,531 valid, zero invalid.
+- Hash statuses: 1,496 verified, 2 not applicable, 33 historical failed.
+- All 33 historical failed records have verified replacement records; zero unresolved.
+- Independent SHA-256 sample recomputation: 15/15 passed; not exhaustive.
+- Artifact inventory: 1,531 rows, exact registry match.
+- Large-file report: 41 rows, exact coverage for files at or above 50 MiB.
+- Exact duplicates: 564 groups, 1,373 memberships, exact registry match.
+- Possible duplicates: 11 groups, 138 candidates, all `pending_manual_review`.
+- Phase 2 report: `docs/phase_reports/PHASE_02_REPORT.md`.
+- Builder: `scripts/build_phase2_deliverables.py`.
+
+### Important interpretation
+
+The 33 `failed` registry records are preserved historical records, not unresolved operational failures. Each has a verified superseding record. Do not rewrite the historical records.
+
+The 138 possible-duplicate candidates have not been manually adjudicated. They are not confirmed duplicates. No duplicate removal is authorized.
+
+Phase 1's historical reconciliation remains path-and-size based, and its SHA-256 work was targeted rather than exhaustive. No source files were moved, deleted, renamed, or extracted. No DVC, Git LFS, cloud migration, or storage migration has been configured.
+
+### First action in a new conversation
+
+Read `AI_WORK_PROTOCOL.md`, `docs/ai_handoff/AI_START_HERE.md`, `PROJECT_CONTEXT.md`, `PROJECT_STATE.md`, `NEXT_ACTION.md`, `state/phase_status.yml`, and this handoff.
+
+Continue with the Phase 2 owner review specified in `NEXT_ACTION.md`. Do not repeat completed phases or commit files without explicit owner approval.
