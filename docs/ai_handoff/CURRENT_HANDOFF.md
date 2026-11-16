@@ -410,3 +410,14 @@ Owner supplied `source_manifest(2).csv` and `IOT Unit 5-webofthingsandcloudofthi
 The Unit 5 PDF is 81 pages and its title matches `iot_unit5_pdf` at title/topic level. PDF author/title metadata are blank. Pages 25–27 show the footer “Jaydeep Patil- AISSMS IOIT Pune”; this does not establish a licence or ownership. No explicit copyright/licence/permission text was found in extracted text. It is a plausible match for the held-out source identifier, but its use in the held-out test still needs confirmation from test manifest/row metadata. Do not add Unit 5 to training.
 
 Next: inspect the local held-out IoT test manifest/source IDs, then the exact Dolly/MMLU revision and sampling metadata. Keep rights unknown and migration unauthorized. Preserve all files and paths.
+
+
+## 2026-11-17 continuation — Step 3C provenance reconciliation
+
+The local reproducibility-package inspection records establish that the 35-record `heldout_iot_test.jsonl` (SHA-256 `70d07aa68b4e125dd573ba01367f059b550651e5e25d4e271e92f55f04c6ff5d`) contains source metadata `doc_id: iot_unit5_pdf`, `split: test`, and slide-level evidence matching the supplied Unit 5 PDF. Unit 5 is therefore the documented held-out IoT source; it remains evaluation-only and is not added to the four-row training manifest.
+
+Dolly local records identify `databricks/databricks-dolly-15k`, 15,011 available rows, seed 20261114, B2=1,000, B5 general=577, and recorded B2/B5 disjointness. Category/source/assignment metadata exists, but no immutable upstream revision or complete source-row selection manifest is recorded.
+
+MMLU local manifest identifies `cais/mmlu`, test split, 50 questions, seed 42, excluded original indices [237, 740, 1298, 2087, 3895, 4175, 6149, 6865, 9457], category allocation STEM 13 / Humanities 12 / Social sciences 13 / Professional and applied 12, and local sample SHA-256 `d7c4f24f3ea17f698b0729093ef601cbdf1ecea53623e62844faa4013f2bf78e`. No immutable upstream revision is recorded.
+
+Next bounded task: inspect only existing package split manifest, phase3 validation report, and B2–B5 run metadata for exact dataset-to-run linkage and any recorded revision IDs. No payload inspection, extraction, external source search, DVC setup, or migration. Rights and privacy remain unresolved.
