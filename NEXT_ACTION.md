@@ -15,9 +15,32 @@
 
 Do not reopen Phases 0–3 without a specific evidence-based reason.
 
-## Immediate next task — P4.3 rights, privacy, and content review
+## Immediate next task — P4.3 Step 1: read-only ZIP metadata inspection
 
-Review the 41 large-file records using:
+A local read-only inspector has been added at `scripts/storage/inspect_large_archives.py` (commit `a97250ba08ad4459e1eb6d527611513e4c9d5748`). It reads the local `.local/source_roots.local.yml` plus the tracked large-file inventory, groups ZIP records by their already-registered SHA-256, and inspects one representative of each unique archive. It reads ZIP central-directory metadata only; it does not extract files, read file payloads, modify archives, or recompute hashes.
+
+### Run locally
+
+From the canonical repository root in PowerShell:
+
+```powershell
+git pull --ff-only origin main
+python scripts/storage/inspect_large_archives.py
+```
+
+Expected local-only output directory: `.local/phase4_archive_inspection/` containing:
+
+- `archive_summary.csv`
+- `archive_entries.csv`
+- `inspection_summary.json`
+
+The output can contain internal filenames. Keep it local until reviewed; do not commit it directly. Share the three generated outputs in this conversation for review, but do not include file contents or secret values.
+
+If Python is not available as `python`, use the Python interpreter already used for the ML CP scripts.
+
+## Immediate next task — P4.3 Step 2: rights, privacy, and content review
+
+After the metadata listing is reviewed, continue rights/privacy assessment for the 41 large-file records using:
 
 1. `reports/storage/large_file_classification.csv`
 2. `reports/inventory/large_files.csv`
