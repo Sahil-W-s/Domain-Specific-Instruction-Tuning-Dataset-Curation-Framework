@@ -1,0 +1,20 @@
+project: "ML CP"
+project_title: "Domain-Specific Instruction-Tuning Dataset Curation Framework"
+plan_version: "2.0"
+current_phase: 0
+last_updated: "2026-11-16"
+phases:
+  phase_00:
+    name: "Preserve current state and establish a recovery point"
+    status: "partial"
+    report: "docs/phase_reports/PHASE_00_REPORT.md"
+    outputs_manifest: "manifests/phase_00_outputs.json"
+    validation: "reports/validation/phase_00_validation.json"
+    blockers:
+      - "Local SHA-256 registration of master implementation plan pending"
+      - "Separate original guide identity/location pending"
+      - "Independent physical backup destination not verified"
+    git_checkpoint: "uncommitted_pending_owner_review"
+  phase_01:
+    name: "Discover all project source locations"
+    status: "not_started"

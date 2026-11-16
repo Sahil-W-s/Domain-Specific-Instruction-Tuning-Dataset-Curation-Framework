@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.0",
+  "project": "ML CP",
+  "project_title": "Domain-Specific Instruction-Tuning Dataset Curation Framework",
+  "phase_id": "phase_00",
+  "manifest_scope": "Tracked Phase 0 documentation outputs; excludes this manifest, its run record, and local-only files.",
+  "artifact_count": 15,
+  "artifacts": [
+    {
+      "path": "PROJECT_CONTEXT.md",
+      "size_bytes": 2446,
+      "sha256": "94FBA8CF0543F139099C0350DFDEB71376DE93F52E67B28A70C4DECBBC18EE67"
+    },
+    {
+      "path": "PROJECT_STATE.md",
+      "size_bytes": 3219,
+      "sha256": "17C0919EB2932139157CC26F4F9D0A65529FAED5C6BACD3AC46F2C068DF1C7A9"
+    },
+    {
+      "path": "NEXT_ACTION.md",
+      "size_bytes": 1620,
+      "sha256": "088FABE2B612FC839FE8DF4D7F37EA994561AD90CF54AC4543D178D0553277B3"
+    },
+    {
+      "path": "DECISIONS.md",
+      "size_bytes": 4126,
+      "sha256": "7845659DF74016DC205356189113A3B498AA6DFAA9C9520BFBF9B0DBF5F4B6B4"
+    },
+    {
+      "path": "AI_WORK_PROTOCOL.md",
+      "size_bytes": 3078,
+      "sha256": "02E3EF0A72EE8914D489993F3360B5956F53BA3F506BE53D068DC88AF1ED1BDC"
+    },
+    {
+      "path": "docs/ai_handoff/AI_START_HERE.md",
+      "size_bytes": 914,
+      "sha256": "4F70C66BB48BA038832386ABEA22C43C0FFB65A9FEB680A325D615B7B7C2C711"
+    },
+    {
+      "path": "docs/ai_handoff/CURRENT_HANDOFF.md",
+      "size_bytes": 3479,
+      "sha256": "E90DE8B947C4715F7DAD039F4BD8C2CA6A3751CA2A421E4285164A6A91335587"
+    },
+    {
+      "path": "docs/ai_handoff/EVIDENCE_INDEX.md",
+      "size_bytes": 1729,
+      "sha256": "C897554C8AE70038D2698B635621B73C174F9045B920705FCDCA80C62F4E85EE"
+    },
+    {
+      "path": "reports/inventory/PHASE_00_BACKUP_VERIFICATION.md",
+      "size_bytes": 1435,
+      "sha256": "D075248BC248973A86A2E4FEBE5D440975BC9C3ADF6F531821327EA14EFF59FE"
+    },
+    {
+      "path": "reports/inventory/phase_00_reference_register.csv",
+      "size_bytes": 1486,
+      "sha256": "1F43B0892FAC5038E9DC91CE04A332F20DD4D7B13F0B83AF4FDB15C791CC13B4"
+    },
+    {
+      "path": "state/session_log.md",
+      "size_bytes": 864,
+      "sha256": "63EEE41FA63C66309394CE06D167611D4618B6C980CAF2D38D01DD9F10BC05A1"
+    },
+    {
+      "path": ".gitignore",
+      "size_bytes": 245,
+      "sha256": "8E4DCB82F727E959D3B891CC135D3F356F8D8E8818677128C57A129AF7A29BA8"
+    },
+    {
+      "path": "docs/phase_reports/PHASE_00_REPORT.md",
+      "size_bytes": 6755,
+      "sha256": "94D973B0D43F8A7160B0B68F060BBC0858B286172DB5BA53FF535D3D8335ABCE"
+    },
+    {
+      "path": "state/phase_status.yml",
+      "size_bytes": 794,
+      "sha256": "35D13BFE7E0F449922622E4C9CC73DD20B7078277CD156DBE1DB065401368F87"
+    },
+    {
+      "path": "reports/validation/phase_00_validation.json",
+      "size_bytes": 2027,
+      "sha256": "A21E9CE394AE473669F98AC3E12F35FFB32F08B48A9D754854B1957EB539779B"
+    }
+  ]
+}

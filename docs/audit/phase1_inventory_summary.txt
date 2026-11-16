@@ -1,0 +1,25 @@
+ML CP — PHASE 1 INITIAL INVENTORY
+
+Research Topic:
+Domain-Specific Instruction-Tuning Dataset Curation Framework
+
+Source Directory:
+C:\Users\Sahil\Downloads\MLCP UPLOAD\ML CP
+
+New Project Directory:
+C:\Users\Sahil\Downloads\MLCP UPLOAD\Domain-Specific-Instruction-Tuning-Dataset-Curation-Framework
+
+Total Files: 26015
+Python Scripts: 11410
+Notebooks: 0
+ZIP Archives: 3
+JSONL Files: 53
+CSV Files: 44
+PDF Files: 4
+
+Inventory generated: 2026-11-15 22:37:43
+
+NOTE:
+This is a preliminary filesystem inventory.
+File contents, dependencies, execution history and artifact
+validity have not yet been verified.

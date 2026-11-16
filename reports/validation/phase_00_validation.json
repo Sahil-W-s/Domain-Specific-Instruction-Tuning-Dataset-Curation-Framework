@@ -1,0 +1,79 @@
+{
+  "project": "ML CP",
+  "phase_id": "phase_00",
+  "generated_at": "2026-11-16T23:43:51.9825249+05:30",
+  "phase_status": "partial",
+  "registry_sha256": "BB7C79DD7E254DB600BB6413F053D9142FF4B7403729CFB07338DE90D1B593C7",
+  "checks": [
+    {
+      "check": "registry_record_count",
+      "expected": 501,
+      "actual": 501,
+      "status": "PASS"
+    },
+    {
+      "check": "registry_unique_paths",
+      "expected": 501,
+      "actual": 501,
+      "status": "PASS"
+    },
+    {
+      "check": "registry_blank_hashes",
+      "expected": 0,
+      "actual": 0,
+      "status": "PASS"
+    },
+    {
+      "check": "canonical_recovery_registry_hash",
+      "expected": "BB7C79DD7E254DB600BB6413F053D9142FF4B7403729CFB07338DE90D1B593C7",
+      "actual": "BB7C79DD7E254DB600BB6413F053D9142FF4B7403729CFB07338DE90D1B593C7",
+      "status": "PASS"
+    },
+    {
+      "check": "source_backup_file_count",
+      "expected": 26027,
+      "actual": 26027,
+      "status": "PASS"
+    },
+    {
+      "check": "workspace_backup_file_count",
+      "expected": 7,
+      "actual": 7,
+      "status": "PASS"
+    },
+    {
+      "check": "source_hash_verification_record_count",
+      "expected": 26027,
+      "actual": 26027,
+      "status": "PASS"
+    },
+    {
+      "check": "zip_archive_zero_error_summaries",
+      "expected": 2,
+      "actual": 2,
+      "status": "PASS"
+    },
+    {
+      "check": "master_plan_local_hash_registration",
+      "expected": "registered",
+      "actual": "pending",
+      "status": "PENDING"
+    },
+    {
+      "check": "independent_physical_backup",
+      "expected": "verified",
+      "actual": "not_verified",
+      "status": "PENDING"
+    },
+    {
+      "check": "git_commit",
+      "expected": "owner_approved",
+      "actual": "uncommitted",
+      "status": "DOCUMENTED_EXCEPTION"
+    }
+  ],
+  "completion_gate": {
+    "passed": false,
+    "reason": "Guide registration and independent backup review remain pending."
+  }
+}
