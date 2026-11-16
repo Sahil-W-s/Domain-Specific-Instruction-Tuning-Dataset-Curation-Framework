@@ -1,0 +1,224 @@
+schema_version: 1
+project: ML CP
+phase: 4
+subtask: P4.2
+status: provisional_classification_complete
+migration_authorized: false
+architecture:
+  primary_artifact_store: DVC
+  remote_provider: Google Drive
+  remote_access: restricted_private_folder
+  github_role: code_manifests_and_dvc_metadata_only
+  git_lfs_new_bulk_tracking: disabled_by_decision
+  additional_storage_budget: 0
+inventory:
+  source_file: reports/inventory/large_files.csv
+  classified_file: reports/storage/large_file_classification.csv
+  records: 41
+  verified_hash_records: 41
+  archives: 17
+  adapter_model_files: 24
+  unique_sha256_objects: 21
+  confirmed_duplicate_hash_groups_within_this_subset: 8
+  physical_bytes_across_records: 3186397696
+  unique_content_bytes: 1735016404
+  duplicate_replica_bytes: 1451381292
+rights_and_privacy:
+  sensitivity: unknown_for_all_41_records
+  redistribution: not_reviewed_for_all_41_records
+  rule: Do not upload any artifact until rights, privacy, and redistribution status are reviewed.
+backup:
+  independent_backup_verified: false
+  note: Existing source copies are preserved; do not infer independent disaster-recovery protection from duplicate paths or hashes.
+deduplication:
+  key: sha256
+  policy: Preserve every source record and path; DVC may store identical byte content once. Never delete source copies based only on matching hashes.
+content_objects:
+  - sha256: d212e3ff3c3c1f69d74a599c7b48e0d936437822901beea1b505d546f20ec238
+    size_bytes: 70567881
+    source_record_count: 1
+    artifact_types: [archive]
+    target: DVC + restricted Google Drive
+    status: hold_pending_rights_review
+    artifact_ids:
+      - art-be04d561e9636fb7
+  - sha256: 21674ccc8cdd0e5b4ee276116b7160f9fa71a5f9ef89917899e7d6244f3ed249
+    size_bytes: 70549443
+    source_record_count: 1
+    artifact_types: [archive]
+    target: DVC + restricted Google Drive
+    status: hold_pending_rights_review
+    artifact_ids:
+      - art-1143da23059746bd
+  - sha256: 4b10e7bce4e9e5a5a99817cee92d3923d9a30ba5affedaff8a4311053ac36a99
+    size_bytes: 70545715
+    source_record_count: 1
+    artifact_types: [archive]
+    target: DVC + restricted Google Drive
+    status: hold_pending_rights_review
+    artifact_ids:
+      - art-9bcb95b2965e6193
+  - sha256: 54d592722a0895c9e76a1851696a982bbd14e9a2b9c2e335ace4137322599859
+    size_bytes: 70560395
+    source_record_count: 1
+    artifact_types: [archive]
+    target: DVC + restricted Google Drive
+    status: hold_pending_rights_review
+    artifact_ids:
+      - art-e2ced1102597ef91
+  - sha256: abf3b7c03b104bdc37696dae59e1b8ca8f034796d6cdd500debf277dd0bf7125
+    size_bytes: 70568056
+    source_record_count: 3
+    artifact_types: [archive]
+    target: DVC + restricted Google Drive
+    status: hold_pending_rights_review
+    artifact_ids:
+      - art-863f6e9fb82617e0
+      - art-13e6d88fab61b041
+      - art-425e82e556c17963
+  - sha256: efae587907fe71e36e8ec23c64c3c270faa251150c21a6d4f9c19b99aa47b222
+    size_bytes: 70549538
+    source_record_count: 3
+    artifact_types: [archive]
+    target: DVC + restricted Google Drive
+    status: hold_pending_rights_review
+    artifact_ids:
+      - art-8953cf0a01bfc883
+      - art-ed9686fe1b8c8761
+      - art-7548e5c01f41a743
+  - sha256: 5f20fa10320564eb1901acd1903ac22f76320b46dca27505be8295fb9d202a19
+    size_bytes: 70545810
+    source_record_count: 3
+    artifact_types: [archive]
+    target: DVC + restricted Google Drive
+    status: hold_pending_rights_review
+    artifact_ids:
+      - art-fc429e13546da9df
+      - art-72f3decdb2e6c175
+      - art-b565df2e794c5974
+  - sha256: 68681dedacabb38f15ae4950a8da04273548450fe2d9b9fcfbc2d9cd78d90ea2
+    size_bytes: 70560570
+    source_record_count: 3
+    artifact_types: [archive]
+    target: DVC + restricted Google Drive
+    status: hold_pending_rights_review
+    artifact_ids:
+      - art-896b0be60cf50155
+      - art-51e2e14fe0989220
+      - art-e97ecd2378351412
+  - sha256: 71ecf7b08933d3d0c449899adbab26a64a08f0ab7f609cce882a99277b07d1cf
+    size_bytes: 73911112
+    source_record_count: 4
+    artifact_types: [model]
+    target: DVC + restricted Google Drive
+    status: hold_pending_rights_review
+    artifact_ids:
+      - art-bbbda5b20e1de1c9
+      - art-f0d31275d63e7db9
+      - art-19f29da3df02f0a3
+      - art-c8e0f723229a39ec
+  - sha256: 830645614b87d425db594b51823421f169d919321d83240d200e160ce31bbfc3
+    size_bytes: 73911112
+    source_record_count: 4
+    artifact_types: [model]
+    target: DVC + restricted Google Drive
+    status: hold_pending_rights_review
+    artifact_ids:
+      - art-7c82f042560e5a05
+      - art-a741fd77036869b0
+      - art-751ee71363b4ed9e
+      - art-ce923850ecaf0fc8
+  - sha256: eee4b0d2db43b036b9784b29882ce2d4b54f6283b3e8eb52a8269267d0b1c18b
+    size_bytes: 73911112
+    source_record_count: 4
+    artifact_types: [model]
+    target: DVC + restricted Google Drive
+    status: hold_pending_rights_review
+    artifact_ids:
+      - art-b6fd7f38972dc0ab
+      - art-7cfce97be4963b0c
+      - art-a7be96d4c73c74a6
+      - art-01503323e2a404ac
+  - sha256: 36546a364ad2df41cd8f3f7897c06c3a44d9ca1a2fdb5d42d57888e2e6fa3650
+    size_bytes: 73911112
+    source_record_count: 4
+    artifact_types: [model]
+    target: DVC + restricted Google Drive
+    status: hold_pending_rights_review
+    artifact_ids:
+      - art-4adfb296737fc724
+      - art-746fc9a9d8a65649
+      - art-a1b41eed6a997369
+      - art-3f9617ed1febe4f6
+  - sha256: 43dd65a39bde41362207de0a6b92c089982fa78c5c525fa1461941c2d174f8f3
+    size_bytes: 283635652
+    source_record_count: 1
+    artifact_types: [archive]
+    target: DVC + restricted Google Drive
+    status: hold_pending_rights_review
+    artifact_ids:
+      - art-f76fd4d3f757e449
+  - sha256: 15b64379dc1f6a6b50b141295d3f482199f66a61f219007b650b28548dc500f9
+    size_bytes: 73911112
+    source_record_count: 1
+    artifact_types: [model]
+    target: DVC + restricted Google Drive
+    status: hold_pending_rights_review
+    artifact_ids:
+      - art-ac15b866aa0930f5
+  - sha256: 7825d53d1bd2a3b1f068da1d48354717156680ce9502ecbb65de991eb70fd34d
+    size_bytes: 73911112
+    source_record_count: 1
+    artifact_types: [model]
+    target: DVC + restricted Google Drive
+    status: hold_pending_rights_review
+    artifact_ids:
+      - art-f514b1f7d4735689
+  - sha256: 89b281d0bdc809ea63b6dd7b5387efb273fb6ad31f274f12bd9ead2ca573cfbe
+    size_bytes: 73911112
+    source_record_count: 1
+    artifact_types: [model]
+    target: DVC + restricted Google Drive
+    status: hold_pending_rights_review
+    artifact_ids:
+      - art-c96d422bb3179b02
+  - sha256: 4e206b0155f88191ddc79bc287b1f75e111727b56f8b3c677a781e52d5006125
+    size_bytes: 73911112
+    source_record_count: 1
+    artifact_types: [model]
+    target: DVC + restricted Google Drive
+    status: hold_pending_rights_review
+    artifact_ids:
+      - art-5e9258121845d186
+  - sha256: 35e33ac6373714c7619a6d875387cc5f976f95c4cf081fbf6a1f8279a6518c7f
+    size_bytes: 73911112
+    source_record_count: 1
+    artifact_types: [model]
+    target: DVC + restricted Google Drive
+    status: hold_pending_rights_review
+    artifact_ids:
+      - art-f9dffb02fcf00674
+  - sha256: bd482e9977ac7415df40662adc7e29133955121451e9b132baa1326504238101
+    size_bytes: 73911112
+    source_record_count: 1
+    artifact_types: [model]
+    target: DVC + restricted Google Drive
+    status: hold_pending_rights_review
+    artifact_ids:
+      - art-66f8b70bc285c633
+  - sha256: d15e06b3579a38c4454c425f0058da6e8e7d0b36145349eee82c02660c3d5c2d
+    size_bytes: 73911112
+    source_record_count: 1
+    artifact_types: [model]
+    target: DVC + restricted Google Drive
+    status: hold_pending_rights_review
+    artifact_ids:
+      - art-68edd6515328068d
+  - sha256: f1d1172a59312cfbd438655db0033c1a363f91c987d31d09c36d3a24104b1261
+    size_bytes: 73911112
+    source_record_count: 1
+    artifact_types: [model]
+    target: DVC + restricted Google Drive
+    status: hold_pending_rights_review
+    artifact_ids:
+      - art-f633b7f36e694ccc
