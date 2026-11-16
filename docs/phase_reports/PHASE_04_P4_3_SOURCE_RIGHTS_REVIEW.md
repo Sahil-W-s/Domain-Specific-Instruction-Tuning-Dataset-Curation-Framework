@@ -147,3 +147,12 @@ The manifest does not record an immutable upstream MMLU revision/commit or the e
 - No new dataset/model payload inspection was performed for this step. Findings use existing owner-supplied local inspection/provenance records.
 - These provenance findings do not establish copyright/licence permission or privacy clearance. All source rights remain unresolved where source terms are absent.
 - No source files were moved, renamed, extracted, uploaded to cloud storage, or modified. `migration_authorized: false` remains unchanged.
+
+
+## Additional local-code reconciliation — Dolly sampling implementation (2026-11-17)
+
+The owner-provided project script `prepare_phase3_datasets_v2.py` was inspected as source code (not executed). It sets `DOLLY_DATASET = "databricks/databricks-dolly-15k"` and `SEED = 20261114`, calls `load_dataset(DOLLY_DATASET, split="train")` without a pinned `revision` argument, shuffles the full loaded row-index list with `random.Random(SEED)`, assigns the first 1,000 shuffled indices to B2 and the next 577 to B5 general, and asserts the two index sets are disjoint. It records counts/seed/disjointness in the output validation report, but the inspected code does not persist the selected upstream row indices or dataset revision.
+
+This improves the transformation description: B2/B5 sampling is reproducible only if the exact upstream dataset snapshot and row ordering are independently recovered. Since the code does not pin a revision and no row-index manifest was found in the reviewed records, exact historical Dolly row selection cannot currently be reconstructed with certainty. Do not rerun the script or reload the dataset for this review.
+
+The exact MMLU upstream revision remains unknown; its local 50-question sample manifest records the seed, exclusions, category counts, and local file hash but no upstream revision. The package's split manifest, validation report, and B2–B5 run metadata have not yet been directly reviewed as individual files; inspect those existing small metadata files next if supplied.
