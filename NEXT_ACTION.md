@@ -148,3 +148,23 @@ Rights and privacy review remain open. Do not configure DVC or migrate artifacts
 The local `prepare_phase3_datasets_v2.py` sets dataset ID `databricks/databricks-dolly-15k`, seed 20261114, loads the train split without a pinned `revision`, shuffles row indices, assigns first 1,000 to B2 and next 577 to B5 general, and asserts disjointness. The script does not persist selected upstream row indices. Exact historical Dolly row selection is therefore not fully reproducible without the upstream snapshot and row-index manifest. The script was inspected, not executed.
 
 Next owner input: upload the existing small package metadata files `configuration/split_manifest.json`, `configuration/phase3_validation_report.json`, and `training/B2/run_metadata.json` through `training/B5/run_metadata.json` (six files total). Review only their metadata for dataset-to-run linkage and revision identifiers. Do not upload dataset/model payloads or extract archives.
+
+
+## P4.3 Step 3D — package metadata review completed (2026-11-17)
+
+The owner supplied all six requested files. They were inspected locally and their SHA-256 values and findings are recorded in `docs/phase_reports/PHASE_04_P4_3_SOURCE_RIGHTS_REVIEW.md`.
+
+- Dataset preparation report: PASS; B3 600 and B4 577 evidence reconstructions; 0 mismatches; source hashes unchanged; frozen sources not modified.
+- Split manifest: seed 42, validation ratio 0.1; 58 shared IoT validation IDs, 519 shared IoT training IDs, 23 B3-only training IDs. B3 train count reconciles as 519+23=542.
+- B2–B5 run metadata baseline names/counts match the package README and split manifest. All use the same Qwen2.5-1.5B-Instruct model identifier and common LoRA/training configuration.
+- Run metadata does not record dataset input paths/hashes, selected source row IDs, or immutable base-model revision. Dataset-to-run linkage is count/name-level, not hash-bound.
+- Dolly upstream revision and row-level source selection remain unknown; MMLU upstream revision remains unknown.
+- The run metadata and split manifest do not resolve redistribution rights or payload privacy.
+
+This supersedes the earlier request to upload these six files; no further upload of them is needed.
+
+### Next bounded task — P4.3 Step 3E
+
+Continue source-first rights/provenance review using only existing local evidence. The remaining useful evidence is any locally held source/acquisition record, licence/terms file, course/institution permission, dataset card or cached metadata, and model card/configuration that was part of the original project materials. Do not web-search substitutes. If no such local evidence exists, record the rights as unknown rather than trying to infer them.
+
+Do not inspect bulk dataset/model payloads, configure DVC, or migrate artifacts. `migration_authorized: false` remains in force.
