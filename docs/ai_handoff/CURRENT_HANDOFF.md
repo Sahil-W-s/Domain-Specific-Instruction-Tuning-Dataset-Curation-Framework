@@ -470,3 +470,12 @@ Owner ran `scripts/storage/scan_privacy_indicators.py`. Results: 1,531 inventory
 The phone-like regex is broad and numeric; its count is not confirmed phone numbers or PII exposure. Aggregate findings locally by artifact ID/path without matched values and inspect only concentrated files. Identify the 31 unavailable and 2 validation-failed records. Do not rerun the full scan, disclose matched values, or commit local outputs.
 
 Report: `docs/phase_reports/PHASE_04_P4_4_PRIVACY_REVIEW.md`. Migration remains unauthorized; no DVC setup or artifact migration.
+
+
+## P4.4 concentration triage update — 2026-11-17
+
+Owner aggregated phone-like findings by artifact ID/path/root. Highest concentrations are master_file_inventory.csv (26,027 each across two roots), script_catalogue.csv (11,410 each across two roots), B2 checkpoint-339 trainer_state.json (1,154), and known_existing_artifacts CSV copies (1,002 each). Other flagged files include inventories, logs, evaluation JSONL/CSV, and checkpoint state JSON. Source-root counts: MLCP_RECOVERY 42,114; MLCP_UPLOAD 41,255; MLCP_KAGGLE_WORK 3,465; MLCP_PHASE1_DRAFTS 489; MLCP_REVIEW_SUBSET 185.
+
+Interpretation: numeric-field false positives are plausible given the file types, but no blanket benign classification is justified. Similar paths across roots remain separate source copies. Do not deduplicate/delete.
+
+Next: inspect headers/field names only for the top inventory CSV classes and one trainer_state JSON, without cell values or matched strings; then inspect sanitized skip diagnostics for 31 unavailable and 2 mismatch records. Report: docs/phase_reports/PHASE_04_P4_4_PRIVACY_REVIEW.md. Migration remains unauthorized.
