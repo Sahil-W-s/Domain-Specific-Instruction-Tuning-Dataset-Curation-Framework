@@ -276,3 +276,56 @@ Do not install/configure DVC or migrate any source artifact until rights/privacy
 - Reads central-directory metadata only; does not extract entries, read entry payloads, modify source archives, or recompute hashes.
 - Writes local-only outputs to `.local/phase4_archive_inspection/`: `archive_summary.csv`, `archive_entries.csv`, `inspection_summary.json`.
 - Execution and inspection of those outputs remain pending. Do not commit generated local outputs before review; internal filenames may be sensitive.
+
+
+## Authoritative continuation — P4.3 ZIP metadata reviewed
+
+**Updated:** 2026-11-17  
+**Project:** ML CP — Domain-Specific Instruction-Tuning Dataset Curation Framework  
+**Current task:** P4.3 Step 2 — bounded README-content review.
+
+This is the latest continuation block and supersedes earlier task instructions above where they conflict.
+
+### P4.3 Step 1 evidence
+
+The owner executed `scripts/storage/inspect_large_archives.py` locally and supplied its three generated outputs.
+
+- 17 ZIP records grouped into 9 unique SHA-256 content groups.
+- 9/9 unique archive groups metadata-listed successfully.
+- 115 entry metadata records; no errors.
+- 0 license/notice filename matches.
+- 9 README-named entries.
+- 0 manifest/config filename matches.
+- 0 potentially sensitive filename matches.
+- 0 encrypted entries, unsafe paths, or symlinks.
+- No extraction, payload reads, source archive modifications, or new source hashes.
+
+Report: `docs/phase_reports/PHASE_04_P4_3_ZIP_METADATA_REVIEW.md`.
+
+### Interpretation
+
+This was metadata-only inspection. It does not establish absence of sensitive content, nor does it establish licence or redistribution permission. README contents and upstream terms remain unreviewed. Rights, redistribution, and sensitivity remain unknown. The storage map must continue to set `migration_authorized: false`.
+
+### Next action
+
+Run after `git pull --ff-only origin main`:
+
+```powershell
+python scripts/storage/inspect_archive_readmes.py
+```
+
+This bounded script reads only README-named ZIP entries, with a 64 KiB maximum per entry. It does not extract files to disk, read other entry payloads, modify source archives, or compute new hashes.
+
+Local-only outputs in `.local/phase4_archive_inspection/`:
+
+- `archive_readmes_local.md`
+- `readme_inspection_summary.json`
+
+The Markdown may contain private project details. Review locally for secrets, personal information, private paths, or restricted material before sharing. Do not commit the outputs to the public repository.
+
+### Preservation and migration gate
+
+- Do not move, delete, rename, overwrite, extract over, or upload source artifacts.
+- Do not configure DVC or migrate artifacts.
+- Do not select a canonical B2–B5 adapter/checkpoint without experiment-lineage evidence.
+- Continue bounded, risk-based validation only.
