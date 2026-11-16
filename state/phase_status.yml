@@ -178,7 +178,7 @@ phases:
       split_manifest: 519_shared_iot_train_58_shared_iot_validation_23_b3_only_train
       run_metadata: B2_B3_B4_B5_counts_and_configs_reconciled;_input_hashes_and_immutable_model_revision_absent
     p4_4_privacy_review:
-      status: scanner_implemented_execution_pending
+      status: first_scan_executed_phone_indicator_triage_pending
       script: scripts/storage/scan_privacy_indicators.py
       report: docs/phase_reports/PHASE_04_P4_4_PRIVACY_REVIEW.md
       scan_scope: inventory_listed_text_like_files_only
@@ -187,8 +187,19 @@ phases:
       outputs: local_only_under_.local/phase4_privacy_review
       source_modification: false
       archives_pdfs_model_weights: excluded_from_this_pass
-      owner_execution: pending
-    next_task: Owner executes the bounded local privacy indicator scan and returns the summary plus sanitized finding rows; then classify flagged artifact groups
+      owner_execution: completed
+      first_scan:
+        inventory_records: 1531
+        text_candidates: 1286
+        unique_files_scanned: 1253
+        bytes_scanned: 369784161
+        total_indicators: 87508
+        phone_like_indicators: 87508
+        credential_private_key_email_indicators_reported: 0
+        unavailable_or_mismatched_records: 33
+        non_text_extensions_excluded: 245
+      interpretation: phone_like_regex_is_broad_and_not_proof_of_phone_numbers_or_exposure;_triage_by_artifact_pending
+    next_task: Aggregate phone-like findings by artifact ID/path locally without values; triage concentrated files and explain 31 unavailable plus 2 path/size mismatch records
     migration_started: false
     limitations:
     - Do not infer redistribution permission from file names or public availability
