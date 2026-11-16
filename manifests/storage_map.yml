@@ -24,29 +24,30 @@ inventory:
   unique_content_bytes: 1735016404
   duplicate_replica_bytes: 1451381292
 rights_and_privacy:
-  review_status: partial_source_terms_verified_provenance_and_privacy_open
+  review_status: source_inventory_partially_reconciled_rights_provenance_and_privacy_open
   sensitivity: unknown_for_all_41_records
   redistribution: not_cleared_for_all_41_records
   migration_clearance: blocked
   rule: Do not upload any artifact until per-artifact rights, privacy, and redistribution status are reviewed.
+  source_review_evidence_boundary: Prior external licence lookups are not accepted as project-source evidence or clearance; all listed upstream licence labels below are provisional external leads only and must not authorize storage, training, or redistribution.
   source_reviews:
     qwen_qwen2_5_1_5b_instruct:
       license: Apache-2.0
-      evidence: https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct
+      evidence_status: external_lookup_only_not_project_source_evidence
       local_storage: consistent_with_license_subject_to_conditions
       derivative_training: license_permits_use_and_derivative_works; adapter_classification_and_notices_require_review
       redistribution: permitted_subject_to_Apache_2_0_conditions
     databricks_dolly_15k:
       candidate_source: databricks/databricks-dolly-15k
       license: CC-BY-SA-3.0
-      evidence: https://huggingface.co/datasets/databricks/databricks-dolly-15k
+      evidence_status: external_lookup_only_not_project_source_evidence
       exact_revision_and_subset_lineage: unverified
       local_storage: consistent_with_license_subject_to_conditions
       derivative_training: dataset_card_lists_LLM_training_as_intended_use; trained_adapter_share_alike_status_unresolved
       redistribution: dataset_or_adapted_dataset_material_requires_attribution_and_share_alike; model_weight_status_unresolved
     cais_mmlu:
       license: MIT
-      evidence: https://huggingface.co/datasets/cais/mmlu
+      evidence_status: external_lookup_only_not_project_source_evidence
       exact_revision_split_and_50_question_sample_manifest: unverified
       local_storage: consistent_with_license_subject_to_notice
       evaluation_use: consistent_with_license_subject_to_notice
@@ -58,6 +59,8 @@ rights_and_privacy:
         - IOT Unit 1 Contents.pdf
         - Unit 2-Iot-platform-design-methodology (1).pptx.pdf
       author_publisher_source_url_edition_and_license: unknown
+      source_manifest: reviewed_four_training_sources;_Unit_1_near_duplicate_excluded
+      unit5_pdf: supplied_81_page_title_level_match_to_iot_unit5_pdf;_held_out_test_linkage_pending
       local_storage: unknown
       derivative_training: unknown
       redistribution: not_cleared
