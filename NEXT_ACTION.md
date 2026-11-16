@@ -28,52 +28,31 @@ The owner ran `scripts/storage/inspect_large_archives.py` locally and supplied a
 
 Interpretation: zero filename flags do not establish that contents are free of secrets/personal data or that redistribution is permitted. README contents and upstream licensing evidence remain unreviewed. Rights and sensitivity remain unknown; `manifests/storage_map.yml` remains `migration_authorized: false`.
 
-## Immediate next task — P4.3 Step 2: bounded README-content review
+## Completed — P4.3 Step 2: bounded README-content review
 
-A bounded reader is committed at `scripts/storage/inspect_archive_readmes.py`. It opens each of the 9 unique ZIP content groups and reads only README-named entries up to 64 KiB each. It does not extract files to disk, read other entry payloads, modify source archives, or compute new hashes.
+The owner ran `scripts/storage/inspect_archive_readmes.py` and supplied the local-only outputs for review.
 
-From the canonical repository root in PowerShell:
+- 17 ZIP inventory records; 9 unique archive groups.
+- 9 archives opened; 9 README entries read; 0 skipped by the 64 KiB limit; 0 errors.
+- Only README-named entries were read. No extraction, source archive modification, or new source hashing occurred.
+- Review report: `docs/phase_reports/PHASE_04_P4_3_README_REVIEW.md`.
+- Adapter model-card READMEs identify Qwen/Qwen2.5-1.5B-Instruct and PEFT/LoRA, but leave licence and provenance fields as `[More Information Needed]`.
+- The reproducibility README describes code, datasets, adapters, predictions, evaluation outputs, and provenance artifacts. It does not establish item-level licences or redistribution permission.
+- Evaluation caveats from the package README are recorded in the report and must remain attached to future comparisons.
 
-```powershell
-git pull --ff-only origin main
-python scripts/storage/inspect_archive_readmes.py
-```
+Rights, redistribution, and sensitivity remain unknown. README review is not a payload-wide privacy clearance. Do not commit local README output.
 
-Expected local-only outputs under `.local/phase4_archive_inspection/`:
+## Immediate next task — P4.3 Step 3: source-specific rights and provenance checks
 
-- `archive_readmes_local.md`
-- `readme_inspection_summary.json`
+Use the package's already inventoried manifests and provenance artifacts to identify the exact source families represented in the included datasets and source documents. For each identifiable source family and the named base model:
 
-The Markdown output contains README text and may include private project details. Review it locally first. Share the content only after checking for secrets, personal information, private paths, or other restricted details. Do not commit either generated output to the public repository.
+1. Record the exact upstream source and applicable licence/terms, with evidence.
+2. Determine whether terms permit local/private storage, derivative model training, and redistribution; distinguish these permissions rather than treating them as equivalent.
+3. Identify dataset and source-document provenance gaps.
+4. Record unknown where evidence is missing or ambiguous.
+5. Identify payload classes that require privacy review before storage migration; do not inspect unrelated payloads or expose secrets.
 
-If Python is not available as `python`, use the interpreter already used for ML CP scripts.
-
-## Immediate next task — P4.3 Step 2: rights, privacy, and content review
-
-After the metadata listing is reviewed, continue rights/privacy assessment for the 41 large-file records using:
-
-1. `reports/storage/large_file_classification.csv`
-2. `reports/inventory/large_files.csv`
-3. `reports/inventory/artifact_inventory.csv`
-4. `manifests/storage_map.yml`
-5. `docs/phase_reports/PHASE_04_P4_2_CLASSIFICATION.md`
-
-### Required review
-
-- Identify the upstream source and applicable licence/terms for the source documents and datasets represented in each relevant archive.
-- Establish whether trained adapters and checkpoints can be stored privately and whether redistribution is permitted.
-- Inspect archive file listings and manifests without extracting over or modifying any source location.
-- Check for credentials, `.env` files, personal data, restricted datasets, and third-party content. Never copy secret values into reports or Git.
-- Inspect the reproducibility package before deciding whether it is a single archival object or should be separated into approved components.
-- Record unknown or unverifiable rights as `unknown`; do not infer permission from public availability or project ownership.
-
-### P4.3 outputs
-
-- Update per-artifact rights and sensitivity fields in the classification/storage records.
-- Record evidence and unresolved items in a P4.3 report.
-- Keep the Drive remote private and restricted.
-- Do not upload, move, delete, rename, extract over, or rewrite source artifacts.
-- Do not select a canonical B2–B5 adapter/checkpoint without experiment-lineage evidence.
+Do not infer permission from public availability, a model identifier, or an incomplete model card. Do not publish adapters, datasets, predictions, or source documents. Do not configure DVC or migrate artifacts.
 
 ## Current storage decision
 
