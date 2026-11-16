@@ -214,3 +214,59 @@ by Git. Full JSON Schema instance validation was not performed.
 
 Phase 1 limitations and Phase 2 duplicate-review and targeted-hash caveats
 remain unchanged. No source data was moved or deleted.
+
+
+## Authoritative current status — Phase 4 P4.2
+
+**Updated:** 2026-11-17  
+**Current phase:** Phase 4 — Durable artifact storage and retrieval  
+**Phase 0:** Owner-approved complete  
+**Phase 1:** Owner-approved complete  
+**Phase 2:** Owner-approved complete  
+**Phase 3:** Completed and checkpointed  
+**Phase 4:** P4.1 feasibility assessment complete; P4.2 large-artifact classification complete; P4.3 rights/privacy review is next.
+
+This section is the latest status and supersedes older status blocks above where they conflict. Historical caveats remain preserved.
+
+### P4.1 — Storage feasibility
+
+- Owner-reported Google Drive available capacity: 5 TB.
+- Owner-reported GitHub LFS usage/quota: 7/10; exact interpretation (storage versus bandwidth) remains to be clarified.
+- Additional LFS spending: zero.
+- Dedicated Google Drive folder: owner confirmed it can be created.
+- Selected architecture: DVC with a restricted dedicated Google Drive remote as primary large-artifact storage; GitHub for code, safe manifests, reports, and DVC metadata.
+- No new bulk Git LFS tracking.
+
+### P4.2 — Large-artifact classification
+
+- Source: `reports/inventory/large_files.csv`, cross-matched to `reports/inventory/artifact_inventory.csv`.
+- 41/41 records matched; all 41 have verified SHA-256 values.
+- 17 archives and 24 adapter/model files.
+- Provisional roles: 8 experiment backup ZIPs, 8 adapter backup ZIPs, 1 reproducibility-package ZIP, 4 active-run final adapters, 8 final-adapter backup copies, 12 adapter checkpoints.
+- 21 unique SHA-256 contents and 8 duplicate-hash groups within this 41-record subset.
+- Physical bytes across records: 3,186,397,696.
+- Unique content bytes: 1,735,016,404.
+- Duplicate replica overhead: 1,451,381,292 bytes.
+- Every record currently has `sensitivity=unknown` and `redistribution_status=unknown` in the registry.
+- No canonical model/checkpoint has been selected.
+
+### Phase 4 artifacts committed
+
+- `reports/storage/large_file_classification.csv`
+- `manifests/storage_map.yml` — provisional; migration explicitly unauthorized.
+- `docs/phase_reports/PHASE_04_P4_2_CLASSIFICATION.md`
+- `DECISIONS.md` — appended D-012 recording the storage architecture and migration hold.
+
+Latest checkpoint at the time of this update: `a43949a509778e75d78421ab21e0c5bf401fd04c`.
+
+### Safety and migration status
+
+- No source artifacts were moved, deleted, renamed, uploaded, or rewritten.
+- Preserve every source path and copy. Matching hashes do not authorize deletion.
+- The Drive destination must remain private/restricted until rights and privacy review is complete.
+- No DVC installation, remote configuration, LFS tracking, or artifact migration has started.
+- An independent physical backup has not been verified. Historical Phase 0 risk acceptance does not prove an independent backup exists.
+
+### Next task
+
+P4.3 — Review rights, privacy, redistribution terms, and archive contents. Keep all migration actions blocked until this review is recorded and the storage map is approved.
