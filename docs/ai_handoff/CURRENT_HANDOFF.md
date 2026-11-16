@@ -364,3 +364,31 @@ Use existing package manifests and provenance artifacts to identify upstream sou
 - Do not publish adapters, datasets, predictions, source documents, or archive contents.
 - Do not configure DVC or migrate any artifacts.
 - Preserve all source paths and copies; no source moves, deletions, renames, overwrites, or extraction over source locations.
+
+
+## Authoritative continuation — P4.3 partial source-rights review
+
+**Updated:** 2026-11-17  
+**Current task:** P4.3 Step 3B — exact package manifest and source provenance reconciliation.
+
+Report: docs/phase_reports/PHASE_04_P4_3_SOURCE_RIGHTS_REVIEW.md.
+
+### Verified source terms and unresolved items
+
+- Base model Qwen/Qwen2.5-1.5B-Instruct: Apache-2.0 on the upstream Hugging Face repository.
+- Dolly source candidate databricks/databricks-dolly-15k: CC BY-SA 3.0. Exact revision and B2/B5 subset lineage are not yet verified.
+- MMLU source cais/mmlu: MIT. Exact revision, split, 50-question sample IDs, and seed are not yet verified.
+- Four original IoT PDF titles are identified in the report. Author, publisher, original URL, edition, and licence remain unknown.
+- Whether adapter weights trained on Dolly are adaptations subject to CC BY-SA share-alike remains unresolved.
+- Payload privacy review is pending; README and ZIP filename checks are not payload-wide clearance.
+
+### Next bounded action
+
+Use the existing metadata-only ZIP entry listing for the reproducibility package and inspect only the small manifests/configuration files required to establish exact source revisions, subset lineage, sampling manifest, run lineage, and SHA256SUMS metadata. If the entry listing is unavailable, rerun only the bounded metadata export for that package. Do not read dataset/model payloads or extract the archive.
+
+### Migration gate remains closed
+
+- Keep migration_authorized: false.
+- No DVC setup or artifact migration.
+- No publication of adapters, datasets, predictions, or source documents.
+- Preserve every source path and copy; no moves, deletions, renames, overwrites, or extraction over source artifacts.
