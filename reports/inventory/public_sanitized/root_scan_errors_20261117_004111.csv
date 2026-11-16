@@ -1,0 +1,5 @@
+"RootID","Path","Issue","Message"
+"MLCP_UPLOAD","MLCP_UPLOAD\.git","EXCLUDED_DIRECTORY","Excluded by scan policy"
+"MLCP_UPLOAD","MLCP_UPLOAD\ML CP\.venv","EXCLUDED_DIRECTORY","Excluded by scan policy"
+"MLCP_UPLOAD","MLCP_UPLOAD\Domain-Specific-Instruction-Tuning-Dataset-Curation-Framework\.git","EXCLUDED_DIRECTORY","Excluded by scan policy"
+"MLCP_RECOVERY","MLCP_RECOVERY\ML_CP_2026-11-16\.venv","EXCLUDED_DIRECTORY","Excluded by scan policy"

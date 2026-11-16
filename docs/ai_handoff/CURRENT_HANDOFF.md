@@ -1,9 +1,9 @@
 # ML CP — Current AI Handoff
 
-**Date:** 2026-11-16  
-**Plan:** ML_CP_Resilient_Implementation_Plan.md, version 2.0  
-**Active phase:** Phase 0 — Preserve current state and establish a recovery point  
-**Status:** partial
+**Date:** 2026-11-17
+**Plan:** ML_CP_Resilient_Implementation_Plan.md, version 2.0
+**Active work:** Phase 0 closeout blockers and Phase 1 owner review
+**Status:** Phase 0 partial; Phase 1 completed
 
 ## Project identity
 
@@ -33,10 +33,10 @@ Actual local paths are stored in the ignored `.local/phase_00_local_paths.txt`.
 ### Git
 
 - Isolated Git repository initialized in canonical workspace.
-- Branch: master.
-- No commits and no remotes.
-- Parent repository left untouched.
-- No files staged or pushed.
+- Current branch: `main`.
+- Latest verified commit: `5268229`.
+- Remote tracking: `origin/main`.
+- Phase 1 artifacts are uncommitted and require owner review.
 
 ### Artifact registry
 
@@ -80,7 +80,7 @@ Actual local paths are stored in the ignored `.local/phase_00_local_paths.txt`.
 
 ## Do not do next
 
-- Do not begin Phase 1 until the exact task in `NEXT_ACTION.md` is resolved.
+- Phase 1 discovery has been executed and validated. Do not repeat scans unless evidence is missing or a specific discrepancy is found.
 - Do not move, delete, rename, or reorganize source material.
 - Do not install DVC or configure storage.
 - Do not run training, inference, or paid API calls.
@@ -89,3 +89,48 @@ Actual local paths are stored in the ignored `.local/phase_00_local_paths.txt`.
 ## First action in a new conversation
 
 Read `AI_WORK_PROTOCOL.md`, `docs/ai_handoff/AI_START_HERE.md`, `PROJECT_CONTEXT.md`, `PROJECT_STATE.md`, `NEXT_ACTION.md`, and this handoff. Then continue only with the task in `NEXT_ACTION.md`.
+
+
+## Verified continuation update — 2026-11-17
+
+### Phase 1 result
+
+Phase 1 — Discover all project source locations — has completed its technical work.
+
+- Seven owner-confirmed source roots.
+- Three scan batches.
+- 1,498 consolidated file records.
+- 28 archive records.
+- 41 files at least 50 MB.
+- Historical master coverage: 26,015 records accounted for; zero missing paths and zero size mismatches.
+- 136 targeted SHA-256 records successfully verified.
+- 31 confirmed duplicate groups containing 110 files.
+- 19/19 Phase 1 validation checks passed.
+
+Read these files first when continuing:
+
+1. `docs/phase_reports/PHASE_01_REPORT.md`
+2. `manifests/phase_01_outputs.json`
+3. `reports/validation/phase_01_validation.json`
+4. `state/phase_status.yml`
+5. `NEXT_ACTION.md`
+
+### Phase 0 blockers remain
+
+1. Master implementation plan local SHA-256 registration.
+2. Separate original project guide identification.
+3. Independent physical backup destination verification.
+
+Do not mark Phase 0 complete without evidence for these items.
+
+### Repository checkpoint
+
+- Branch: `main`.
+- Latest verified commit: `5268229`.
+- Remote: `origin/main`.
+- New Phase 1 and state-update artifacts have not been committed.
+- The state-update backup copies are in `reports/state_update_backups/`.
+
+### Preservation constraints
+
+Do not delete or move source files, extract archives, or remove duplicate copies. The seven-root scope is owner-confirmed, not independently exhaustive. The next action is Phase 1 owner review and Phase 0 closeout as specified in `NEXT_ACTION.md`.

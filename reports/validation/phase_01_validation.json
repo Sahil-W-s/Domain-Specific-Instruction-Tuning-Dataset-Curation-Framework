@@ -1,0 +1,81 @@
+{
+  "project": "ML CP",
+  "phase": 1,
+  "generated_at_utc": "2026-11-16T20:21:04.070714+00:00",
+  "checks": {
+    "all_evidence_files_exist": true,
+    "all_evidence_hashes_match": true,
+    "inventory_records_1498": true,
+    "source_roots_7": true,
+    "archive_records_28": true,
+    "large_files_41": true,
+    "exact_path_candidates_0": true,
+    "same_size_candidates_124": true,
+    "historical_records_26015": true,
+    "sha256_records_136": true,
+    "duplicate_groups_31": true,
+    "duplicate_members_110": true,
+    "template_yaml_valid": true,
+    "local_yaml_valid": true,
+    "template_has_exact_seven_roots": true,
+    "local_config_has_exact_seven_roots": true,
+    "template_paths_are_placeholders": true,
+    "report_exists": true,
+    "manifest_exists": true
+  },
+  "passed": 19,
+  "total": 19,
+  "all_passed": true,
+  "measured_counts": {
+    "consolidated_inventory_records": 1498,
+    "source_roots": 7,
+    "archive_records": 28,
+    "large_files": 41,
+    "exact_path_duplicate_candidates": 0,
+    "same_size_duplicate_candidates": 124,
+    "historical_master_records": 26015,
+    "sha256_verified_records": 136,
+    "sha256_duplicate_groups": 31,
+    "sha256_duplicate_members": 110
+  },
+  "notes": [
+    "Validation covers the listed evidence and expected record counts.",
+    "Historical reconciliation is path-and-size based, not full historical SHA-256.",
+    "Targeted SHA-256 verification covers candidate/archive workload only.",
+    "No source file was modified, moved, deleted, or extracted by this script.",
+    "Phase 0 blockers remain unresolved unless separately evidenced and updated.",
+    "Git staging and commit are not performed by this script."
+  ],
+  "state_synchronization_checks": {
+    "phase_status_yaml_parses": true,
+    "phase_00_remains_partial": true,
+    "phase_01_marked_completed": true,
+    "project_state_updated": true,
+    "next_action_updated": true,
+    "handoff_updated": true,
+    "backup_copies_created": true
+  },
+  "state_synchronization_passed": true,
+  "state_synchronization_total": 7,
+  "state_synchronization_pass_count": 7,
+  "updated_at_utc": "2026-11-16T20:30:54.230606+00:00",
+  "privacy_sanitization": {
+    "checks": {
+      "all_25_sanitized_files_exist": true,
+      "all_25_sanitized_hashes_match": true,
+      "no_unmapped_absolute_paths": true,
+      "csv_row_counts_preserved": true,
+      "json_files_parse": true,
+      "manifest_has_no_absolute_paths": true,
+      "all_25_manifest_evidence_hashes_match": true
+    },
+    "passed": 7,
+    "total": 7,
+    "all_passed": true,
+    "absolute_path_replacements": 29624,
+    "sanitized_evidence_files": 25,
+    "csv_files_checked": 22,
+    "json_files_checked": 2,
+    "original_evidence_modified": false
+  }
+}

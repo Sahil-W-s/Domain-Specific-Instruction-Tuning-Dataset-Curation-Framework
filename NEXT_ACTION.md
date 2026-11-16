@@ -1,32 +1,44 @@
-# NEXT ACTION — Phase 0 Closeout
+# NEXT ACTION — Phase 0 Closeout and Phase 1 Review
 
-**Active phase:** Phase 0  
-**Status:** partial
+**Last updated:** 2026-11-17
 
-## Single bounded task
+## Current phase position
 
-Complete the source-reference and recovery-location registration required for the Phase 0 closeout.
+- Phase 0: partial; three blockers remain.
+- Phase 1: completed; technical validation passed 19/19 checks.
+- Phase 1 Git checkpoint: pending owner review.
+- Phase 2: not started.
 
-### Required actions
+## Immediate bounded task
 
-1. Locate the local copy of `ML_CP_Resilient_Implementation_Plan.md` (version 2.0).
-2. Confirm whether a separate original project implementation guide exists.
-3. Record each guide's local root alias, relative path, file size, modified time, and SHA-256 in the reference register.
-4. If no local copy exists, explicitly record that the guide is available only as a ChatGPT Library reference and that local hash registration is pending.
-5. Identify an independent physical backup location, such as an external drive or approved cloud/object store. Do not copy large data until the destination is confirmed and sufficient space is available.
-6. Update the Phase 0 report, validation, output manifest, project state, and handoff with the result.
+Review the Phase 1 report, manifest, validation result, and current Git diff. Confirm that the recorded scope and limitations are accurate before staging or committing.
 
-## Acceptance criteria
+### Phase 1 review files
 
-- The master plan/reference is identified without ambiguity.
-- Its SHA-256 is recorded or its local unavailability is explicitly documented.
-- The same-SSD recovery limitation is documented.
-- An independent backup destination is confirmed or explicitly recorded as unavailable.
-- The handoff remains sufficient for a fresh AI session to resume without uploading the entire project.
+1. `docs/phase_reports/PHASE_01_REPORT.md`
+2. `manifests/phase_01_outputs.json`
+3. `reports/validation/phase_01_validation.json`
+4. `state/phase_status.yml`
+5. `PROJECT_STATE.md`
+6. `docs/ai_handoff/CURRENT_HANDOFF.md`
+
+## Phase 0 blockers — still unresolved
+
+1. Locate the local copy of `ML_CP_Resilient_Implementation_Plan.md`, version 2.0, and register its root alias, relative path, size, modified time and SHA-256.
+2. Determine whether a separate original project guide exists. Register it if found; otherwise explicitly document its unavailability.
+3. Identify and verify an independent physical backup destination. Confirm capacity before copying any data.
+
+## Acceptance criteria before Phase 2
+
+- Phase 1 report, output manifest and validation are reviewed.
+- Phase 1 artifacts are committed with an explicit checkpoint.
+- Phase 0 blockers are resolved or their continuing status is explicitly approved by the owner.
+- The next phase has a documented scope, outputs, validation and recovery checkpoint.
 
 ## Restrictions
 
-- Do not start Phase 1 until this closeout task is resolved.
-- Do not move, delete, or reorganize source files.
-- Do not install DVC or configure remote storage.
-- Do not stage or commit files without explicit review.
+- Do not move, delete, rename, or reorganize source material.
+- Do not extract archives or remove duplicate copies.
+- Do not copy large data to a backup destination before confirming capacity.
+- Do not configure DVC, Git LFS, or remote storage without an approved plan.
+- Do not stage or commit without owner review.

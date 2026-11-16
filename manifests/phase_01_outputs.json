@@ -1,0 +1,266 @@
+{
+  "project": "ML CP",
+  "project_title": "Domain-Specific Instruction-Tuning Dataset Curation Framework",
+  "phase": 1,
+  "phase_name": "Discover all project source locations",
+  "generated_at_utc": "2026-11-16T20:30:54.201449+00:00",
+  "scope": {
+    "source_root_ids": [
+      "MLCP_GITHUB_STARTER",
+      "MLCP_KAGGLE_WORK",
+      "MLCP_PHASE1_DRAFTS",
+      "MLCP_PIPELINE_V1",
+      "MLCP_RECOVERY",
+      "MLCP_REVIEW_SUBSET",
+      "MLCP_UPLOAD"
+    ],
+    "scope_basis": "Owner-confirmed seven source roots; not independently exhaustive"
+  },
+  "reported_counts": {
+    "consolidated_inventory_records": 1498,
+    "source_roots": 7,
+    "archive_records": 28,
+    "large_files": 41,
+    "exact_path_duplicate_candidates": 0,
+    "same_size_duplicate_candidates": 124,
+    "historical_master_records": 26015,
+    "sha256_verified_records": 136,
+    "sha256_duplicate_groups": 31,
+    "sha256_duplicate_members": 110
+  },
+  "reconciliation_summary": {
+    "GeneratedAt": "2026-11-17T01:31:14.9916686+05:30",
+    "ScanBatches": 3,
+    "SourceRoots": 7,
+    "TotalFileRecords": 1498,
+    "UniqueFullPaths": 1498,
+    "RepeatedFullPathExcessRecords": 0,
+    "ArchiveRecords": 28,
+    "LargeFilesAtLeast50MB": 41,
+    "ExactPathDuplicateCandidateRecords": 0,
+    "SameSizeCandidateRecords": 124,
+    "HistoricalMasterRows": 26015,
+    "HistoricalPresent": 489,
+    "HistoricalExcludedVenv": 25526,
+    "HistoricalExcludedGit": 0,
+    "HistoricalMissing": 0,
+    "HistoricalSizeMismatches": 0
+  },
+  "duplicate_summary": {
+    "GeneratedAt": "2026-11-17T01:43:43.3317243+05:30",
+    "InputHashFile": "reports/inventory/public_sanitized/sha256_verification_20261117_resolved.csv",
+    "InputRecords": 136,
+    "ValidHashRecords": 136,
+    "UniqueSHA256Hashes": 57,
+    "ConfirmedDuplicateGroups": 31,
+    "FilesInDuplicateGroups": 110,
+    "FilesNotInDuplicateGroups": 26,
+    "RedundantBytes": 1779256777,
+    "RedundantMB": 1696.831,
+    "DuplicateGroupsCSV": "reports/inventory/public_sanitized/sha256_duplicate_groups_20261117.csv",
+    "DuplicateMembersCSV": "reports/inventory/public_sanitized/sha256_duplicate_members_20261117.csv"
+  },
+  "evidence_files": [
+    {
+      "path": "reports/inventory/public_sanitized/root_scan_20261117_004111.csv",
+      "size_bytes": 321470,
+      "sha256": "ae17536e918dda4a73c68ed7def3b468089776ab15cba83ee7a9c41c29d09673",
+      "sanitized_copy": true,
+      "original_retained_locally": true
+    },
+    {
+      "path": "reports/inventory/public_sanitized/root_scan_errors_20261117_004111.csv",
+      "size_bytes": 445,
+      "sha256": "8ae96a28ead0117a06af1768284b91564c4506234f9c3ba771c950bdde7864c6",
+      "sanitized_copy": true,
+      "original_retained_locally": true
+    },
+    {
+      "path": "reports/inventory/public_sanitized/root_scan_summary_20261117_004111.csv",
+      "size_bytes": 153,
+      "sha256": "c196b1bb17c466cf9d702e642ce8a38bc1bd6e37e5d7d27852b39a5af0beb633",
+      "sanitized_copy": true,
+      "original_retained_locally": true
+    },
+    {
+      "path": "reports/inventory/public_sanitized/archive_inventory_20261117_004111.csv",
+      "size_bytes": 3842,
+      "sha256": "4c87f1708662a21ce3803b35df8cc2bb3d78db117c1604babacf14bd2e2e9bc2",
+      "sanitized_copy": true,
+      "original_retained_locally": true
+    },
+    {
+      "path": "reports/inventory/public_sanitized/additional_root_scan_20261117_004925.csv",
+      "size_bytes": 10758,
+      "sha256": "ed92331f0f1541e35cb1316c6e83422df2d4968e899b58f701fd8a391c8f2868",
+      "sanitized_copy": true,
+      "original_retained_locally": true
+    },
+    {
+      "path": "reports/inventory/public_sanitized/additional_root_scan_errors_20261117_004925.csv",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sanitized_copy": true,
+      "original_retained_locally": true
+    },
+    {
+      "path": "reports/inventory/public_sanitized/additional_root_scan_summary_20261117_004925.csv",
+      "size_bytes": 291,
+      "sha256": "e5da624df250148ee66c1d75b42c679ed8af657f3f735a17d3e55323055a1f8f",
+      "sanitized_copy": true,
+      "original_retained_locally": true
+    },
+    {
+      "path": "reports/inventory/public_sanitized/additional_archive_inventory_20261117_004925.csv",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sanitized_copy": true,
+      "original_retained_locally": true
+    },
+    {
+      "path": "reports/inventory/public_sanitized/kaggle_work_inventory_20261117_011442.csv",
+      "size_bytes": 71455,
+      "sha256": "df87918952c1081f7f9a52c265bcf1200301c6556b50a1ece6ccad89889312e5",
+      "sanitized_copy": true,
+      "original_retained_locally": true
+    },
+    {
+      "path": "reports/inventory/public_sanitized/kaggle_work_scan_errors_20261117_011442.csv",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sanitized_copy": true,
+      "original_retained_locally": true
+    },
+    {
+      "path": "reports/inventory/public_sanitized/consolidated_master_inventory_20261117_012359.csv",
+      "size_bytes": 460829,
+      "sha256": "787f848b24700776bb0887a2df5037b1da39f492223cffb2d81f6bdb02b941f4",
+      "sanitized_copy": true,
+      "original_retained_locally": true
+    },
+    {
+      "path": "reports/inventory/public_sanitized/consolidated_root_summary_20261117_012359.csv",
+      "size_bytes": 396,
+      "sha256": "7486ee3965f0bfde1d11e315a1a1ddebe1660e5f0d2d3af4b2e4831ed1e55ae4",
+      "sanitized_copy": true,
+      "original_retained_locally": true
+    },
+    {
+      "path": "reports/inventory/public_sanitized/consolidated_extension_summary_20261117_012359.csv",
+      "size_bytes": 552,
+      "sha256": "3ca9c3ba3936699047acb9a5001e2221488c26271d204f02bbe3a301390b5aad",
+      "sanitized_copy": true,
+      "original_retained_locally": true
+    },
+    {
+      "path": "reports/inventory/public_sanitized/consolidated_archive_inventory_20261117_012359.csv",
+      "size_bytes": 5432,
+      "sha256": "353f7261fa431c2c5ee97ddbdfc896f2954b3c9ad6d84ec2abc7035ef5de180a",
+      "sanitized_copy": true,
+      "original_retained_locally": true
+    },
+    {
+      "path": "reports/inventory/public_sanitized/consolidated_large_files_20261117_012359.csv",
+      "size_bytes": 8771,
+      "sha256": "18ad2dd34e384d30fea3a81900a6e937127e2be5967087dd62a67b2d8be2dfc8",
+      "sanitized_copy": true,
+      "original_retained_locally": true
+    },
+    {
+      "path": "reports/inventory/public_sanitized/exact_path_duplicate_candidates_20261117_012359.csv",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sanitized_copy": true,
+      "original_retained_locally": true
+    },
+    {
+      "path": "reports/inventory/public_sanitized/same_size_duplicate_candidates_20261117_012359.csv",
+      "size_bytes": 25848,
+      "sha256": "775eadcb49dc71ef406094d08e365a28e6fc79a015228ba0bea1ce8ee0697a9e",
+      "sanitized_copy": true,
+      "original_retained_locally": true
+    },
+    {
+      "path": "reports/inventory/public_sanitized/historical_master_coverage_20261117_012359.csv",
+      "size_bytes": 5339505,
+      "sha256": "741f6a96d4127cd4fce1d1757b92a6023afc86e182601070239f6721ddb043d9",
+      "sanitized_copy": true,
+      "original_retained_locally": true
+    },
+    {
+      "path": "reports/inventory/public_sanitized/consolidated_reconciliation_summary_20261117_012359.json",
+      "size_bytes": 508,
+      "sha256": "bad613ae2a20423a77e4a6fe8cbac1d6033201a9e8c0baf59ea759ae4bacf4d3",
+      "sanitized_copy": true,
+      "original_retained_locally": true
+    },
+    {
+      "path": "reports/inventory/public_sanitized/sha256_verification_20261117.csv",
+      "size_bytes": 41064,
+      "sha256": "dbe19cddc00e9ba62dfee479066d3e188ac289b7cbd26242287d657577d7d3e4",
+      "sanitized_copy": true,
+      "original_retained_locally": true
+    },
+    {
+      "path": "reports/inventory/public_sanitized/sha256_verification_20261117_resolved.csv",
+      "size_bytes": 40919,
+      "sha256": "73cfb85523780c9783ff6161d34a25ae26e626b9b842a8ff5f1f688494f2e6c0",
+      "sanitized_copy": true,
+      "original_retained_locally": true
+    },
+    {
+      "path": "reports/inventory/public_sanitized/sha256_duplicate_groups_20261117.csv",
+      "size_bytes": 5151,
+      "sha256": "f7fc5a537021b8e784342abcb9c969c3d34d89fc1c48498db4b3094eb64aa746",
+      "sanitized_copy": true,
+      "original_retained_locally": true
+    },
+    {
+      "path": "reports/inventory/public_sanitized/sha256_duplicate_members_20261117.csv",
+      "size_bytes": 24841,
+      "sha256": "4ed46aceecc8c7595242d9ade5bbb94d1a84a7489a65d440270f9c9f5a967933",
+      "sanitized_copy": true,
+      "original_retained_locally": true
+    },
+    {
+      "path": "reports/inventory/public_sanitized/sha256_duplicate_summary_20261117.json",
+      "size_bytes": 622,
+      "sha256": "c434acabc1789e696314105ef1432aa96feb3c7d4cd12c52b561330a3d0233a4",
+      "sanitized_copy": true,
+      "original_retained_locally": true
+    },
+    {
+      "path": "reports/inventory/public_sanitized/sha256_path_resolution_20261117.log",
+      "size_bytes": 464,
+      "sha256": "b7bfc60ef766d2cfb8f647d1e86786ada685c996b128639b24c63da8dc3179a6",
+      "sanitized_copy": true,
+      "original_retained_locally": true
+    }
+  ],
+  "phase_documents": [
+    "docs/phase_reports/PHASE_01_REPORT.md",
+    "manifests/phase_01_outputs.json",
+    "reports/validation/phase_01_validation.json"
+  ],
+  "preservation": {
+    "source_files_moved": false,
+    "source_files_deleted": false,
+    "archives_extracted": false,
+    "duplicate_files_removed": false
+  },
+  "privacy": {
+    "publication_evidence": "sanitized copies",
+    "original_evidence": "retained locally and unchanged",
+    "absolute_path_replacements": 29624,
+    "root_aliases_used": [
+      "MLCP_GITHUB_STARTER",
+      "MLCP_KAGGLE_WORK",
+      "MLCP_PHASE1_DRAFTS",
+      "MLCP_PIPELINE_V1",
+      "MLCP_RECOVERY",
+      "MLCP_REVIEW_SUBSET",
+      "MLCP_UPLOAD"
+    ],
+    "sanitization_method": "configured root-prefix replacement with delimiter-aware boundary"
+  }
+}

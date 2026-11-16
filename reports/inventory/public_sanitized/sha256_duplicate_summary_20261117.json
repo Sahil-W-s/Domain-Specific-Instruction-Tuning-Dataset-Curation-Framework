@@ -1,0 +1,14 @@
+{
+  "GeneratedAt": "2026-11-17T01:43:43.3317243+05:30",
+  "InputHashFile": "MLCP_UPLOAD\\ML github\\reports\\inventory\\sha256_verification_20261117_resolved.csv",
+  "InputRecords": 136,
+  "ValidHashRecords": 136,
+  "UniqueSHA256Hashes": 57,
+  "ConfirmedDuplicateGroups": 31,
+  "FilesInDuplicateGroups": 110,
+  "FilesNotInDuplicateGroups": 26,
+  "RedundantBytes": 1779256777,
+  "RedundantMB": 1696.831,
+  "DuplicateGroupsCSV": "MLCP_UPLOAD\\ML github\\reports\\inventory\\sha256_duplicate_groups_20261117.csv",
+  "DuplicateMembersCSV": "MLCP_UPLOAD\\ML github\\reports\\inventory\\sha256_duplicate_members_20261117.csv"
+}

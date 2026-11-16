@@ -1,0 +1,50 @@
+# ML CP source-root template
+# Replace each path locally. Do not publish personal absolute paths.
+project: ML CP
+topic: Domain-Specific Instruction-Tuning Dataset Curation Framework
+scope_confirmation: user_confirmed
+roots:
+  - id: MLCP_UPLOAD
+    path: '<SET_LOCAL_PATH>'
+    purpose: 'Primary project workspace, repository, backups and evidence'
+    scan_batch: '20261117_004111'
+    availability: requires_local_verification
+  - id: MLCP_RECOVERY
+    path: '<SET_LOCAL_PATH>'
+    purpose: 'Phase 0 recovery and preservation artifacts'
+    scan_batch: '20261117_004111'
+    availability: requires_local_verification
+  - id: MLCP_REVIEW_SUBSET
+    path: '<SET_LOCAL_PATH>'
+    purpose: 'Review datasets, predictions, metrics and evaluation evidence'
+    scan_batch: '20261117_004925'
+    availability: requires_local_verification
+  - id: MLCP_PIPELINE_V1
+    path: '<SET_LOCAL_PATH>'
+    purpose: 'Earlier pipeline implementation'
+    scan_batch: '20261117_004925'
+    availability: requires_local_verification
+  - id: MLCP_GITHUB_STARTER
+    path: '<SET_LOCAL_PATH>'
+    purpose: 'GitHub starter documentation and project materials'
+    scan_batch: '20261117_004925'
+    availability: requires_local_verification
+  - id: MLCP_PHASE1_DRAFTS
+    path: '<SET_LOCAL_PATH>'
+    purpose: 'Earlier Phase 1 reconciliation drafts'
+    scan_batch: '20261117_004925'
+    availability: requires_local_verification
+  - id: MLCP_KAGGLE_WORK
+    path: '<SET_LOCAL_PATH>'
+    purpose: 'Kaggle notebook, experiments, checkpoints and model outputs'
+    scan_batch: '20261117_011442'
+    availability: requires_local_verification
+scan_policy:
+  mode: metadata_only
+  hash_all_files: false
+  extract_archives: false
+  preserve_source_files: true
+  preserve_duplicate_records: true
+known_exclusions:
+  - '.git directories'
+  - '.venv directories'

@@ -1,0 +1,18 @@
+{
+  "GeneratedAt": "2026-11-17T01:31:14.9916686+05:30",
+  "ScanBatches": 3,
+  "SourceRoots": 7,
+  "TotalFileRecords": 1498,
+  "UniqueFullPaths": 1498,
+  "RepeatedFullPathExcessRecords": 0,
+  "ArchiveRecords": 28,
+  "LargeFilesAtLeast50MB": 41,
+  "ExactPathDuplicateCandidateRecords": 0,
+  "SameSizeCandidateRecords": 124,
+  "HistoricalMasterRows": 26015,
+  "HistoricalPresent": 489,
+  "HistoricalExcludedVenv": 25526,
+  "HistoricalExcludedGit": 0,
+  "HistoricalMissing": 0,
+  "HistoricalSizeMismatches": 0
+}
