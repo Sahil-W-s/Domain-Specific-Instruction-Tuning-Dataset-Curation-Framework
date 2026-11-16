@@ -461,3 +461,12 @@ python scripts/storage/scan_privacy_indicators.py
 ```
 
 Do not commit local scan outputs. Do not share matched values or secret contents. Migration remains unauthorized; do not configure DVC or upload artifacts.
+
+
+## Authoritative continuation — P4.4 first scan completed; triage pending
+
+Owner ran `scripts/storage/scan_privacy_indicators.py`. Results: 1,531 inventory records; 1,286 text candidates; 1,253 unique files scanned; 369,784,161 bytes scanned; 87,508 indicators, all `phone_like`; zero reported credential/private-key/email indicators; 245 non-text exclusions; 31 unavailable records; 2 path/size validation failures.
+
+The phone-like regex is broad and numeric; its count is not confirmed phone numbers or PII exposure. Aggregate findings locally by artifact ID/path without matched values and inspect only concentrated files. Identify the 31 unavailable and 2 validation-failed records. Do not rerun the full scan, disclose matched values, or commit local outputs.
+
+Report: `docs/phase_reports/PHASE_04_P4_4_PRIVACY_REVIEW.md`. Migration remains unauthorized; no DVC setup or artifact migration.
