@@ -124,3 +124,20 @@ The owner supplied `source_manifest(2).csv` and `IOT Unit 5-webofthingsandcloudo
 Inspect only the existing held-out IoT test manifest and its source-ID metadata to confirm whether its `iot_unit5_pdf` records map to this supplied Unit 5 PDF. Then reconcile the exact Dolly/MMLU revisions and sample selection from project-local manifests/package metadata. If revision identifiers are absent, record them as unknown.
 
 All five PDFs remain rights-uncleared. The source manifest's canonical/eligible statuses are curation statuses, not licence clearance. Keep migration unauthorized; do not configure DVC or move/upload artifacts.
+
+
+## P4.3 Step 3C — local evaluation and dataset provenance reconciliation
+
+Completed from existing owner-supplied local inspection records:
+
+- Held-out IoT test: 35 records, SHA-256 `70d07aa68b4e125dd573ba01367f059b550651e5e25d4e271e92f55f04c6ff5d`; inspected rows identify `doc_id: iot_unit5_pdf`, `split: test`, and slide-based source IDs/evidence. This reconciles the supplied Unit 5 PDF as the documented held-out source. Keep Unit 5 evaluation-only; it is absent from the four-row training manifest.
+- Dolly: local records identify `databricks/databricks-dolly-15k`, 15,011 available rows, seed 20261114, B2 1,000, B5 general 577, and recorded B2/B5 disjointness. Source/category/assignment metadata is present. Immutable upstream revision and exact source-row selection are not recorded.
+- MMLU: local manifest identifies `cais/mmlu`, test split, 50 questions, seed 42, 9 excluded original indices, category allocation 13/12/13/12, and local sample SHA-256 `d7c4f24f3ea17f698b0729093ef601cbdf1ecea53623e62844faa4013f2bf78e`. Immutable upstream revision/commit is not recorded.
+
+Report: `docs/phase_reports/PHASE_04_P4_3_SOURCE_RIGHTS_REVIEW.md`.
+
+### Next bounded task
+
+Inspect only the small package metadata/configuration files already identified in the reproducibility package: split manifest, phase3 validation report, and B2–B5 run metadata. Confirm dataset-to-run linkage and any recorded upstream revision identifiers. Do not inspect model/data payloads or extract archives. If the local files contain no immutable revision identifiers, record that gap and stop rather than searching the internet.
+
+Rights and privacy review remain open. Do not configure DVC or migrate artifacts.
