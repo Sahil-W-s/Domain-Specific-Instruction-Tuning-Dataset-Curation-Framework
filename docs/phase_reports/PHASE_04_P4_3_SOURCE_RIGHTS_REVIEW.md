@@ -119,3 +119,31 @@ The owner also supplied `IOT Unit 5-webofthingsandcloudofthings.pdf` (81 pages).
 - Unit 5 is not currently listed as a training source. Do not silently add it to the training split.
 - The four training-source PDFs and Unit 5 remain uncleared for cloud storage, training reuse beyond the recorded curation, and redistribution. No copyright/licence/permission basis was established by these uploads.
 - No source file was moved, renamed, extracted, uploaded to cloud storage, or modified by this review. `migration_authorized: false` remains unchanged.
+
+
+## Step 3C — held-out IoT, Dolly, and MMLU provenance reconciliation (2026-11-17)
+
+### Held-out IoT test → Unit 5
+
+The existing local reproducibility-package inspection report records `data/heldout_iot_test.jsonl` as 35 records with SHA-256 `70d07aa68b4e125dd573ba01367f059b550651e5e25d4e271e92f55f04c6ff5d`. Its inspected records carry `metadata.doc_id: iot_unit5_pdf`, `metadata.split: test`, and slide-based chunk/source identifiers (examples include `slide_6` and `slide_9`). The evidence text in those records corresponds to the supplied 81-page Unit 5 Web of Things and Cloud of Things PDF. This resolves the source identity at the held-out dataset's metadata/content level: **Unit 5 is the documented source for the held-out IoT test set**. The four-row training source manifest correctly does not list Unit 5 as a training source. Keep it evaluation-only unless a separate owner-approved change is recorded.
+
+### Dolly source and subset provenance
+
+The local dataset-preparation/inspection records identify the source as `databricks/databricks-dolly-15k`, report 15,011 available rows, sampling seed `20261114`, B2 count 1,000, B5 general count 577, and B2/B5 subset disjointness as true. The B2 records carry source IDs of the form `dolly15k:<category>` and metadata identifying the dataset/category/assignment `B2_generic_only`; B5 general records similarly identify the dataset/category and assignment `B5_general_mix`. The B5 combined dataset is recorded as 577 IoT + 577 general = 1,154 records.
+
+The local records establish the repository identifier, sample seed/counts, assignment labels, and recorded disjointness. They do **not** establish an immutable upstream commit/revision, the upstream dataset snapshot date, or a fully reproducible row-selection manifest with source row IDs. Therefore exact Dolly revision and row-level source selection remain unknown/incomplete. Do not infer a revision from the repository name or sampling date.
+
+### MMLU evaluation provenance
+
+The local `general_retention_manifest.json` identifies `cais/mmlu`, split `test`, 50 questions, seed 42, and 9 excluded original indices (237, 740, 1298, 2087, 3895, 4175, 6149, 6865, 9457). Category counts are STEM 13, Humanities 12, Social sciences 13, Professional and applied 12. The 50-record sample hash is `d7c4f24f3ea17f698b0729093ef601cbdf1ecea53623e62844faa4013f2bf78e`. The sample rows retain `original_index`, subject, category, and dataset/split labels.
+
+The manifest does not record an immutable upstream MMLU revision/commit or the exact upstream dataset snapshot. The local sample hash identifies the local sample bytes, not the upstream revision. Record the MMLU revision as unknown; the sampling manifest is otherwise sufficient to describe the local 50-question selection parameters and content identity.
+
+### Scope and remaining gaps
+
+- Unit 5 → held-out IoT test source identity: reconciled from local record metadata and evidence text.
+- Dolly repository identity, seed, sample counts, assignment labels, and disjointness: recorded; immutable upstream revision and exact source-row selection remain unknown.
+- MMLU repository identity, test split, 50-question sample, seed, category allocation, exclusions, and local sample hash: recorded; immutable upstream revision remains unknown.
+- No new dataset/model payload inspection was performed for this step. Findings use existing owner-supplied local inspection/provenance records.
+- These provenance findings do not establish copyright/licence permission or privacy clearance. All source rights remain unresolved where source terms are absent.
+- No source files were moved, renamed, extracted, uploaded to cloud storage, or modified. `migration_authorized: false` remains unchanged.
