@@ -57,3 +57,36 @@ The earlier ZIP metadata scan found no suspicious filenames, encrypted entries, 
 - Do not install/configure DVC, upload to Google Drive, publish adapters/datasets/predictions/source documents, or change source locations.
 - Preserve every original path and copy. Matching hashes do not authorize deletion or consolidation.
 - No source artifacts were moved, deleted, renamed, extracted, uploaded, or modified during this review.
+
+
+## Owner-supplied original IoT PDFs — bounded source-first review (2026-11-17)
+
+The owner supplied the four original PDFs listed in the project inventory. These exact uploaded files were inspected locally; no internet copies were used.
+
+| Original file | PDF pages | Document identity visible in source | Metadata observations |
+|---|---:|---|---|
+| `IOT Unit 1 Contents.pdf` | 151 | Opens with “UNIT I — Introduction to Internet of Things”; contents include IoT definition/characteristics, physical and logical design, protocols, communication models, enabling technologies, levels, issues, and applications. | PDF Creator reports Google. No author or publisher metadata was present. |
+| `4-iot-protocols-and-security.pdf` | 119 | Opens with “Unit -4 — IoT Protocols And Security”. | PDF Creator reports WPS Presentation; creation/modification metadata is 2026-11-03. No author metadata was present. |
+| `6-iot-physical-servers-cloud-offereings-iot-case-studies.pdf` | 99 | Opens with “IoT Physical Servers, Cloud Offerings and IoT Case Studies”; contents include communication APIs, cloud storage, WAMP/Autobahn, Xively, Django, AWS IoT, SkyNet, and case studies. | PDF Creator reports WPS Presentation; creation/modification metadata is 2026-11-03. No author metadata was present. |
+| `Unit 2-Iot-platform-design-methodology (1).pptx.pdf` | 60 | Opens with “Unit II — IoT Platform Design Methdology”; outlines the ten-step IoT system design methodology and illustrates smart-irrigation and other design examples. | PDF Creator reports Google. No author or publisher metadata was present. |
+
+A bounded text and PDF-metadata inspection found no explicit author, publisher, copyright notice, licence, permission statement, edition, or original acquisition URL in the extracted document text or basic PDF metadata. This is not proof that no such notice exists in a page image or in the original source from which the slides were made. The visible opening title pages do not identify a publisher or author. These files therefore remain **unattributed source documents with unknown terms**.
+
+### Provenance mapping observations
+
+- Existing project records associate B3/B4 IoT source document IDs with `iot_cloud_case_studies`, `iot_unit1`, and `iot_unit4_protocols_security`. The uploaded documents provide plausible title-level matches for those identifiers, but do not by themselves establish the original source, author, acquisition route, or reuse rights.
+- The held-out IoT test metadata references `iot_unit5_pdf`. No corresponding Unit 5 source PDF is among the four uploaded files or the four titles previously identified in the master inventory. This remains an unresolved source-identity gap.
+- The relationship between the uploaded Unit II platform-design PDF and any training/evaluation rows is not established by the evidence inspected so far.
+- The source manifest shown in the owner's folder screenshot has not yet been supplied as a file; its contents have not been reviewed.
+
+### Evidence boundary and correction to earlier external lookups
+
+Earlier external licence lookups for Qwen, Dolly, and MMLU are not evidence from the owner's original project materials. They are not accepted as project-source provenance or as clearance for this review. The upstream terms in the earlier draft table must be treated as **unverified against the owner's source records**; they do not authorize storage, training, or redistribution. Exact source revisions, acquisition records, and applicable terms must be established from the project's own manifests and source records, or remain unknown. No further external source search was used for this PDF review.
+
+### Current decision
+
+- All four uploaded IoT PDFs: source identity partially established by visible title/content; author/publisher/acquisition/licence/copyright status unknown; local-storage, training-use, and redistribution permission not established.
+- Do not redistribute the PDFs, extracted text, or derived records containing their material.
+- Keep the missing Unit 5 source and the Unit II mapping unresolved until source records are supplied.
+- No source files were moved, renamed, extracted, uploaded to cloud storage, or modified by this review.
+- `migration_authorized: false` remains unchanged.
