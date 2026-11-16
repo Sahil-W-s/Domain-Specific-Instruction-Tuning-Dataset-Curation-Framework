@@ -90,3 +90,32 @@ Earlier external licence lookups for Qwen, Dolly, and MMLU are not evidence from
 - Keep the missing Unit 5 source and the Unit II mapping unresolved until source records are supplied.
 - No source files were moved, renamed, extracted, uploaded to cloud storage, or modified by this review.
 - `migration_authorized: false` remains unchanged.
+ 
+
+## Owner-supplied source manifest and Unit 5 PDF — follow-up review (2026-11-17)
+
+### Source manifest
+
+Reviewed the owner-supplied `source_manifest(2).csv` (4 rows, 7 columns: `doc_id`, `filename`, `pages`, `topic`, `split`, `status`, `notes`). It records:
+
+| doc_id | Source | Pages | Split | Status / note |
+|---|---|---:|---|---|
+| `iot_unit1` | `IOT Unit 1 Contents.pdf` | 151 | train | canonical; near-duplicate `IOT Unit 1 Contents.pptx.pdf` is to be excluded |
+| `iot_unit2` | `Unit 2-Iot-platform-design-methodology (1).pptx.pdf` | 60 | train | eligible; distinct source |
+| `iot_unit4_protocols_security` | `4-iot-protocols-and-security.pdf` | 119 | train | eligible |
+| `iot_cloud_case_studies` | `6-iot-physical-servers-cloud-offereings-iot-case-studies.pdf` | 99 | train | eligible |
+
+The manifest identifies four training sources and resolves the Unit I canonical/near-duplicate decision. It does not contain a Unit 5 row, nor author, publisher, acquisition URL, edition, copyright, licence, or permission fields. Its `status` values (canonical/eligible) are project curation statuses, not rights clearance.
+
+### Unit 5 source
+
+The owner also supplied `IOT Unit 5-webofthingsandcloudofthings.pdf` (81 pages). Its title page identifies “Unit 5-Web of Things and Cloud of Things”, matching the previously referenced `iot_unit5_pdf` label at title/topic level. The PDF metadata has blank author/title/subject fields; creator is WPS Presentation and creation/modification metadata is 2026-11-03. No explicit copyright, licence, or permission text was found in the extracted text. Pages 25–27 carry the footer attribution “Jaydeep Patil- AISSMS IOIT Pune”; this is a visible attribution, not by itself a licence or proof of authorship/ownership. The file's title-level match makes it a plausible identity match for `iot_unit5_pdf`, but the supplied source manifest does not list it or specify its split/use.
+
+### Updated provenance conclusions
+
+- The four manifest rows support the recorded training-source IDs and topics. They do not establish source acquisition, original authorship/publisher, reuse terms, or permission.
+- Unit 5 is now present and plausibly matches the held-out test's `iot_unit5_pdf` source reference. Its actual use in the held-out test still requires the test-generation manifest/row metadata to be reconciled.
+- The manifest says Unit 1's PPTX PDF is a near-duplicate to exclude; preserve the original file and path, but do not treat it as a canonical training source.
+- Unit 5 is not currently listed as a training source. Do not silently add it to the training split.
+- The four training-source PDFs and Unit 5 remain uncleared for cloud storage, training reuse beyond the recorded curation, and redistribution. No copyright/licence/permission basis was established by these uploads.
+- No source file was moved, renamed, extracted, uploaded to cloud storage, or modified by this review. `migration_authorized: false` remains unchanged.
