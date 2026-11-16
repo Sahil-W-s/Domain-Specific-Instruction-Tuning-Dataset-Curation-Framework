@@ -136,14 +136,23 @@ phases:
       new_hashes_computed: false
       interpretation: README contents and upstream licence/terms remain unreviewed; zero filename flags do not establish privacy or redistribution clearance
     p4_3_readme_content_review:
-      status: pending
+      status: completed
       script: scripts/storage/inspect_archive_readmes.py
-      max_bytes_per_entry: 65536
+      report: docs/phase_reports/PHASE_04_P4_3_README_REVIEW.md
+      zip_inventory_records: 17
+      unique_archive_groups: 9
+      archives_opened: 9
+      readme_entries_read: 9
+      readme_entries_skipped_over_limit: 0
+      errors: 0
       reads_only_readme_named_entries: true
-      outputs_local_only:
-      - .local/phase4_archive_inspection/archive_readmes_local.md
-      - .local/phase4_archive_inspection/readme_inspection_summary.json
-    next_task: P4.3 Step 2 bounded README-content review
+      extraction_performed: false
+      source_archives_modified: false
+      new_hashes_computed: false
+      rights_and_redistribution_status: unknown
+      sensitivity_status: unknown
+      interpretation: Adapter model-card licences are incomplete; reproducibility README does not establish item-level dataset/source licences or payload privacy clearance
+    next_task: P4.3 Step 3 source-specific rights and provenance checks
     migration_started: false
     limitations:
     - Do not infer redistribution permission from file names or public availability
