@@ -153,20 +153,23 @@ phases:
       sensitivity_status: unknown
       interpretation: Adapter model-card licences are incomplete; reproducibility README does not establish item-level dataset/source licences or payload privacy clearance
     p4_3_source_specific_rights_review:
-      status: source_inventory_partially_reconciled_rights_provenance_and_privacy_open
+      status: provenance_partially_reconciled_rights_and_privacy_open
       report: docs/phase_reports/PHASE_04_P4_3_SOURCE_RIGHTS_REVIEW.md
       upstream_terms_identified:
         qwen_qwen2_5_1_5b_instruct: Apache-2.0
         databricks_dolly_15k_candidate: CC-BY-SA-3.0
         cais_mmlu: MIT
       exact_revision_subset_and_lineage: incomplete
+      heldout_iot_test: 35_records_mapped_to_iot_unit5_pdf_by_doc_id_and_slide_evidence;_sha256_recorded
+      dolly: repository_id_seed_counts_assignments_and_disjointness_recorded;_immutable_revision_unknown
+      mmlu: split_sample_seed_categories_exclusions_and_local_hash_recorded;_immutable_revision_unknown
       prior_external_licence_lookups: not_accepted_as_project_source_evidence_or_clearance
       owner_source_manifest: reviewed_four_training_sources_and_unit1_duplicate_rule
       unit5_pdf: supplied_81_page_title_level_match_to_iot_unit5_pdf;_test_linkage_pending
       iot_pdf_source_rights: unknown
       payload_privacy_review: pending
       migration_clearance: blocked
-    next_task: P4.3 Step 3C held-out IoT test source-ID linkage and local Dolly/MMLU revision reconciliation
+    next_task: P4.3 Step 3D inspect package split manifest, validation report, and B2-B5 run metadata for dataset-to-run linkage and immutable revisions
     migration_started: false
     limitations:
     - Do not infer redistribution permission from file names or public availability
