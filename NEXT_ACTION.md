@@ -181,3 +181,24 @@ The declaration is recorded as owner-provided, not independent legal verificatio
 ### Next bounded task
 
 Continue the remaining risk-based privacy/secrets review and per-artifact storage decisions. Do not re-open source-rights discovery for third-party payloads that the project will not redistribute. Preserve third-party dependencies as independently acquired requirements and keep their exact revisions marked unknown where local records do not establish them.
+
+
+## Phase 4 P4.4 — Privacy review, work unit 1 (2026-11-17)
+
+Implemented and checkpointed `scripts/storage/scan_privacy_indicators.py`. This is a read-only local scan over inventory-listed text-like files only. It checks private-key headers, common cloud/GitHub/Google API-key formats, generic secret assignments, email addresses, and phone-like strings. It never writes matched values or source lines; it records only artifact/root IDs, relative paths, line numbers, indicator categories, and short one-way fingerprints.
+
+Default limits: 25 MiB per file and 2 GiB total. ZIP/archive payloads, PDFs, model weights, images, binary files, and oversized files are excluded. Outputs are local-only under `.local/phase4_privacy_review/`; do not commit or paste secret values.
+
+Report: `docs/phase_reports/PHASE_04_P4_4_PRIVACY_REVIEW.md`.
+
+### Immediate next action
+
+After `git pull --ff-only origin main`, run:
+
+```powershell
+python scripts/storage/scan_privacy_indicators.py
+```
+
+Return `privacy_scan_summary.json` and sanitized rows from `privacy_indicator_findings.csv` (no matched values). No scan has yet been executed, so no findings are claimed. This scan is only an indicator pass, not comprehensive privacy clearance.
+
+Migration remains unauthorized. Do not configure DVC, upload artifacts, or change source locations during this task.
