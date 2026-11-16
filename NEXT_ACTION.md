@@ -108,3 +108,19 @@ The owner uploaded the four original PDFs identified in the master inventory. A 
 Upload the existing `source_manifest` spreadsheet visible in the ML CP folder screenshot. Also provide the Unit 5 source PDF or its exact source/acquisition record if it exists under another filename. These are the smallest next inputs needed to reconcile source IDs and the held-out test reference.
 
 Until then, IoT source terms, rights, and redistribution remain unknown; migration remains unauthorized. Do not move, extract, upload, or modify source artifacts.
+
+
+## P4.3 source-manifest and Unit 5 update — 2026-11-17
+
+The owner supplied `source_manifest(2).csv` and `IOT Unit 5-webofthingsandcloudofthings.pdf`. Both were inspected locally; no internet copies were used.
+
+- The manifest has four rows: `iot_unit1` (151 pages, train, canonical), `iot_unit2` (60 pages, train, eligible), `iot_unit4_protocols_security` (119 pages, train, eligible), and `iot_cloud_case_studies` (99 pages, train, eligible).
+- It explicitly says `IOT Unit 1 Contents.pptx.pdf` is a near-duplicate of the canonical Unit 1 PDF and should be excluded from the training source set. Preserve the file; exclusion is not deletion authorization.
+- The manifest contains no Unit 5 row. The supplied Unit 5 PDF is 81 pages and its title matches the `iot_unit5_pdf` held-out source identifier at title/topic level. The PDF has no author/title metadata; pages 25–27 display “Jaydeep Patil- AISSMS IOIT Pune”. No licence/copyright/permission was found in the inspected text. Attribution does not establish reuse rights.
+- Unit 5 is a plausible match for the held-out source reference, but actual test-set linkage must be verified from the test-generation manifest or row metadata. Do not add Unit 5 to training.
+
+### Immediate next task — reconcile evaluation provenance
+
+Inspect only the existing held-out IoT test manifest and its source-ID metadata to confirm whether its `iot_unit5_pdf` records map to this supplied Unit 5 PDF. Then reconcile the exact Dolly/MMLU revisions and sample selection from project-local manifests/package metadata. If revision identifiers are absent, record them as unknown.
+
+All five PDFs remain rights-uncleared. The source manifest's canonical/eligible statuses are curation statuses, not licence clearance. Keep migration unauthorized; do not configure DVC or move/upload artifacts.
