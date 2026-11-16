@@ -141,3 +141,10 @@ Report: `docs/phase_reports/PHASE_04_P4_3_SOURCE_RIGHTS_REVIEW.md`.
 Inspect only the small package metadata/configuration files already identified in the reproducibility package: split manifest, phase3 validation report, and B2–B5 run metadata. Confirm dataset-to-run linkage and any recorded upstream revision identifiers. Do not inspect model/data payloads or extract archives. If the local files contain no immutable revision identifiers, record that gap and stop rather than searching the internet.
 
 Rights and privacy review remain open. Do not configure DVC or migrate artifacts.
+
+
+### Dolly sampling code finding
+
+The local `prepare_phase3_datasets_v2.py` sets dataset ID `databricks/databricks-dolly-15k`, seed 20261114, loads the train split without a pinned `revision`, shuffles row indices, assigns first 1,000 to B2 and next 577 to B5 general, and asserts disjointness. The script does not persist selected upstream row indices. Exact historical Dolly row selection is therefore not fully reproducible without the upstream snapshot and row-index manifest. The script was inspected, not executed.
+
+Next owner input: upload the existing small package metadata files `configuration/split_manifest.json`, `configuration/phase3_validation_report.json`, and `training/B2/run_metadata.json` through `training/B5/run_metadata.json` (six files total). Review only their metadata for dataset-to-run linkage and revision identifiers. Do not upload dataset/model payloads or extract archives.
