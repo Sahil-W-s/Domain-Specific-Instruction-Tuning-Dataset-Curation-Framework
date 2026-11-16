@@ -1,0 +1,57 @@
+{
+  "phase_id": "phase_03",
+  "generated_at": "2026-11-16T22:33:25.606042Z",
+  "summary": {
+    "total": 9,
+    "passed": 8,
+    "failed": 0,
+    "warnings": 1
+  },
+  "checks": [
+    {
+      "check_id": "workspace_directories",
+      "status": "passed",
+      "details": "Required workspace directories created."
+    },
+    {
+      "check_id": "schema_json_syntax",
+      "status": "passed",
+      "details": "Three new schemas passed JSON syntax parsing; not full instance validation."
+    },
+    {
+      "check_id": "run_manager_smoke",
+      "status": "passed",
+      "details": "Five run-management smoke checks passed."
+    },
+    {
+      "check_id": "sqlite_index",
+      "status": "passed",
+      "details": "1,531 registry records, 1,531 FTS5 records; integrity check ok."
+    },
+    {
+      "check_id": "handoff_generator",
+      "status": "passed",
+      "details": "Handoff generated; seven required-content checks passed."
+    },
+    {
+      "check_id": "core_integration_tests",
+      "status": "passed",
+      "details": "Four focused integration tests passed."
+    },
+    {
+      "check_id": "git_ignore_protection",
+      "status": "passed",
+      "details": "Secret, local configuration, cache, and SQLite rules checked."
+    },
+    {
+      "check_id": "end_to_end_resume",
+      "status": "passed",
+      "details": "One complete checkpoint/resume/handoff integration test passed."
+    },
+    {
+      "check_id": "full_json_schema_instance_validation",
+      "status": "warning",
+      "details": "Not performed; JSON syntax checks only."
+    }
+  ]
+}

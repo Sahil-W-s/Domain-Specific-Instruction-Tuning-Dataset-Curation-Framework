@@ -66,3 +66,14 @@ Do not treat possible duplicates as confirmed duplicates. Do not delete or conso
 - Do not rerun completed Phase 0 or Phase 1 work without a specific evidence-based reason.
 - Do not move, delete, rename, or extract source material.
 - Do not configure DVC, Git LFS, cloud storage, or migration without an approved plan.
+
+## Authoritative next action — Phase 3 owner review
+
+1. Review `docs/phase_reports/PHASE_03_REPORT.md`.
+2. Review `reports/validation/phase_03_validation.json`.
+3. Review `manifests/phase_03_outputs.json`.
+4. Inspect the selected Phase 3 Git changes and ensure no secrets,
+   local-only files, or unrelated Phase 2 inventory outputs are staged.
+5. Provide explicit approval before staging, committing, or pushing.
+
+Do not use `git add .`. Do not repeat completed Phase 0–2 work.

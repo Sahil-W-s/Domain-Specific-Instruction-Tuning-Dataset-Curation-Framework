@@ -194,3 +194,23 @@ Earlier entries are retained as historical records.
 - No source files were moved, deleted, renamed, or extracted.
 - No DVC, Git LFS, cloud storage, or data migration was configured.
 - Phase 2 is not marked complete until the owner reviews the exit gate and approves completion.
+
+## Authoritative current status — Phase 3
+
+**Updated:** 2026-11-16
+**Current phase:** Phase 3 — Durable workspace and project memory
+**Phase 0:** Owner-approved complete
+**Phase 1:** Owner-approved complete
+**Phase 2:** Owner-approved complete
+**Phase 3:** Technical implementation complete; owner review pending
+
+Phase 3 report: `docs/phase_reports/PHASE_03_REPORT.md`
+Validation: `reports/validation/phase_03_validation.json`
+Outputs: `manifests/phase_03_outputs.json`
+
+Five focused integration tests passed. The SQLite index contains 1,531
+registry records and 1,531 FTS5 records. The index is rebuildable and ignored
+by Git. Full JSON Schema instance validation was not performed.
+
+Phase 1 limitations and Phase 2 duplicate-review and targeted-hash caveats
+remain unchanged. No source data was moved or deleted.

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ML CP Validation Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["phase_id", "generated_at", "summary", "checks"],
+  "properties": {
+    "phase_id": {"type": "string"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "summary": {
+      "type": "object",
+      "required": ["total", "passed", "failed", "warnings"],
+      "properties": {
+        "total": {"type": "integer", "minimum": 0},
+        "passed": {"type": "integer", "minimum": 0},
+        "failed": {"type": "integer", "minimum": 0},
+        "warnings": {"type": "integer", "minimum": 0}
+      },
+      "additionalProperties": false
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["check_id", "status"],
+        "properties": {
+          "check_id": {"type": "string"},
+          "status": {
+            "enum": ["passed", "failed", "warning", "skipped"]
+          },
+          "expected": {},
+          "actual": {},
+          "details": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

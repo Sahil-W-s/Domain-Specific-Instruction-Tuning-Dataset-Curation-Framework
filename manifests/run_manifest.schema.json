@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ML CP Run Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "run_id", "phase_id", "task_id", "status",
+    "started_at", "operator", "command",
+    "working_directory", "code_commit",
+    "input_artifacts", "output_artifacts",
+    "environment", "validation", "notes"
+  ],
+  "properties": {
+    "run_id": {"type": "string", "minLength": 1},
+    "phase_id": {"type": "string", "minLength": 1},
+    "task_id": {"type": "string", "minLength": 1},
+    "status": {
+      "enum": ["started", "completed", "failed", "partial", "blocked"]
+    },
+    "started_at": {"type": "string", "format": "date-time"},
+    "finished_at": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    },
+    "operator": {"type": "string", "minLength": 1},
+    "command": {"type": "string"},
+    "working_directory": {"type": "string"},
+    "code_commit": {"type": "string"},
+    "config_hash": {"type": ["string", "null"]},
+    "input_artifacts": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/artifact"}
+    },
+    "output_artifacts": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/artifact"}
+    },
+    "environment": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "exit_code": {"type": ["integer", "null"]},
+    "validation": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["check", "status"],
+        "properties": {
+          "check": {"type": "string"},
+          "status": {
+            "enum": ["passed", "failed", "warning", "skipped"]
+          },
+          "details": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "log_paths": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "notes": {"type": "string"}
+  },
+  "$defs": {
+    "artifact": {
+      "type": "object",
+      "required": ["artifact_id", "path", "byte_size", "sha256"],
+      "properties": {
+        "artifact_id": {"type": "string"},
+        "path": {"type": "string"},
+        "byte_size": {"type": "integer", "minimum": 0},
+        "sha256": {
+          "type": ["string", "null"],
+          "pattern": "^[0-9a-fA-F]{64}$"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,7 +1,7 @@
 project: ML CP
 project_title: Domain-Specific Instruction-Tuning Dataset Curation Framework
 plan_version: '2.0'
-current_phase: 2
+current_phase: 3
 last_updated: '2026-11-17'
 phases:
   phase_00:
@@ -33,7 +33,8 @@ phases:
 
   phase_02:
     name: Build the content-aware artifact registry and large-file map
-    status: owner_review_pending
+    status: completed
+    owner_approval: completed
     report: docs/phase_reports/PHASE_02_REPORT.md
     registry: manifests/artifact_registry.jsonl
     schema: manifests/artifact_registry.schema.json
@@ -66,3 +67,17 @@ phases:
     - Possible duplicate candidates remain pending manual review
     - Historical failed registry records are retained and superseded by verified replacement records
     - No source files were moved, deleted, renamed, or extracted
+
+  phase_03:
+    name: Establish durable workspace, project memory, and checkpoint tooling
+    status: owner_review_pending
+    technical_status: completed
+    owner_approval: pending
+    report: docs/phase_reports/PHASE_03_REPORT.md
+    outputs_manifest: manifests/phase_03_outputs.json
+    validation: reports/validation/phase_03_validation.json
+    completed_at: '2026-11-16'
+    limitations:
+    - SQLite index is a rebuildable local artifact and is excluded from Git
+    - JSON schemas were syntax-checked; full instance validation was not run
+    - Phase 3 Git staging and publication await owner review
