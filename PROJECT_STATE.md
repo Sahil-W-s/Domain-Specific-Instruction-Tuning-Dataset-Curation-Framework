@@ -348,3 +348,34 @@ This section supersedes earlier Phase 4 status blocks above where they conflict.
 ### Next action
 
 Use existing manifests and provenance artifacts to identify exact upstream sources and terms for the named base model and each identifiable dataset/source family. Record whether terms permit private storage, derivative training, and redistribution as separate questions. Retain unknown where evidence is absent or ambiguous. Identify payload classes requiring privacy review without exposing secrets or performing broad payload inspection.
+
+
+## Authoritative current status — Phase 4 P4.3 source-specific rights review
+
+**Updated:** 2026-11-17  
+**Current phase:** Phase 4 — Durable artifact storage and retrieval  
+**P4.1:** Complete  
+**P4.2:** Complete  
+**P4.3 Steps 1–2:** Complete  
+**P4.3 Step 3:** Partial source-specific terms review recorded; provenance and payload privacy remain open.
+
+### Source terms identified
+
+- Qwen/Qwen2.5-1.5B-Instruct: upstream Hugging Face repository identifies Apache-2.0.
+- Dolly candidate databricks/databricks-dolly-15k: upstream dataset card identifies CC BY-SA 3.0. Exact revision and subset lineage for B2/B5 remain unverified.
+- cais/mmlu: upstream dataset card identifies MIT. Exact revision, split, sample IDs, and seed for the 50-question retention set remain unverified.
+- Four original IoT PDF input titles are recorded in the P4.3 source-rights report. Their author, publisher, original URL, edition, copyright notice, and licence remain unknown.
+
+### Rights and privacy decision
+
+- Private storage, training/evaluation use, and redistribution are recorded as separate questions.
+- Whether trained adapter weights constitute CC BY-SA adaptations remains unresolved.
+- Adapter licence/provenance metadata is incomplete.
+- Payload privacy review is still required for source PDFs/extracted text, datasets, human-review files, API/request logs, predictions, evaluation outputs, adapters, and checkpoints.
+- All 41 large-artifact records remain on hold. manifests/storage_map.yml continues to set migration_authorized: false.
+
+Report: docs/phase_reports/PHASE_04_P4_3_SOURCE_RIGHTS_REVIEW.md.
+
+### Next task
+
+P4.3 Step 3B — reconcile the exact reproducibility-package metadata and source provenance: Dolly revision/subset lineage, MMLU revision/split/sample manifest, package configuration and hash manifests, and provenance/rights evidence for the four IoT PDFs. Do not inspect dataset/model payloads, configure DVC, or migrate artifacts.
