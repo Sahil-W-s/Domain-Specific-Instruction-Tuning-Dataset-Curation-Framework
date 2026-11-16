@@ -442,3 +442,22 @@ All B2–B5 run metadata files identify Qwen/Qwen2.5-1.5B-Instruct and the same 
 The six uploaded metadata files' SHA-256 hashes and detailed findings are recorded in `docs/phase_reports/PHASE_04_P4_3_SOURCE_RIGHTS_REVIEW.md`.
 
 Next bounded task: P4.3 Step 3E, source-first review of existing local acquisition/terms/licence/permission records, cached dataset/model cards, or other original project provenance. No substitute internet sources. If absent, keep rights unknown. No bulk payload inspection, DVC setup, or migration; `migration_authorized: false`.
+
+
+## Authoritative continuation — Phase 4 P4.4 privacy review started
+
+**Updated:** 2026-11-17  
+**Current task:** Owner execution of the bounded local-only privacy indicator scan.
+
+Added `scripts/storage/scan_privacy_indicators.py` and report `docs/phase_reports/PHASE_04_P4_4_PRIVACY_REVIEW.md`. The scanner reads inventory-listed text-like files only, with defaults of 25 MiB per file and 2 GiB total. It checks selected credential/private-key patterns and email/phone-like indicators. It does not write matched values or source lines. Outputs are local-only under `.local/phase4_privacy_review/`.
+
+Explicitly excluded: ZIP/archive payloads, PDFs, model weights, images, binaries, and oversized files. Scanner execution is pending; do not claim findings or privacy clearance until the owner runs it and returns the summary and sanitized finding rows.
+
+Run after pulling main:
+
+```powershell
+git pull --ff-only origin main
+python scripts/storage/scan_privacy_indicators.py
+```
+
+Do not commit local scan outputs. Do not share matched values or secret contents. Migration remains unauthorized; do not configure DVC or upload artifacts.
