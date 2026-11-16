@@ -177,7 +177,18 @@ phases:
       source_hashes_before_after: identical
       split_manifest: 519_shared_iot_train_58_shared_iot_validation_23_b3_only_train
       run_metadata: B2_B3_B4_B5_counts_and_configs_reconciled;_input_hashes_and_immutable_model_revision_absent
-    next_task: Complete bounded payload privacy review and per-artifact storage decisions; record exact project licence identifier if owner intends a formal public licence grant
+    p4_4_privacy_review:
+      status: scanner_implemented_execution_pending
+      script: scripts/storage/scan_privacy_indicators.py
+      report: docs/phase_reports/PHASE_04_P4_4_PRIVACY_REVIEW.md
+      scan_scope: inventory_listed_text_like_files_only
+      default_limits: 25_MiB_per_file;_2_GiB_total
+      indicators: private_key_headers_cloud_github_google_keys_generic_secret_assignments_emails_phone_like
+      outputs: local_only_under_.local/phase4_privacy_review
+      source_modification: false
+      archives_pdfs_model_weights: excluded_from_this_pass
+      owner_execution: pending
+    next_task: Owner executes the bounded local privacy indicator scan and returns the summary plus sanitized finding rows; then classify flagged artifact groups
     migration_started: false
     limitations:
     - Do not infer redistribution permission from file names or public availability
