@@ -1,79 +1,70 @@
-# NEXT ACTION — Phase 2 Owner Review
+# NEXT ACTION — Phase 4 P4.3 Rights and Privacy Review
 
 **Last updated:** 2026-11-17  
 **Project:** ML CP — Domain-Specific Instruction-Tuning Dataset Curation Framework  
-**Current phase:** Phase 2 — Build the content-aware artifact registry and large-file map
+**Current phase:** Phase 4 — Durable artifact storage and retrieval
 
-## Approved phase status
+## Completed and approved phases
 
-- Phase 0: completed by owner approval.
-- Phase 1: completed by owner approval.
-- Phase 2: deliverables generated and technically validated; owner review pending.
+- Phase 0: owner-approved complete.
+- Phase 1: owner-approved complete.
+- Phase 2: owner-approved complete.
+- Phase 3: completed and checkpointed.
+- Phase 4 P4.1: storage feasibility assessment complete.
+- Phase 4 P4.2: provisional large-artifact classification and storage map committed.
 
-Do not reopen Phases 0 or 1 unless the owner requests it or new evidence makes it necessary.
+Do not reopen Phases 0–3 without a specific evidence-based reason.
 
-## Immediate task — review Phase 2 deliverables
+## Immediate next task — P4.3 rights, privacy, and content review
 
-Review the following files:
+Review the 41 large-file records using:
 
-1. `docs/phase_reports/PHASE_02_REPORT.md`
-2. `manifests/artifact_registry.schema.json`
-3. `manifests/artifact_registry.jsonl`
-4. `reports/inventory/artifact_inventory.csv`
-5. `reports/inventory/large_files.csv`
-6. `reports/inventory/exact_duplicates.csv`
-7. `reports/inventory/possible_duplicates_review_v2.csv`
-8. `reports/inventory/hash_failures.csv`
-9. `scripts/build_phase2_deliverables.py`
+1. `reports/storage/large_file_classification.csv`
+2. `reports/inventory/large_files.csv`
+3. `reports/inventory/artifact_inventory.csv`
+4. `manifests/storage_map.yml`
+5. `docs/phase_reports/PHASE_04_P4_2_CLASSIFICATION.md`
 
-## Verified technical results
+### Required review
 
-- 1,531 registry records; 1,531 unique IDs.
-- Schema validation: 1,531 valid, zero invalid.
-- Hash statuses: 1,496 verified; 2 not applicable; 33 historical failed.
-- All 33 historical failures have verified replacement records; zero unresolved.
-- Independent SHA-256 sample: 15/15 passed; this was not an exhaustive rehash.
-- Artifact inventory: 1,531 rows, exact registry match.
-- Large-file report: 41 rows, all registry files at or above 50 MiB.
-- Exact duplicates: 564 groups and 1,373 memberships, exact registry match.
-- Possible duplicates: 11 groups and 138 candidates, all pending manual review.
-- No source files were moved, deleted, renamed, or extracted.
+- Identify the upstream source and applicable licence/terms for the source documents and datasets represented in each relevant archive.
+- Establish whether trained adapters and checkpoints can be stored privately and whether redistribution is permitted.
+- Inspect archive file listings and manifests without extracting over or modifying any source location.
+- Check for credentials, `.env` files, personal data, restricted datasets, and third-party content. Never copy secret values into reports or Git.
+- Inspect the reproducibility package before deciding whether it is a single archival object or should be separated into approved components.
+- Record unknown or unverifiable rights as `unknown`; do not infer permission from public availability or project ownership.
 
-## Phase 2 exit-gate review
+### P4.3 outputs
 
-Confirm that:
-- Important artifacts have stable registry records.
-- All known large files have been identified and classified or explicitly marked pending.
-- Historical hash failures are transparently reconciled.
-- Duplicate reports distinguish exact duplicates from unreviewed candidates.
-- The report's limitations and preservation safeguards are accurate.
+- Update per-artifact rights and sensitivity fields in the classification/storage records.
+- Record evidence and unresolved items in a P4.3 report.
+- Keep the Drive remote private and restricted.
+- Do not upload, move, delete, rename, extract over, or rewrite source artifacts.
+- Do not select a canonical B2–B5 adapter/checkpoint without experiment-lineage evidence.
 
-Do not treat possible duplicates as confirmed duplicates. Do not delete or consolidate any files.
+## Current storage decision
 
-## After owner review
+- Primary artifact storage: DVC + restricted Google Drive folder.
+- GitHub: code, safe manifests, reports, and DVC metadata only.
+- New bulk Git LFS tracking: disabled under the zero-additional-spend constraint.
+- The owner reported 5 TB available in Google Drive and confirmed a dedicated folder can be created.
+- GitHub LFS usage was reported as 7/10; whether this is storage or bandwidth usage remains unconfirmed.
+- The storage map is provisional and explicitly sets `migration_authorized: false`.
 
-1. Record explicit owner approval or requested corrections.
-2. If approved, mark Phase 2 completed in the state files.
-3. Review the full Git diff and untracked-file inventory.
-4. Stage only individually reviewed files.
-5. Run secret, privacy, and large-file checks before any commit.
-6. Commit only after explicit owner approval.
+## Migration gate
 
-## Restrictions
+Do not install/configure DVC or migrate source artifacts until:
 
+1. Rights and privacy review is recorded.
+2. Archive contents and reproducibility-package composition are understood.
+3. The storage map has an explicit per-artifact decision and is approved.
+4. The private Drive destination and credential-handling approach are documented.
+5. Backup/recovery status is recorded honestly; an independent physical backup has not been verified.
+
+## Preservation constraints
+
+- Preserve all original source copies and paths.
+- Matching SHA-256 values establish byte identity only; they do not authorize deletion or consolidation.
 - Do not use `git add .`.
-- Do not commit or push without owner approval.
-- Do not rerun completed Phase 0 or Phase 1 work without a specific evidence-based reason.
-- Do not move, delete, rename, or extract source material.
-- Do not configure DVC, Git LFS, cloud storage, or migration without an approved plan.
-
-## Authoritative next action — Phase 3 owner review
-
-1. Review `docs/phase_reports/PHASE_03_REPORT.md`.
-2. Review `reports/validation/phase_03_validation.json`.
-3. Review `manifests/phase_03_outputs.json`.
-4. Inspect the selected Phase 3 Git changes and ensure no secrets,
-   local-only files, or unrelated Phase 2 inventory outputs are staged.
-5. Provide explicit approval before staging, committing, or pushing.
-
-Do not use `git add .`. Do not repeat completed Phase 0–2 work.
+- Do not commit credentials, secrets, local absolute paths, or large artifact contents to the public GitHub repository.
+- Use bounded, risk-based validation; do not repeat completed Phase 0–3 audits.
