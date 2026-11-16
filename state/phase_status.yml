@@ -169,7 +169,7 @@ phases:
       iot_pdf_source_rights: unknown
       payload_privacy_review: pending
       migration_clearance: blocked
-    next_task: P4.3 Step 3D inspect package split manifest, validation report, and B2-B5 run metadata for dataset-to-run linkage and immutable revisions
+    next_task: P4.3 Step 3D owner to supply six small package metadata files for dataset-to-run linkage and revision review
     migration_started: false
     limitations:
     - Do not infer redistribution permission from file names or public availability
