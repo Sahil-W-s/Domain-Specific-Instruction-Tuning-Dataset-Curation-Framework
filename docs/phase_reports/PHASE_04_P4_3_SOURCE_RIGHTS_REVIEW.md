@@ -156,3 +156,55 @@ The owner-provided project script `prepare_phase3_datasets_v2.py` was inspected 
 This improves the transformation description: B2/B5 sampling is reproducible only if the exact upstream dataset snapshot and row ordering are independently recovered. Since the code does not pin a revision and no row-index manifest was found in the reviewed records, exact historical Dolly row selection cannot currently be reconstructed with certainty. Do not rerun the script or reload the dataset for this review.
 
 The exact MMLU upstream revision remains unknown; its local 50-question sample manifest records the seed, exclusions, category counts, and local file hash but no upstream revision. The package's split manifest, validation report, and B2–B5 run metadata have not yet been directly reviewed as individual files; inspect those existing small metadata files next if supplied.
+
+
+## Step 3D — package split, validation, and training-run metadata review (2026-11-17)
+
+The owner supplied the six existing package metadata files. They were read locally; no dataset, prediction, adapter, checkpoint, or archive payload was opened.
+
+### File identity (SHA-256 of the six supplied metadata files)
+
+- `configuration/phase3_validation_report.json`: `34d3d214803ec51173de1e34616a932b357365465235320a41c04fe441ec51ab`
+- `configuration/split_manifest.json`: `25aee1080f94ebdbe60e3dd470a099c1e865ac3d17a7f94845d191f2ab2d4746`
+- `training/B2/run_metadata.json`: `b8a90c7fd00711f26cbcdecad5ffc85f564a09a6e6bcbf64b439a03b8b5ebe33`
+- `training/B3/run_metadata.json`: `f16425b5a1143d286c61f00d129b6a0f67d7f8b32f429f67dfc946580f10387f`
+- `training/B4/run_metadata.json`: `5cff2b8b699b6f82b969b902aac2ef8676b14764a954fc6bc9ab6a2bf536e185`
+- `training/B5/run_metadata.json`: `fc5b6e210c290838a1146663a0a86811663fd67348aa8d1e2d8be26296fbc8a8`
+
+### Dataset preparation report
+
+- Status: `PASS_DATASET_PREPARATION`; Pydantic validation: PASS.
+- Evidence validation method: exact reconstruction from frozen chunk paragraph blocks using `evidence_block_ids`.
+- B3 600 records and B4 577 records validated; 0 mismatches.
+- Counts: B2 Dolly 1,000; B3 reconstructed IoT 600; B4 filtered IoT 577; B5 domain 577; B5 general Dolly 577; B5 combined 1,154.
+- All five source hashes in `source_hashes_before` exactly match `source_hashes_after`.
+- `frozen_sources_modified: false`.
+- B3 is explicitly described as 88 original raw + 27 prior additional + 485 V2 candidates, not a pre-filter frozen snapshot.
+
+### Split manifest
+
+- Seed 42; validation ratio 0.1.
+- 58 shared IoT validation IDs and 519 shared IoT training IDs.
+- 23 B3-only training IDs.
+- This reconciles B3 training count: 519 shared + 23 B3-only = 542.
+- Baseline counts match the README and run metadata: B2 900/100; B3 542/58; B4 519/58; B5 1,038/116.
+- The 58 shared IoT validation IDs establish shared validation membership for the IoT lineage. The manifest does not provide a row-level Dolly split-ID list; B2 and the general portion of B5 cannot be independently reconstructed by source row from this file alone.
+- B5's aggregate counts are exactly twice B4's IoT split counts, consistent with a 577-record general portion receiving a 519/58 split, but the manifest does not expose those general source-row IDs. Treat that as a count-level consistency, not row-level proof.
+
+### B2–B5 training run metadata
+
+All four run files identify the same base model string, `Qwen/Qwen2.5-1.5B-Instruct`, seed 42, max length 3,072, LoRA rank 16, alpha 32, dropout 0.05, and target modules q/k/v/o projections plus gate/up/down projections. All record 3 epochs, learning rate 0.0002, per-device train/eval batch size 1, gradient accumulation 8, warmup 0.03, weight decay 0.01, max grad norm 1.0, cosine scheduler, FP16, paged AdamW 8-bit, gradient checkpointing, and save/eval each epoch. Loss masking is recorded as user/system tokens masked with -100 and assistant tokens supervised.
+
+Each run metadata file identifies its baseline and train/validation counts, which match the package README and split manifest. However, the run metadata files do not record the input dataset path, dataset file hash, source row IDs, immutable base-model revision, or a dataset revision. Thus B2–B5 linkage to the named package datasets is supported by baseline labels and matching counts/package README, not by an input-hash field inside the run metadata. Do not claim exact input-file-to-checkpoint provenance from these run metadata files alone.
+
+### Step 3D conclusion
+
+- Preparation validation and frozen-source hash stability are documented as PASS.
+- IoT split membership/count reconciliation is supported for B3/B4.
+- B2–B5 run configurations/counts are reconciled at metadata level.
+- Exact Dolly source revision and row-level subset lineage remain unknown.
+- Exact MMLU upstream revision remains unknown.
+- Dataset-to-run linkage is count/name-level, not hash-bound in run metadata.
+- Base model immutable revision is not recorded in these run metadata files.
+- No payloads were opened; no source files modified, moved, extracted, or uploaded to cloud storage.
+- Rights, redistribution, and payload privacy remain unresolved. This step does not authorize DVC setup or migration.
