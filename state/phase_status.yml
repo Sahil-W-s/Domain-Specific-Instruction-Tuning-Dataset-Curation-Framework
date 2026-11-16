@@ -164,7 +164,9 @@ phases:
       prior_external_licence_lookups: not_accepted_as_project_source_evidence_or_clearance
       owner_source_manifest: reviewed_four_training_sources_and_unit1_duplicate_rule
       unit5_pdf: supplied_81_page_pdf_mapped_to_35_record_heldout_test_by_doc_id_and_slide_evidence;_evaluation_only
-      iot_pdf_source_rights: unknown
+      owner_rights_declaration: owner_declares_rights_and_open_source_status_for_owner_created_or_supplied_project_materials;_recorded_in_docs/phase_reports/OWNER_RIGHTS_AND_THIRD_PARTY_SCOPE_DECLARATION.md;_specific_license_identifier_not_yet_recorded
+      third_party_sources: not_covered_by_owner_declaration;_source_payloads_not_redistributed;_users_obtain_independently
+      iot_pdf_source_rights: owner_declared_for_supplied_project_materials;_not_independently_legal_verified
       payload_privacy_review: pending
       migration_clearance: blocked
     p4_3_package_metadata_review:
@@ -175,7 +177,7 @@ phases:
       source_hashes_before_after: identical
       split_manifest: 519_shared_iot_train_58_shared_iot_validation_23_b3_only_train
       run_metadata: B2_B3_B4_B5_counts_and_configs_reconciled;_input_hashes_and_immutable_model_revision_absent
-    next_task: P4.3 Step 3E source-first rights and acquisition-record review; obtain only existing local source terms/provenance records
+    next_task: Complete bounded payload privacy review and per-artifact storage decisions; record exact project licence identifier if owner intends a formal public licence grant
     migration_started: false
     limitations:
     - Do not infer redistribution permission from file names or public availability
