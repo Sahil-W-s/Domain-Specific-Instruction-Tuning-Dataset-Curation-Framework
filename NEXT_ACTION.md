@@ -90,3 +90,21 @@ Do not install/configure DVC or migrate source artifacts until:
 - Do not use `git add .`.
 - Do not commit credentials, secrets, local absolute paths, or large artifact contents to the public GitHub repository.
 - Use bounded, risk-based validation; do not repeat completed Phase 0–3 audits.
+
+
+## P4.3 Step 3B update — owner-supplied original IoT PDFs reviewed
+
+The owner uploaded the four original PDFs identified in the master inventory. A bounded inspection of their opening pages, extracted text, and basic PDF metadata is recorded in `docs/phase_reports/PHASE_04_P4_3_SOURCE_RIGHTS_REVIEW.md`.
+
+- The four documents are identifiable by their visible Unit I, Unit II, Unit 4, and IoT cloud/case-study titles.
+- The inspected text and basic metadata did not establish author, publisher, original acquisition URL, edition, copyright notice, licence, or permission. Treat all such terms as unknown; do not infer rights from possession or from the slide content.
+- Existing row provenance maps some B3/B4 records to `iot_unit1`, `iot_unit4_protocols_security`, and `iot_cloud_case_studies`; title-level matches are plausible but do not establish original provenance or reuse rights.
+- Held-out evaluation metadata references `iot_unit5_pdf`; that source is not among the four supplied PDFs or the four inventoried titles. Resolve from the owner's records.
+- The Unit II PDF's relationship to training/evaluation rows remains unknown.
+- Earlier internet licence lookups are not accepted as project-source evidence and must not be treated as clearance. Continue source-first; do not search for substitute copies.
+
+### Immediate owner evidence needed
+
+Upload the existing `source_manifest` spreadsheet visible in the ML CP folder screenshot. Also provide the Unit 5 source PDF or its exact source/acquisition record if it exists under another filename. These are the smallest next inputs needed to reconcile source IDs and the held-out test reference.
+
+Until then, IoT source terms, rights, and redistribution remain unknown; migration remains unauthorized. Do not move, extract, upload, or modify source artifacts.
