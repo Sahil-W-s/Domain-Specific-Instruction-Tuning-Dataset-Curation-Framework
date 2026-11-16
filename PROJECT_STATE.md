@@ -270,3 +270,15 @@ Latest checkpoint at the time of this update: `a43949a509778e75d78421ab21e0c5bf4
 ### Next task
 
 P4.3 — Review rights, privacy, redistribution terms, and archive contents. Keep all migration actions blocked until this review is recorded and the storage map is approved.
+
+
+### P4.3 Step 1 — Read-only archive inspection tooling
+
+- Added `scripts/storage/inspect_large_archives.py`.
+- Script uses the local ignored `.local/source_roots.local.yml` and tracked Phase 2 large-file inventory.
+- It groups ZIP records by their existing SHA-256 and inspects one representative for each unique ZIP content.
+- Inspection is ZIP central-directory metadata only: no extraction, no payload reads, no source modification, and no new hashing.
+- Local output directory: `.local/phase4_archive_inspection/`.
+- Expected outputs: `archive_summary.csv`, `archive_entries.csv`, and `inspection_summary.json`.
+- Tooling checkpoint: `a97250ba08ad4459e1eb6d527611513e4c9d5748`.
+- Execution and review of generated local outputs are pending; P4.3 is not complete.
