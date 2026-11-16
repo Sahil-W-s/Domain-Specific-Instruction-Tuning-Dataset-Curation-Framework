@@ -426,3 +426,19 @@ Next bounded task: inspect only existing package split manifest, phase3 validati
 The local `prepare_phase3_datasets_v2.py` script sets Dolly dataset ID `databricks/databricks-dolly-15k`, seed 20261114, loads `train` without pinning `revision`, shuffles row indices, assigns 1,000 to B2 and 577 to B5 general, and asserts disjointness. It does not persist selected source row indices. Exact historical Dolly row selection cannot be guaranteed without the upstream snapshot and index manifest. Script inspected only; not executed.
 
 Next owner input: six existing small package metadata files — `configuration/split_manifest.json`, `configuration/phase3_validation_report.json`, and `training/B2` through `training/B5/run_metadata.json`. Inspect only for dataset-to-run linkage and revision identifiers.
+
+
+## 2026-11-17 continuation — Step 3D package metadata review completed
+
+Owner supplied and local inspection completed for:
+- `configuration/phase3_validation_report.json`
+- `configuration/split_manifest.json`
+- `training/B2/run_metadata.json` through `training/B5/run_metadata.json`
+
+The validation report is PASS: B3 600 and B4 577 exact evidence reconstructions, 0 mismatches, source hashes unchanged, `frozen_sources_modified: false`. Split manifest seed=42, validation ratio=0.1; 519 shared IoT training IDs, 58 shared IoT validation IDs, and 23 B3-only training IDs. B3 train count reconciles to 542.
+
+All B2–B5 run metadata files identify Qwen/Qwen2.5-1.5B-Instruct and the same LoRA/training configuration. Their baseline labels and train/validation counts align with the package README and split manifest. However, run metadata has no dataset input paths/hashes, source-row IDs, or immutable base-model revision. Dataset-to-run linkage is count/name-level only, not hash-bound. The split manifest does not include a row-level Dolly split list.
+
+The six uploaded metadata files' SHA-256 hashes and detailed findings are recorded in `docs/phase_reports/PHASE_04_P4_3_SOURCE_RIGHTS_REVIEW.md`.
+
+Next bounded task: P4.3 Step 3E, source-first review of existing local acquisition/terms/licence/permission records, cached dataset/model cards, or other original project provenance. No substitute internet sources. If absent, keep rights unknown. No bulk payload inspection, DVC setup, or migration; `migration_authorized: false`.
