@@ -152,7 +152,18 @@ phases:
       rights_and_redistribution_status: unknown
       sensitivity_status: unknown
       interpretation: Adapter model-card licences are incomplete; reproducibility README does not establish item-level dataset/source licences or payload privacy clearance
-    next_task: P4.3 Step 3 source-specific rights and provenance checks
+    p4_3_source_specific_rights_review:
+      status: partial_terms_verified_provenance_and_privacy_open
+      report: docs/phase_reports/PHASE_04_P4_3_SOURCE_RIGHTS_REVIEW.md
+      upstream_terms_identified:
+        qwen_qwen2_5_1_5b_instruct: Apache-2.0
+        databricks_dolly_15k_candidate: CC-BY-SA-3.0
+        cais_mmlu: MIT
+      exact_revision_subset_and_lineage: incomplete
+      iot_pdf_source_rights: unknown
+      payload_privacy_review: pending
+      migration_clearance: blocked
+    next_task: P4.3 Step 3B exact package manifest and source provenance reconciliation
     migration_started: false
     limitations:
     - Do not infer redistribution permission from file names or public availability
