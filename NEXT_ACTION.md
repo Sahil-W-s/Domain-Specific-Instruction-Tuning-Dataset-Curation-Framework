@@ -15,28 +15,38 @@
 
 Do not reopen Phases 0–3 without a specific evidence-based reason.
 
-## Immediate next task — P4.3 Step 1: read-only ZIP metadata inspection
+## Completed — P4.3 Step 1: ZIP metadata inspection
 
-A local read-only inspector has been added at `scripts/storage/inspect_large_archives.py` (commit `a97250ba08ad4459e1eb6d527611513e4c9d5748`). It reads the local `.local/source_roots.local.yml` plus the tracked large-file inventory, groups ZIP records by their already-registered SHA-256, and inspects one representative of each unique archive. It reads ZIP central-directory metadata only; it does not extract files, read file payloads, modify archives, or recompute hashes.
+The owner ran `scripts/storage/inspect_large_archives.py` locally and supplied all three outputs for review.
 
-### Run locally
+- 17 ZIP inventory records grouped into 9 unique SHA-256 content groups.
+- All 9 unique archives metadata-listed successfully.
+- 115 entry-metadata records; no inspection errors.
+- Filename/structure flags: 0 license/notice matches, 9 README entries, 0 manifest/config matches, 0 potentially sensitive filename matches, 0 encrypted entries, 0 unsafe paths, and 0 symlinks.
+- Safety summary: no extraction, no entry-payload reads, no source archive modifications, and no new source hashes.
+- Review report: `docs/phase_reports/PHASE_04_P4_3_ZIP_METADATA_REVIEW.md`.
+
+Interpretation: zero filename flags do not establish that contents are free of secrets/personal data or that redistribution is permitted. README contents and upstream licensing evidence remain unreviewed. Rights and sensitivity remain unknown; `manifests/storage_map.yml` remains `migration_authorized: false`.
+
+## Immediate next task — P4.3 Step 2: bounded README-content review
+
+A bounded reader is committed at `scripts/storage/inspect_archive_readmes.py`. It opens each of the 9 unique ZIP content groups and reads only README-named entries up to 64 KiB each. It does not extract files to disk, read other entry payloads, modify source archives, or compute new hashes.
 
 From the canonical repository root in PowerShell:
 
 ```powershell
 git pull --ff-only origin main
-python scripts/storage/inspect_large_archives.py
+python scripts/storage/inspect_archive_readmes.py
 ```
 
-Expected local-only output directory: `.local/phase4_archive_inspection/` containing:
+Expected local-only outputs under `.local/phase4_archive_inspection/`:
 
-- `archive_summary.csv`
-- `archive_entries.csv`
-- `inspection_summary.json`
+- `archive_readmes_local.md`
+- `readme_inspection_summary.json`
 
-The output can contain internal filenames. Keep it local until reviewed; do not commit it directly. Share the three generated outputs in this conversation for review, but do not include file contents or secret values.
+The Markdown output contains README text and may include private project details. Review it locally first. Share the content only after checking for secrets, personal information, private paths, or other restricted details. Do not commit either generated output to the public repository.
 
-If Python is not available as `python`, use the Python interpreter already used for the ML CP scripts.
+If Python is not available as `python`, use the interpreter already used for ML CP scripts.
 
 ## Immediate next task — P4.3 Step 2: rights, privacy, and content review
 
