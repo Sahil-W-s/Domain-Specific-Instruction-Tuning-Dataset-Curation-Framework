@@ -168,3 +168,16 @@ This supersedes the earlier request to upload these six files; no further upload
 Continue source-first rights/provenance review using only existing local evidence. The remaining useful evidence is any locally held source/acquisition record, licence/terms file, course/institution permission, dataset card or cached metadata, and model card/configuration that was part of the original project materials. Do not web-search substitutes. If no such local evidence exists, record the rights as unknown rather than trying to infer them.
 
 Do not inspect bulk dataset/model payloads, configure DVC, or migrate artifacts. `migration_authorized: false` remains in force.
+
+
+## Owner rights declaration and third-party source boundary — 2026-11-17
+
+The owner explicitly declares that rights to the project materials they created or supplied are theirs and that those materials are open source. The declaration scope is limited to the supplied/project materials: IoT PDFs, generated datasets, scripts, adapters, and reports. It is recorded in `docs/phase_reports/OWNER_RIGHTS_AND_THIRD_PARTY_SCOPE_DECLARATION.md`.
+
+The owner declaration does not cover third-party sources, including Dolly, MMLU, and the Qwen base model. The project will not redistribute third-party source dataset or base-model payloads; users who need those sources are expected to obtain them independently and comply with the terms applicable to their versions. Their repository identifiers may remain in dependency/provenance documentation. Existing immutable-revision gaps remain.
+
+The declaration is recorded as owner-provided, not independent legal verification. No specific standard open-source licence identifier was provided; do not invent one. Record the exact licence notice if a formal public licence grant is to be made. Privacy/secrets review remains separate and pending. The declaration does not authorize source moves/deletions or artifact migration; `manifests/storage_map.yml` remains `migration_authorized: false`.
+
+### Next bounded task
+
+Continue the remaining risk-based privacy/secrets review and per-artifact storage decisions. Do not re-open source-rights discovery for third-party payloads that the project will not redistribute. Preserve third-party dependencies as independently acquired requirements and keep their exact revisions marked unknown where local records do not establish them.
