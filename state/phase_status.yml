@@ -198,8 +198,9 @@ phases:
         credential_private_key_email_indicators_reported: 0
         unavailable_or_mismatched_records: 33
         non_text_extensions_excluded: 245
-      interpretation: phone_like_regex_is_broad_and_not_proof_of_phone_numbers_or_exposure;_triage_by_artifact_pending
-    next_task: Aggregate phone-like findings by artifact ID/path locally without values; triage concentrated files and explain 31 unavailable plus 2 path/size mismatch records
+      interpretation: phone_like_regex_is_broad;_counts_concentrated_in_inventory_catalogue_and_trainer_state_files;_not_proof_of_phone_numbers_or_exposure
+      concentration_review: completed_by_artifact_path_and_source_root;_schema_context_triage_pending
+    next_task: Inspect headers/field names only for highest-concentration inventory CSVs and one trainer_state JSON; inspect sanitized diagnostics for 31 unavailable plus 2 path/size mismatch records
     migration_started: false
     limitations:
     - Do not infer redistribution permission from file names or public availability
