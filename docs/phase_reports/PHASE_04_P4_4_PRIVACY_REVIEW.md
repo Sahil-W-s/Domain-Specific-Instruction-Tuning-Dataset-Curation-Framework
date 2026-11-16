@@ -1,7 +1,7 @@
 # Phase 4 P4.4 — Privacy Review, Work Unit 1
 
 **Date:** 2026-11-17  
-**Status:** Scanner implemented; owner execution and findings review pending.  
+**Status:** First bounded scan executed; indicator triage pending.  
 **Migration authorization:** Not granted.
 
 ## Objective
@@ -21,34 +21,45 @@ The script:
 - Writes only artifact/root identifiers, relative paths, line numbers, indicator categories, and short one-way fingerprints. It never writes matched values or source lines.
 - Writes outputs only under `.local/phase4_privacy_review/`.
 
+## Execution result — 2026-11-17
+
+Owner executed the scanner successfully.
+
+| Metric | Result |
+|---|---:|
+| Inventory records | 1,531 |
+| Text-extension candidates | 1,286 |
+| Unique files scanned | 1,253 |
+| Bytes scanned | 369,784,161 (~352.7 MiB) |
+| Findings | 87,508 |
+| Findings category | 87,508 phone-like; zero reported credential/private-key/email indicators |
+| Unavailable or mismatched source records | 33 |
+| Non-text extensions excluded | 245 |
+
+The only reported finding category was `phone_like`. This pattern is a broad numeric-format heuristic and can match non-phone content such as IDs, numeric fields, timestamps, and dataset values. Therefore 87,508 is an indicator count, **not** a count of phone numbers or exposed personal records. No actual values were included in the summary, and no secret values should be shared.
+
+The scan reports read-only operation: no source modifications, moves, or deletions; no archive, PDF, or model-weight payload reads; and local-only output. These are the scanner's reported execution properties.
+
+## Required triage before classification
+
+1. Aggregate phone-like indicators by artifact ID and file path to determine whether they cluster in a small number of structured datasets/logs or are broadly distributed.
+2. Inspect only the relevant local source context for a small representative sample of flagged records, without copying matched values into chat or GitHub.
+3. Determine why 31 source records were unavailable and why 2 failed path/size validation. The current summary exposes only exception classes, not the underlying paths/reasons.
+4. Keep excluded non-text, oversized, unavailable, archive, PDF, and model artifacts un-cleared.
+
 ## Explicit exclusions and limitations
 
 This first pass does **not** inspect ZIP/archive payloads, PDFs, model weights, images, binary files, or files over configured limits. It does not perform OCR, semantic review, or comprehensive personal-data discovery. A positive indicator is a review lead, not proof of a secret or personal-data exposure. Zero indicators do not establish privacy clearance.
 
-The script validates configured paths remain within their source roots and checks each file's current size against the tracked inventory before reading. It does not modify, move, delete, extract, or hash source files.
-
-## Owner execution
-
-Run after pulling the latest `main`:
-
-```powershell
-python scripts/storage/scan_privacy_indicators.py
-```
-
-Expected local-only outputs:
-- `.local/phase4_privacy_review/privacy_indicator_findings.csv`
-- `.local/phase4_privacy_review/privacy_scan_summary.json`
-
-Review these outputs locally. Do not commit them or paste any matched secret values. Share the summary JSON and, if findings exist, the finding rows with values omitted; paths may be redacted if they reveal private locations.
-
 ## Current decision
 
-- Scanner implementation is checkpointed.
-- Scan has **not** been executed by the owner; no findings are claimed.
+- Scanner implementation is checkpointed and first scan executed.
+- Phone-like findings are untriaged; no personal-data exposure is established by the count alone.
+- Credential/private-key/email indicators were not reported by this scan.
 - All 41 large-file records remain on hold pending privacy review and per-artifact decisions.
 - `manifests/storage_map.yml` remains `migration_authorized: false`.
 - No DVC setup or artifact migration has begun.
 
 ## Next bounded task
 
-Owner runs the scanner locally and supplies its summary plus sanitized finding rows. Review only flagged indicators and classify the affected artifacts. Then proceed to separate bounded handling for PDF/archive/model payload classes only where necessary.
+Produce a local aggregate of phone-like indicators by artifact ID/path (no matched values), then triage only the highest-concentration files and explain the 33 skipped records. Do not rerun the full scan or inspect unrelated payloads.
