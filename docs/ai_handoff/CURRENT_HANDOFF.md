@@ -421,3 +421,8 @@ Dolly local records identify `databricks/databricks-dolly-15k`, 15,011 available
 MMLU local manifest identifies `cais/mmlu`, test split, 50 questions, seed 42, excluded original indices [237, 740, 1298, 2087, 3895, 4175, 6149, 6865, 9457], category allocation STEM 13 / Humanities 12 / Social sciences 13 / Professional and applied 12, and local sample SHA-256 `d7c4f24f3ea17f698b0729093ef601cbdf1ecea53623e62844faa4013f2bf78e`. No immutable upstream revision is recorded.
 
 Next bounded task: inspect only existing package split manifest, phase3 validation report, and B2–B5 run metadata for exact dataset-to-run linkage and any recorded revision IDs. No payload inspection, extraction, external source search, DVC setup, or migration. Rights and privacy remain unresolved.
+
+
+The local `prepare_phase3_datasets_v2.py` script sets Dolly dataset ID `databricks/databricks-dolly-15k`, seed 20261114, loads `train` without pinning `revision`, shuffles row indices, assigns 1,000 to B2 and 577 to B5 general, and asserts disjointness. It does not persist selected source row indices. Exact historical Dolly row selection cannot be guaranteed without the upstream snapshot and index manifest. Script inspected only; not executed.
+
+Next owner input: six existing small package metadata files — `configuration/split_manifest.json`, `configuration/phase3_validation_report.json`, and `training/B2` through `training/B5/run_metadata.json`. Inspect only for dataset-to-run linkage and revision identifiers.
