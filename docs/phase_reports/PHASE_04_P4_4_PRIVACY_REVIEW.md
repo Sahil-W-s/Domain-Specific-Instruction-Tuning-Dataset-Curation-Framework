@@ -88,3 +88,20 @@ This distribution supports prioritizing schema/field-context checks on inventory
 ### Next bounded triage
 
 Inspect only headers/field names and safe structural context for the two highest-concentration file classes (master inventory CSV and script catalogue CSV), plus one B2 trainer-state JSON. Do not print cell values, matched strings, or full records. Then decide whether the phone-like rule is unsuitable for these structured numeric fields and document any targeted exclusions or detector refinement as a new version; preserve the original scan outputs and source files. Separately inspect the scanner's sanitized skip diagnostics to identify the 31 unavailable and 2 path/size mismatch records.
+
+
+## Structural review of highest-concentration files — 2026-11-17
+
+Owner inspected CSV headers and the top-level JSON field names for the highest-concentration examples.
+
+- `master_file_inventory.csv` headers: `RelativePath`, `FileName`, `Extension`, `Category`, `SizeBytes`, `LastModified`, `FullPath`.
+- `script_catalogue.csv` headers: `FileName`, `RelativePath`, `SizeBytes`, `LastModified`, `SHA256`.
+- B2 checkpoint-339 `trainer_state.json` top-level keys include training-state fields such as `global_step`, `epoch`, `log_history`, `best_model_checkpoint`, `total_flos`, and callback/state metadata.
+
+These schemas contain no explicitly named phone, email, or contact columns. They include numeric metadata, timestamps, file paths, hashes, and training metrics that could plausibly trigger the broad phone-like regex. This makes false positives likely for these file classes, but headers and key names alone do not establish the contents of every match or clear all files.
+
+The attempted MLCP_UPLOAD path resolution reported FILE NOT FOUND for the two CSVs using the inventory-relative path as joined to the configured root. Other copies resolved and headers were read. Preserve all copies; do not repair paths or modify the inventory based on this observation.
+
+### Next bounded triage
+
+For the two CSV classes, count phone-like regex matches by column locally and report only column names and counts (never cell values). For the trainer-state JSON, inspect key names inside `log_history` only; do not print metric values. Use the existing finding line numbers to narrow the review. Do not rerun the full scan.
