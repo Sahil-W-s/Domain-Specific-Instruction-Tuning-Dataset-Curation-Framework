@@ -17,8 +17,9 @@ The source inventory threshold is at least 50 MiB. This task covers only those 4
 | Experiment backup archives | 8 | B2–B5 final-backup ZIPs across MLCP_UPLOAD and MLCP_KAGGLE_WORK |
 | Adapter backup archives | 8 | B2–B5 adapter-backup ZIPs inside reproducibility-package directories |
 | Reproducibility package archives | 1 | Versioned full reproducibility-package ZIP |
-| Final adapter files / copies | 8 | B2–B5 adapter_final or backup adapter copies |
-| Adapter checkpoint files | 16 | B2–B5 checkpoint adapter_model.safetensors files |
+| Active-run final adapters | 4 | One adapter_final file for each of B2–B5 |
+| Final-adapter backup copies | 8 | Four copies under MLCP_UPLOAD final-backup folders and four under Kaggle backup folders |
+| Adapter checkpoint files | 12 | Three checkpoint adapter_model.safetensors files for each of B2–B5 |
 | **Total** | **41** | **17 archives + 24 adapter/model files** |
 
 The lifecycle labels above are provisional path/filename interpretations. The source registry itself leaves most model lifecycles as `unknown`; this classification does not establish which model checkpoint is scientifically canonical or preferred.
