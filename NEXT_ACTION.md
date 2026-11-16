@@ -42,17 +42,27 @@ The owner ran `scripts/storage/inspect_archive_readmes.py` and supplied the loca
 
 Rights, redistribution, and sensitivity remain unknown. README review is not a payload-wide privacy clearance. Do not commit local README output.
 
-## Immediate next task — P4.3 Step 3: source-specific rights and provenance checks
+## Completed partially — P4.3 Step 3: source-specific rights and provenance checks
 
-Use the package's already inventoried manifests and provenance artifacts to identify the exact source families represented in the included datasets and source documents. For each identifiable source family and the named base model:
+Report: docs/phase_reports/PHASE_04_P4_3_SOURCE_RIGHTS_REVIEW.md.
 
-1. Record the exact upstream source and applicable licence/terms, with evidence.
-2. Determine whether terms permit local/private storage, derivative model training, and redistribution; distinguish these permissions rather than treating them as equivalent.
-3. Identify dataset and source-document provenance gaps.
-4. Record unknown where evidence is missing or ambiguous.
-5. Identify payload classes that require privacy review before storage migration; do not inspect unrelated payloads or expose secrets.
+Verified upstream terms from the identified source records:
+- Qwen/Qwen2.5-1.5B-Instruct: Apache-2.0.
+- Candidate databricks/databricks-dolly-15k: CC BY-SA 3.0; exact revision and subset lineage still unverified.
+- cais/mmlu: MIT; exact revision/split and the 50-question sample manifest still unverified.
+- Four IoT source PDFs are identified by title, but author, publisher, original source URL, edition, and licence remain unknown.
 
-Do not infer permission from public availability, a model identifier, or an incomplete model card. Do not publish adapters, datasets, predictions, or source documents. Do not configure DVC or migrate artifacts.
+The review distinguishes private storage, training/evaluation use, and redistribution. It does not grant blanket clearance. Adapter share-alike/derivative-work treatment remains unresolved. All 41 large-artifact records remain on hold; migration remains unauthorized.
+
+## Immediate next task — P4.3 Step 3B: exact package manifest and source provenance reconciliation
+
+Obtain the existing metadata-only ZIP entry listing for the reproducibility package and inspect only the small provenance/configuration metadata needed to establish:
+1. Exact Dolly source revision and the subset/row transformation for B2 and B5.
+2. Exact MMLU revision, split, sample IDs, and sampling seed for the 50-question retention set.
+3. The package's split manifest, dataset validation report, run manifest, and SHA256SUMS metadata.
+4. The source/acquisition records and copyright/licence notices for the four IoT PDFs.
+
+Do not read dataset/model payloads, extract the archive, expose secrets, or infer rights where evidence is absent. If the existing metadata-only listing is not available, rerun only the bounded metadata export for the reproducibility archive.
 
 ## Current storage decision
 
