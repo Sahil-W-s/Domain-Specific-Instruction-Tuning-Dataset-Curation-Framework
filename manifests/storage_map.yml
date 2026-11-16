@@ -24,9 +24,49 @@ inventory:
   unique_content_bytes: 1735016404
   duplicate_replica_bytes: 1451381292
 rights_and_privacy:
+  review_status: partial_source_terms_verified_provenance_and_privacy_open
   sensitivity: unknown_for_all_41_records
-  redistribution: not_reviewed_for_all_41_records
-  rule: Do not upload any artifact until rights, privacy, and redistribution status are reviewed.
+  redistribution: not_cleared_for_all_41_records
+  migration_clearance: blocked
+  rule: Do not upload any artifact until per-artifact rights, privacy, and redistribution status are reviewed.
+  source_reviews:
+    qwen_qwen2_5_1_5b_instruct:
+      license: Apache-2.0
+      evidence: https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct
+      local_storage: consistent_with_license_subject_to_conditions
+      derivative_training: license_permits_use_and_derivative_works; adapter_classification_and_notices_require_review
+      redistribution: permitted_subject_to_Apache_2_0_conditions
+    databricks_dolly_15k:
+      candidate_source: databricks/databricks-dolly-15k
+      license: CC-BY-SA-3.0
+      evidence: https://huggingface.co/datasets/databricks/databricks-dolly-15k
+      exact_revision_and_subset_lineage: unverified
+      local_storage: consistent_with_license_subject_to_conditions
+      derivative_training: dataset_card_lists_LLM_training_as_intended_use; trained_adapter_share_alike_status_unresolved
+      redistribution: dataset_or_adapted_dataset_material_requires_attribution_and_share_alike; model_weight_status_unresolved
+    cais_mmlu:
+      license: MIT
+      evidence: https://huggingface.co/datasets/cais/mmlu
+      exact_revision_split_and_50_question_sample_manifest: unverified
+      local_storage: consistent_with_license_subject_to_notice
+      evaluation_use: consistent_with_license_subject_to_notice
+      redistribution: permitted_subject_to_MIT_notice
+    iot_source_pdfs:
+      identified_titles:
+        - 4-iot-protocols-and-security.pdf
+        - 6-iot-physical-servers-cloud-offereings-iot-case-studies.pdf
+        - IOT Unit 1 Contents.pdf
+        - Unit 2-Iot-platform-design-methodology (1).pptx.pdf
+      author_publisher_source_url_edition_and_license: unknown
+      local_storage: unknown
+      derivative_training: unknown
+      redistribution: not_cleared
+  privacy_review_required_before_cloud_migration:
+    - original_pdfs_and_extracted_text
+    - training_and_evaluation_jsonl
+    - human_review_and_audit_files
+    - prompts_api_request_logs_and_generation_logs
+    - predictions_evaluation_outputs_adapters_and_checkpoints
 backup:
   independent_backup_verified: false
   note: Existing source copies are preserved; do not infer independent disaster-recovery protection from duplicate paths or hashes.
