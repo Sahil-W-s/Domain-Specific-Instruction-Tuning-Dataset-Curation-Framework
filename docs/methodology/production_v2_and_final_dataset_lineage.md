@@ -302,3 +302,126 @@ The notebook establishes the downstream experimental workflow and reproducibilit
 - The historical Kaggle dataset version or upload event that first supplied the B4 artifact.
 
 The notebook's existence must not be used to attribute B3-to-B4 filtering to Kaggle notebook execution. The upstream filtering provenance remains unresolved.
+
+## 11. Historical production-filter reconciliation and final 577-record dataset
+
+### 11.1 Script 54: 110-candidate reconciliation
+
+The historical source `54_finalize_judge_reconciliation.py` was recovered from the original ML CP workspace.
+
+Its SHA-256 was independently calculated from both:
+- `scripts/54_finalize_judge_reconciliation.py`
+- The corresponding entry in `pipeline_source_scripts.zip`
+
+Both copies have the identical SHA-256:
+
+`C7D74828DF2E7786B130659BE7F26BF1BD2D9A8B93F8C9E3AD1FB70B7C4C1B47`
+
+This establishes the identity of the inspected source against the archived copy.
+
+The input was:
+
+`data/interim/production_filter/repair_v2/repair_candidates.jsonl`
+
+Verified input properties:
+- 110 records
+- 139,196 bytes
+- SHA-256 `DAD992559EBBBE236768BCA0B16011BC8732C6CCF58070A3E2503250B4673A88`
+- The input hash matches the candidate-file hash recorded in the Script 54 summary.
+
+The historical PowerShell command history contains the invocation:
+
+`python .\scripts\54_finalize_judge_reconciliation.py`
+
+The four preserved outputs are:
+
+| Output | SHA-256 |
+|---|---|
+| `final_accepted_candidates.jsonl` | `2ED35680DA9D2F1E001C654221BEE6D7A9FAA06A3C0CD68F97829C23A225AAAE` |
+| `final_rejected_candidates.jsonl` | `6632508229D439DEDB55BA4CBAEDA80D6041045750754FE949158EC7F85B0A82` |
+| `final_reconciliation_audit.jsonl` | `5944B7E351150AEA9A08016E77AA3CD71EE6A966C5D220B99F0A62605A63B72D` |
+| `final_reconciliation_summary.json` | `31A51D756ED4F0ECE1078D518671C75B823B4CED6613F5D5C5D57268E24BFA9B` |
+
+The summary records:
+- 110 candidates
+- 105 accepted
+- 5 rejected
+- 110 provenance checks passed
+- 0 provenance failures
+- 0 missing judge results
+- 0 missing optional judge files
+
+The summary's candidate-file hash matches the independently recomputed input hash.
+
+**Execution qualification:** The archived source identity, invocation in command history, matching input hash, and preserved outputs provide strong corroborating evidence. The command history alone does not independently establish successful process completion. This is therefore not represented as independently execution-proven.
+
+### 11.2 Later 579-record reconciliation
+
+A separate reconciliation implementation was recovered from PowerShell history as inline Python code. It is not a separately identified, preserved standalone script.
+
+The recovered logic:
+- Reads 105 previously accepted records.
+- Reads 485 resumed V2 candidates and 485 corresponding pipeline judge results.
+- Checks candidate and judge ID correspondence and duplicate/overlap constraints.
+- Accepts 474 V2 records and rejects 11.
+- Combines 105 previous accepted records and 474 accepted V2 records.
+- Produces a 579-record pool.
+
+The recorded arithmetic is:
+
+`105 + 474 = 579`
+
+The history also contains the human-audit sampling, audit-validation, finalization, and freeze logic.
+
+### 11.3 Human audit and finalization
+
+The recovered finalizer validates a 30-record audit:
+- 28 accepted
+- 2 rejected
+
+It retains 28 accepted audited records and 549 unsampled records, producing:
+
+`28 + 549 = 577`
+
+The two human-audit exclusions are:
+- `production_batch_001_example_01`
+- `production_batch_004_example_02`
+
+The preserved final dataset is:
+
+`data/interim/final_reconciliation/final_accepted_dataset.jsonl`
+
+Its SHA-256 is:
+
+`9e541db71c7d5325e3817cd8c29469cfac7137aad0a399cb8b6a88a2e72007a3`
+
+The frozen B4 manifest records the same hash and 577 records.
+
+### 11.4 Relationship to B3-to-B4 membership
+
+The independent B3/B4 membership comparison remains:
+- B3: 600 records
+- B4: 577 records
+- B3 IDs absent from B4: 23
+- Unexpected B4 IDs: 0
+
+The 23 exclusions have recorded dispositions:
+- 5 approved duplicate removals
+- 5 production-batch automated judge rejections
+- 2 production-batch human-audit rejections
+- 11 V2 pipeline judge rejections
+
+These counts reconcile exactly to 23. The recovered 579-to-577 finalization provides additional evidence for the human-audit stage.
+
+However, the available evidence does not establish a single exact historical script and complete successful execution sequence that performed every B3-to-B4 filtering operation. The recovered inline reconciliation and finalizer code must not be represented as a named, independently archived script.
+
+### 11.5 Updated Phase 10 assessment
+
+The Script 54 code version and 110-to-105 reconciliation are now substantially better established. The later 579-to-577 reconciliation and final dataset are also supported by recovered history and preserved artifacts.
+
+The remaining blockers are:
+- Exact historical B3-to-B4 filtering implementation and complete execution sequence.
+- Independent proof of successful execution for the recovered history-only reconciliation/finalizer commands.
+- Direct execution proof for the inferred Phase 3 preparation V2 variant.
+
+**Phase 10 exit gate remains NOT SATISFIED.** The additional evidence improves the reconstruction but does not justify claiming complete historical reproducibility or authorizing Phase 11.

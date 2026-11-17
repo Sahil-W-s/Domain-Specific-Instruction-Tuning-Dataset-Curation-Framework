@@ -35,3 +35,25 @@ flowchart TD
 
     K4["Existing Kaggle dataset inputs<br/>B3 and B4 already available"] -.-> K
     K5["Notebook does not establish<br/>upstream B3-to-B4 filtering execution"] -.-> K
+
+    %% Recovered historical production-filter reconciliation
+    subgraph HIST["Recovered historical reconciliation evidence"]
+        S54["Script 54: archived source hash verified"]
+        C110["Repair V2 candidates<br/>110 records"]
+        A105["Script 54 reconciliation<br/>105 accepted / 5 rejected"]
+        C110 --> S54 --> A105
+
+        V2J["V2 pipeline judge<br/>485 candidates / 474 accepted / 11 rejected"]
+        P579["History-reconstructed pool<br/>105 + 474 = 579"]
+        A105 --> P579
+        V2J --> P579
+
+        AUD["Human audit<br/>30 sampled: 28 accepted / 2 rejected"]
+        FINAL["Final accepted dataset<br/>577 records"]
+        P579 --> AUD --> FINAL
+    end
+
+    FINAL -.-> B4FINAL["Frozen B4 manifest<br/>577 records"]
+
+    S54NOTE["Script 54 execution success<br/>not independently proven"] -.-> S54
+    B4NOTE["Exact complete B3-to-B4<br/>filtering implementation remains unidentified"] -.-> H

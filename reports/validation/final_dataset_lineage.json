@@ -130,7 +130,9 @@
     "Earlier and later judging stages contain differing decisions for some records; chronology must remain distinct.",
     "Human-review independence is not established.",
     "B4 human audit sampled 30 records; 549 retained records were not individually reviewed in that sample.",
-    "The sole Kaggle experimental notebook consumes existing B3/B4 inputs and creates the reproducibility package; it does not prove the upstream B3-to-B4 filtering execution or historical Kaggle dataset upload version."
+    "The sole Kaggle experimental notebook consumes existing B3/B4 inputs and creates the reproducibility package; it does not prove the upstream B3-to-B4 filtering execution or historical Kaggle dataset upload version.",
+    "Script 54 invocation is present in PowerShell history, but successful process completion is not independently established.",
+    "The later 579-to-577 reconciliation and finalizer were recovered as inline PowerShell history code; no standalone script identity or independent successful-execution record was established."
   ],
   "phase10_exit_gate": {
     "exact_inputs_identified": true,
@@ -140,6 +142,68 @@
     "exact_b4_filtering_code_identified": false,
     "exact_b4_filtering_execution_proven": false,
     "exit_gate_satisfied": false,
-    "reason": "The exact historical filtering implementation and execution sequence responsible for B4 remain unproven."
+    "reason": "Script 54 source and archive identity are verified, and the 110-to-105 and later 579-to-577 reconciliations are reconstructed. However, the exact complete historical B3-to-B4 filtering implementation and successful execution sequence remain unproven.",
+    "script54_source_identified": true,
+    "script54_archive_hash_verified": true,
+    "script54_execution_independently_proven": false,
+    "later_579_to_577_reconciliation_reconstructed": true
+  },
+  "historical_production_filter_reconciliation": {
+    "script_sha256": "C7D74828DF2E7786B130659BE7F26BF1BD2D9A8B93F8C9E3AD1FB70B7C4C1B47",
+    "historical_invocation_recorded": true,
+    "evidence_status": "SOURCE_ARCHIVE_HASH_MATCHED_INPUT_AND_OUTPUT_HASHES_VERIFIED_EXECUTION_STRONGLY_CORROBORATED",
+    "provenance_checks": {
+      "failed": 0,
+      "passed": 110,
+      "missing_judge_results": 0,
+      "missing_optional_judge_files": 0
+    },
+    "script": "54_finalize_judge_reconciliation.py",
+    "input": {
+      "summary_input_hash_matches": true,
+      "path": "data/interim/production_filter/repair_v2/repair_candidates.jsonl",
+      "bytes": 139196,
+      "records": 110,
+      "sha256": "DAD992559EBBBE236768BCA0B16011BC8732C6CCF58070A3E2503250B4673A88"
+    },
+    "archive": "pipeline_source_scripts.zip",
+    "archive_hash_match": true,
+    "outputs": {
+      "summary_sha256": "31A51D756ED4F0ECE1078D518671C75B823B4CED6613F5D5C5D57268E24BFA9B",
+      "audit_sha256": "5944B7E351150AEA9A08016E77AA3CD71EE6A966C5D220B99F0A62605A63B72D",
+      "accepted": {
+        "records": 105,
+        "sha256": "2ED35680DA9D2F1E001C654221BEE6D7A9FAA06A3C0CD68F97829C23A225AAAE"
+      },
+      "rejected": {
+        "records": 5,
+        "sha256": "6632508229D439DEDB55BA4CBAEDA80D6041045750754FE949158EC7F85B0A82"
+      }
+    },
+    "successful_execution_independently_proven": false,
+    "archived_script_sha256": "C7D74828DF2E7786B130659BE7F26BF1BD2D9A8B93F8C9E3AD1FB70B7C4C1B47"
+  },
+  "later_579_to_577_reconciliation": {
+    "implementation_source": "PowerShell history inline Python; no standalone script identified",
+    "resumed_v2_candidates": 485,
+    "standalone_script_sha256": null,
+    "successful_execution_independently_proven": false,
+    "final_count": 577,
+    "human_audit_accepted": 28,
+    "human_audit_rejected": 2,
+    "combined_pool_count": 579,
+    "v2_judged": 485,
+    "previous_accepted": 105,
+    "rejected_ids": [
+      "production_batch_001_example_01",
+      "production_batch_004_example_02"
+    ],
+    "v2_accepted": 474,
+    "human_audit_sample": 30,
+    "finalization_arithmetic_reconciles": true,
+    "final_dataset_sha256": "9e541db71c7d5325e3817cd8c29469cfac7137aad0a399cb8b6a88a2e72007a3",
+    "unsampled_retained": 549,
+    "v2_rejected": 11,
+    "arithmetic_reconciles": true
   }
 }

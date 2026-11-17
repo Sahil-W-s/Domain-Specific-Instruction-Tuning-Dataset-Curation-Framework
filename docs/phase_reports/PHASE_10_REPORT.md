@@ -85,3 +85,40 @@ Confirmed notebook responsibilities:
 The notebook covers the B0-B5 experimental workflow and creates the IoT CP reproducibility package. It consumes B3 and B4 as existing Kaggle input datasets. Its membership comparison and training/validation split logic operate on those existing datasets; they do not establish the historical execution that created B4.
 
 The notebook therefore provides downstream experimental and packaging provenance, but does not identify or prove the exact B3-to-B4 filtering script or execution sequence.
+
+## 7. Additional historical reconciliation evidence
+
+### Script 54 source verification
+
+The recovered `54_finalize_judge_reconciliation.py` source was independently hashed and compared with its entry in `pipeline_source_scripts.zip`. Both hashes match:
+
+`C7D74828DF2E7786B130659BE7F26BF1BD2D9A8B93F8C9E3AD1FB70B7C4C1B47`
+
+Its 110-record input hash was independently recomputed and matches the hash in its preserved summary. The summary records 105 accepted, 5 rejected, 110 successful provenance checks, and no missing judge results.
+
+The historical PowerShell command history records invocation of Script 54. The archived source identity, input hash, summary, and outputs strongly corroborate the reconciliation. Successful process completion is not independently proven by the command history alone.
+
+### Later final dataset reconciliation
+
+Recovered inline code in PowerShell history reconstructs the later pool:
+- 105 previously accepted records
+- 474 accepted V2 records
+- 579 combined records
+
+The recovered human-audit finalizer records 28 accepted and 2 rejected among 30 sampled records. The 28 accepted plus 549 unsampled records produce 577 final records.
+
+The final accepted dataset hash is:
+
+`9e541db71c7d5325e3817cd8c29469cfac7137aad0a399cb8b6a88a2e72007a3`
+
+The reconciliation/finalizer code was recovered from command history, not from an independently identified standalone script. Successful execution of those inline commands is not independently proven.
+
+### Updated assessment
+
+The Script 54 source identity and archived version are verified. The 110-to-105 reconciliation and later 579-to-577 finalization have substantially stronger historical support.
+
+Nevertheless, the exact complete B3-to-B4 filtering implementation and successful execution sequence remain unproven. The Phase 3 preparation V2 execution is also inferred rather than directly proven.
+
+**Updated Phase 10 status: CONDITIONALLY RECONSTRUCTED; EXIT GATE NOT SATISFIED.**
+
+Phase 11 remains unauthorized by the Phase 10 exit gate.
