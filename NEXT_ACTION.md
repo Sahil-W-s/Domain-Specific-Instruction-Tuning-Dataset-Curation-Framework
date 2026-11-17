@@ -252,3 +252,33 @@ Phase 8 caveats: the recovered raw dataset has 88 examples, not the 1,000-exampl
 Do not stage unrelated untracked inventory, backup, state, or generated handoff artifacts. Do not rerun source generation or evaluation scripts. Do not modify original datasets, checkpoints, request logs, or evaluation outputs.
 
 After the Phase 8 commit is verified on the remote, consult the approved master plan to determine the next phase's scope.
+---
+
+## Authoritative next action — Phase 9 checkpoint publication
+
+**Updated:** 2026-11-17
+
+Phase 9 historical reconstruction deliverables have been created. Validation records 6 passed, 0 failed, and 4 warnings. The 110 final candidate decisions reconcile to 105 accepted and 5 rejected.
+
+### Immediate next task
+
+1. Inspect the Phase 9 report, validation record, output manifest, run record, and continuity updates.
+2. Verify manifest file sizes and SHA-256 hashes against the current files.
+3. Stage only the explicitly listed Phase 9 deliverables and four continuity files.
+4. Run `git diff --cached --check`.
+5. Inspect the exact staged file list and staged diff summary.
+6. Commit and push to `origin main` only after scope verification.
+7. Verify local `HEAD`, `origin/main`, and working-tree status.
+
+### Phase 9 caveats
+
+- Human-review source records show 28 ACCEPT and 2 REJECT; the historical summary reports 29 and 1.
+- Reviewer independence is not established.
+- False-positive and false-negative rates are not measurable without independent gold-standard labels.
+- The 66-record located v2 judge file is not established as the historical 88-record original source.
+
+Do not rerun scripts 45–54, call judge/provider APIs, modify source data, or stage unrelated untracked inventory, backups, or generated handoff artifacts.
+
+After the Phase 9 checkpoint is verified on the remote, consult the approved master plan for Phase 10 scope. Do not infer or invent later phase requirements.
+
+Phase 4's storage/privacy workstream remains open. Preserve `migration_authorized: false`; do not configure DVC or migrate source artifacts as part of this checkpoint.

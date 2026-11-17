@@ -1,0 +1,46 @@
+{
+  "run_id": "phase_09_reconstruction_20261117T052042Z",
+  "phase_id": "phase_09",
+  "started_at": "2026-11-17T05:20:42.4310816Z",
+  "completed_at": "2026-11-17T05:22:55.5945892Z",
+  "execution_mode": "historical_evidence_reconstruction_and_documentation",
+  "operator": "owner-executed local PowerShell; assistant-guided",
+  "objective": "Reconstruct filtering, deduplication, judge reconciliation, evidence repair, and human-review evidence.",
+  "inputs": [
+    {
+      "path": "reports/validation/judge_reconciliation.json",
+      "byte_size": 76707,
+      "sha256": "1fb718fbeaf4194bda5b35402916c28b671b22986462cc231c1ebec62cb884fd"
+    },
+    {
+      "path": "reports/metrics/filter_and_judge_summary.csv",
+      "byte_size": 3392,
+      "sha256": "29b37c0f81f3acd8d655478da8597fedc1612ac6316a0080bd50ed558ea180ef"
+    }
+  ],
+  "scripts_reviewed": [
+    "Scripts 45-54 and relevant judging/reconciliation helpers"
+  ],
+  "scripts_executed": [],
+  "provider_api_calls": 0,
+  "source_data_modified": false,
+  "output_paths": [
+    "docs/methodology/filtering_and_acceptance_criteria.md",
+    "docs/methodology/semantic_judging_and_evidence_repair.md",
+    "reports/validation/judge_reconciliation.json",
+    "reports/metrics/filter_and_judge_summary.csv",
+    "docs/phase_reports/PHASE_09_REPORT.md",
+    "reports/validation/phase_09_validation.json",
+    "state/phase_status.yml",
+    "PROJECT_STATE.md",
+    "NEXT_ACTION.md",
+    "docs/ai_handoff/CURRENT_HANDOFF.md"
+  ],
+  "result": "completed_with_caveats",
+  "caveats": [
+    "Human-review CSV and rejected JSONL show 28 ACCEPT and 2 REJECT; historical summary reports 29 and 1.",
+    "Reviewer independence is not established.",
+    "False-positive and false-negative rates cannot be calculated without independent gold-standard labels.",
+    "Located 66-record v2 judge file is not established as the historical 88-record original judge source."
+  ]
+}

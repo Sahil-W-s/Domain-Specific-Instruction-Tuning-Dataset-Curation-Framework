@@ -525,3 +525,53 @@ Do not stage unrelated untracked historical inventory, backup, state, or generat
 ### Next action
 
 Finalize the Phase 8 Git commit and push after exact staged-scope review. Then consult the approved master plan for the next phase; do not infer or invent its scope.
+---
+
+## Authoritative current handoff — Phase 9 checkpoint pending
+
+**Updated:** 2026-11-17
+**Project:** ML CP — Domain-Specific Instruction-Tuning Dataset Curation Framework
+**Current phase:** Phase 9 — Filtering, semantic judging, human review, and evidence repair
+**Latest verified remote commit:** `dd3a2b2`
+**Branch:** `main`; `origin/main` aligned with local `HEAD` before Phase 9 publication.
+
+### Current Phase 9 status
+
+Phase 9 historical reconstruction artifacts and continuity updates have been prepared. Validation is 6 passed, 0 failed, and 4 warnings. The final candidate audit covers 110 unique candidate IDs: 105 accepted and 5 rejected, with no missing mappings.
+
+### Phase 9 files
+
+- `docs/methodology/filtering_and_acceptance_criteria.md`
+- `docs/methodology/semantic_judging_and_evidence_repair.md`
+- `reports/validation/judge_reconciliation.json`
+- `reports/metrics/filter_and_judge_summary.csv`
+- `docs/phase_reports/PHASE_09_REPORT.md`
+- `reports/validation/phase_09_validation.json`
+- `manifests/phase_09_outputs.json`
+- `manifests/runs/phase_09_reconstruction_20261117T052042Z.json`
+
+Continuity files updated:
+- `state/phase_status.yml`
+- `PROJECT_STATE.md`
+- `NEXT_ACTION.md`
+- `docs/ai_handoff/CURRENT_HANDOFF.md`
+
+### Important Phase 9 caveats
+
+1. Human-review CSV and rejected JSONL: 28 ACCEPT and 2 REJECT. Historical summary: 29 ACCEPT and 1 REJECT. The summary's named rejected ID was already excluded during deduplication.
+2. Reviewer independence and reviewer-selection procedure are not established.
+3. No independent gold-standard labels exist for the final candidate pool; false-positive and false-negative rates cannot be calculated.
+4. The located 66-record v2 judge file is not proven to be the historical 88-record original judge source.
+5. Scripts 45–54 were inspected but not executed. No provider API calls were made.
+
+### Immediate resume procedure
+
+Review the Phase 9 manifest and verify all recorded sizes and SHA-256 hashes. Inspect the four continuity-file changes. Stage only the Phase 9 deliverables, run record, manifest, and four continuity files. Run `git diff --cached --check`, inspect the staged scope, then commit and push. Verify that local `HEAD`, `origin/main`, and `origin/HEAD` agree.
+
+Do not use `git add .`. Preserve unrelated untracked inventories, backups, state files, and generated handoff artifacts. Do not rerun generation, filtering, repair, or judging scripts. Do not modify source datasets or historical judge/review outputs.
+
+### Separate unresolved Phase 4 workstream
+
+Phase 4 rights, privacy, and storage restrictions remain open. Independent physical backup has not been verified. `manifests/storage_map.yml` must remain `migration_authorized: false`. Do not configure DVC or migrate source artifacts.
+
+After Phase 9 is committed and pushed, read the approved master plan for the exact Phase 10 scope before proceeding.

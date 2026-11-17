@@ -1,0 +1,83 @@
+{
+  "phase_id": "phase_09",
+  "generated_at": "2026-11-17T05:20:10.5068297Z",
+  "status": "completed_with_caveats",
+  "summary": {
+    "total": 10,
+    "passed": 6,
+    "failed": 0,
+    "warnings": 4
+  },
+  "checks": [
+    {
+      "actual": "115 heuristic-filter accepted; 0 rejected",
+      "check_id": "heuristic_filter_input_reconciliation",
+      "status": "passed",
+      "details": "Historical filter report and candidate artifacts reconcile.",
+      "expected": "88 + 27 = 115"
+    },
+    {
+      "actual": "115 input; 5 excluded; 110 retained",
+      "check_id": "deduplication_reconciliation",
+      "status": "passed",
+      "details": "Five exclusion IDs and retained candidate pool were reconstructed.",
+      "expected": "115 input; 5 excluded; 110 retained"
+    },
+    {
+      "actual": "110 audit records; 105 accepted; 5 rejected; no missing mappings",
+      "check_id": "final_candidate_decision_coverage",
+      "status": "passed",
+      "details": "Candidate-level audit ID coverage was checked.",
+      "expected": "110 unique candidate decisions"
+    },
+    {
+      "actual": "Original Groq 79; pilot Groq 26; repair-v1 Groq 4; repair-v2 HMA 1",
+      "check_id": "judge_source_reconciliation",
+      "status": "passed",
+      "details": "All final audit source assignments reconcile to 110.",
+      "expected": "110 total source assignments"
+    },
+    {
+      "actual": "Four repair-v1 records; one repair-v2 HMA record",
+      "check_id": "repair_lineage",
+      "status": "passed",
+      "details": "Historical repair and judge artifacts were inspected without execution.",
+      "expected": "Repair-v1 and repair-v2 changes linked to judge records"
+    },
+    {
+      "actual": "Scripts inspected only; no generation, filtering, repair, judge, or API execution",
+      "check_id": "source_preservation_boundary",
+      "status": "passed",
+      "details": "Reconstruction used preserved historical artifacts.",
+      "expected": "No source mutation or provider API execution"
+    },
+    {
+      "actual": "CSV and rejected JSONL: 28 ACCEPT, 2 REJECT; historical summary: 29 ACCEPT, 1 REJECT",
+      "check_id": "human_review_summary_consistency",
+      "status": "warning",
+      "details": "Historical summary names production_batch_011_example_03, which was excluded during deduplication. Preserve discrepancy.",
+      "expected": "Human-review summary agrees with underlying records"
+    },
+    {
+      "actual": "Not established",
+      "check_id": "human_review_independence",
+      "status": "warning",
+      "details": "Do not characterize the review as independent.",
+      "expected": "Reviewer identity, selection, and independence established"
+    },
+    {
+      "actual": "No independent gold-standard labels for the final 110-candidate pool",
+      "check_id": "false_positive_false_negative_rates",
+      "status": "warning",
+      "details": "False-positive and false-negative rates cannot be calculated.",
+      "expected": "Independent gold-standard adjudication available"
+    },
+    {
+      "actual": "Located v2_judge_results.jsonl has 66 records; identity with historical 88-record source is unverified",
+      "check_id": "original_judge_source_identity",
+      "status": "warning",
+      "details": "Do not assume the 66-record artifact is the historical 88-record source.",
+      "expected": "Original Groq judge source identity reconciled"
+    }
+  ]
+}

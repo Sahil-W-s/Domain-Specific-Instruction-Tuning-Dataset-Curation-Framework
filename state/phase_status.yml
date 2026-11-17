@@ -1,7 +1,7 @@
 project: ML CP
 project_title: Domain-Specific Instruction-Tuning Dataset Curation Framework
 plan_version: '2.0'
-current_phase: 4
+current_phase: 9
 last_updated: '2026-11-17'
 phases:
   phase_00:
@@ -207,3 +207,62 @@ phases:
     - No canonical B2-B5 model/checkpoint selected
     - Independent physical backup not verified
     - Preserve all source paths and copies; duplicate hashes do not authorize deletion
+  phase_05:
+    name: Phase 5 historical reconstruction
+    status: completed
+    report: docs/phase_reports/PHASE_05_REPORT.md
+    git_checkpoint: b637c1a
+    note: Script catalogue and execution evidence checkpointed.
+
+  phase_06:
+    name: Phase 6 source processing and chunk lineage
+    status: completed
+    report: docs/phase_reports/PHASE_06_REPORT.md
+    git_checkpoint: f0c5fe2
+
+  phase_07:
+    name: Production generation reconstruction
+    status: completed_with_caveats
+    report: docs/phase_reports/PHASE_07_REPORT.md
+    git_checkpoint: a273395
+    caveats:
+    - Checkpoint accepted-count discrepancy of 483 versus 485 remains unresolved.
+    - Runtime parameter provenance is incomplete.
+    - Comprehensive human evaluation has not been conducted.
+
+  phase_08:
+    name: Original synthetic generation and evaluation reconstruction
+    status: completed_with_caveats
+    report: docs/phase_reports/PHASE_08_REPORT.md
+    outputs_manifest: manifests/phase_08_outputs.json
+    validation: reports/validation/phase_08_validation.json
+    git_checkpoint: dd3a2b2
+    caveats:
+    - Recovered raw dataset contains 88 examples, not proof of the 1000-example target.
+    - 14 generation requests failed duplicate-normalized-question validation.
+    - Human audit verdicts were 0/30 complete.
+    - Runtime parameter provenance is incomplete.
+
+  phase_09:
+    name: Filtering, semantic judging, human review, and evidence repair reconstruction
+    status: completed_with_caveats
+    report: docs/phase_reports/PHASE_09_REPORT.md
+    outputs_manifest: manifests/phase_09_outputs.json
+    validation: reports/validation/phase_09_validation.json
+    run_record: manifests/runs/phase_09_reconstruction_20261117T052042Z.json
+    validation_summary: 6_passed_0_failed_4_warnings
+    candidate_decisions:
+      total: 110
+      accepted: 105
+      rejected: 5
+      missing_mappings: 0
+    human_review:
+      underlying_records: 28_accept_2_reject
+      historical_summary: 29_accept_1_reject
+      discrepancy_resolved: false
+      reviewer_independence_established: false
+    caveats:
+    - False-positive and false-negative rates cannot be calculated without independent gold-standard labels.
+    - Located 66-record v2 judge file is not established as the historical 88-record original judge source.
+    - Human-review summary discrepancy remains unresolved.
+    git_checkpoint: pending

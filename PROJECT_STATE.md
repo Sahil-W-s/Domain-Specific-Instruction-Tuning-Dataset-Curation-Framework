@@ -419,3 +419,60 @@ Phase 8 is conditionally complete as a reconstruction, not as proof of the 1,000
 ### Next action
 
 Finalize and push the Phase 8 documentation, lineage, reconciliation, validation, manifest, and continuity updates. Then consult the approved master plan for the next phase scope. Preserve unrelated untracked historical inventory, backup, state, and handoff artifacts.
+---
+
+## Authoritative current status — Phase 9 completed with caveats
+
+**Updated:** 2026-11-17
+**Current phase:** Phase 9 — Filtering, semantic judging, human review, and evidence repair
+**Latest verified Git commit:** `dd3a2b2` — Phase 8 historical generation reconstruction
+**Branch:** `main`, aligned with `origin/main` before Phase 9 checkpoint publication.
+
+### Completed phase checkpoints
+
+- Phase 0 and Phase 1: owner-approved complete.
+- Phase 2: artifact registry and inventory checkpointed.
+- Phase 3: workspace and checkpoint tooling checkpointed.
+- Phase 5: committed as `b637c1a`.
+- Phase 6: committed as `f0c5fe2`.
+- Phase 7: committed as `a273395`, with documented caveats.
+- Phase 8: committed as `dd3a2b2`, with documented caveats.
+- Phase 9: historical filtering, judging, repair, and review reconstruction documented; Git checkpoint pending.
+
+Phase 4 remains an unresolved parallel preservation/storage/privacy workstream. Its rights, privacy, independent-backup, and migration restrictions are not cleared by later dataset-reconstruction phases.
+
+### Phase 9 verified result
+
+- 115 heuristic-filter candidates; 0 heuristic rejections.
+- 5 deduplication exclusions; 110 candidates retained.
+- Final decisions: 105 accepted and 5 rejected.
+- All 110 candidate IDs map to final audit decisions.
+- Judge source assignments across the audit: original Groq 79, pilot Groq 26, repair-v1 Groq 4, repair-v2 HMA 1.
+- Validation: 6 passed, 0 failed, 4 warnings.
+
+### Phase 9 deliverables
+
+- `docs/methodology/filtering_and_acceptance_criteria.md`
+- `docs/methodology/semantic_judging_and_evidence_repair.md`
+- `reports/validation/judge_reconciliation.json`
+- `reports/metrics/filter_and_judge_summary.csv`
+- `docs/phase_reports/PHASE_09_REPORT.md`
+- `reports/validation/phase_09_validation.json`
+- `manifests/phase_09_outputs.json`
+- `manifests/runs/phase_09_reconstruction_20261117T052042Z.json`
+
+### Phase 9 limitations
+
+The underlying human-review CSV and rejected JSONL show 28 accepts and 2 rejects, whereas the historical summary claims 29 accepts and 1 reject. The summary's named rejected ID was excluded during deduplication. This discrepancy remains unresolved.
+
+Reviewer independence was not established. No independent gold-standard labels exist for the final candidate pool, so false-positive and false-negative rates cannot be calculated. The located 66-record v2 judge file is not proven to be the historical 88-record original judge source.
+
+Scripts 45–54 were inspected but not executed during reconstruction. No provider APIs were called and no source datasets, candidate source records, frozen chunks, judge outputs, or human-review source records were modified.
+
+### Preservation restrictions
+
+- Preserve all source roots, copies, archives, datasets, checkpoints, and historical outputs.
+- Do not use `git add .`.
+- Do not stage unrelated untracked inventory, backup, state, or generated handoff artifacts.
+- Phase 4 migration remains unauthorized; do not configure DVC or move bulk artifacts.
+- Keep bounded, risk-based validation; do not rerun historical generation or judge scripts.

@@ -1,0 +1,73 @@
+{
+  "phase_id": "phase_09",
+  "generated_at": "2026-11-17T05:22:55.8143913Z",
+  "status": "completed_with_caveats",
+  "outputs": [
+    {
+      "path": "docs/methodology/filtering_and_acceptance_criteria.md",
+      "byte_size": 6770,
+      "sha256": "abd9547cc7dbce894f7bc8f89c6823166fa83d908df3995762ce579ba64cfbe9",
+      "status": "created_or_reconstructed"
+    },
+    {
+      "path": "docs/methodology/semantic_judging_and_evidence_repair.md",
+      "byte_size": 9298,
+      "sha256": "c7663023243cf738c06cf0019bbdc8a65f5dbf770e207cd4fe39a227be6e97d2",
+      "status": "created_or_reconstructed"
+    },
+    {
+      "path": "reports/validation/judge_reconciliation.json",
+      "byte_size": 76707,
+      "sha256": "1fb718fbeaf4194bda5b35402916c28b671b22986462cc231c1ebec62cb884fd",
+      "status": "created_or_reconstructed"
+    },
+    {
+      "path": "reports/metrics/filter_and_judge_summary.csv",
+      "byte_size": 3392,
+      "sha256": "29b37c0f81f3acd8d655478da8597fedc1612ac6316a0080bd50ed558ea180ef",
+      "status": "created_or_reconstructed"
+    },
+    {
+      "path": "docs/phase_reports/PHASE_09_REPORT.md",
+      "byte_size": 7538,
+      "sha256": "ee4cde62868a19e94ecdb805fc17c144be36361b88f43802e1a52e327021c6af",
+      "status": "created_or_reconstructed"
+    },
+    {
+      "path": "reports/validation/phase_09_validation.json",
+      "byte_size": 3486,
+      "sha256": "de6513b6690643fd19dff4ebbbab901c36d929292e46b7b6e8e2de35dc9cc96b",
+      "status": "created_or_reconstructed"
+    },
+    {
+      "path": "state/phase_status.yml",
+      "byte_size": 12868,
+      "sha256": "2dd1d84bcac653962cb0eb87d337de46b62bf5ed4c39ab67748c74b8a706b845",
+      "status": "updated"
+    },
+    {
+      "path": "PROJECT_STATE.md",
+      "byte_size": 26160,
+      "sha256": "95d7b8a3bdc63cd429eb887675d05966bdc01a7c89a5266f99c1be2977e3fca7",
+      "status": "updated"
+    },
+    {
+      "path": "NEXT_ACTION.md",
+      "byte_size": 22669,
+      "sha256": "314de08b37421d92699568dd544093d112cd05b6b942adff9291cfce1df649b2",
+      "status": "updated"
+    },
+    {
+      "path": "docs/ai_handoff/CURRENT_HANDOFF.md",
+      "byte_size": 34248,
+      "sha256": "e3701d65f11c6238bff145d9d52e667cc87cf7d0a5055612e118cbc3b11e372d",
+      "status": "updated"
+    },
+    {
+      "path": "C:/Users/Sahil/Downloads/MLCP UPLOAD/ML github/manifests/runs/phase_09_reconstruction_20261117T052042Z.json",
+      "byte_size": 1959,
+      "sha256": "8eaf1f59221a08aad0860989b8bcdc32c1ca277f23e0f1325999b66df8c99f7c",
+      "status": "created"
+    }
+  ]
+}
