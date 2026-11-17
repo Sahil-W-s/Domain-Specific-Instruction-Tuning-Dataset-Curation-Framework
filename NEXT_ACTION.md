@@ -202,3 +202,34 @@ python scripts/storage/scan_privacy_indicators.py
 Return `privacy_scan_summary.json` and sanitized rows from `privacy_indicator_findings.csv` (no matched values). No scan has yet been executed, so no findings are claimed. This scan is only an indicator pass, not comprehensive privacy clearance.
 
 Migration remains unauthorized. Do not configure DVC, upload artifacts, or change source locations during this task.
+
+
+## P4.4 first scan result — 2026-11-17
+
+Owner ran the bounded scanner successfully. It processed 1,253 unique text-like files (369,784,161 bytes) from 1,286 text-extension candidates among 1,531 inventory records. It reported 87,508 indicators, all in the broad `phone_like` category; no credential/private-key/email indicators were reported. 245 non-text records were excluded; 31 source records were unavailable and 2 failed path/size validation.
+
+The phone-like regex is a broad numeric heuristic. Its count is not a count of phone numbers or confirmed personal-data exposures; numeric IDs, timestamps, and ordinary dataset fields may trigger it. Do not classify these as confirmed PII without local contextual review.
+
+Report: `docs/phase_reports/PHASE_04_P4_4_PRIVACY_REVIEW.md`.
+
+### Immediate next task
+
+Aggregate `.local/phase4_privacy_review/privacy_indicator_findings.csv` by artifact ID and relative path, without printing or sharing matched values. Triage only the highest-concentration files. Also identify the 31 unavailable and 2 path/size-mismatch records from the local inventory/root configuration. Do not rerun the full scan or inspect unrelated payloads.
+
+Migration remains unauthorized. Keep all source paths/copies and the storage map unchanged.
+
+
+## P4.4 indicator concentration review — 2026-11-17
+
+The owner aggregated the phone-like findings by artifact ID/path/source root. The strongest concentrations are:
+- master_file_inventory.csv: 26,027 per copy in two roots;
+- script_catalogue.csv: 11,410 per copy in two roots;
+- B2 checkpoint-339 trainer_state.json: 1,154;
+- known_existing_artifacts CSV copies: 1,002 each;
+- remaining concentrations include inventory CSVs, logs, evaluation JSONL/CSV, and additional checkpoint state JSON.
+
+By root: MLCP_RECOVERY 42,114; MLCP_UPLOAD 41,255; MLCP_KAGGLE_WORK 3,465; MLCP_PHASE1_DRAFTS 489; MLCP_REVIEW_SUBSET 185.
+
+These structured-file concentrations are consistent with numeric-field false positives but do not prove every match is benign. Repeated-looking paths across roots are separate source records; do not deduplicate or delete.
+
+Next: inspect headers/field names only for the two highest-concentration CSV classes and one trainer_state JSON; no cell values or matched strings. Then inspect sanitized scanner diagnostics for 31 unavailable and 2 path/size mismatch records. Report: docs/phase_reports/PHASE_04_P4_4_PRIVACY_REVIEW.md.
