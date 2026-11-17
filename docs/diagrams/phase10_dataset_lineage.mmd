@@ -1,0 +1,24 @@
+flowchart TD
+    A["Frozen chunks v1<br/>91 chunks"] --> G["Production V2 generation"]
+    B["Raw dataset<br/>88 records"] --> C["Phase 3 preparation"]
+    D["Prior additional<br/>27 records"] --> C
+    G --> E["Resumed V2 output<br/>485 records"]
+    E --> C
+    C --> F["B3 reconstructed pool<br/>600 records"]
+    F --> H["B3 to B4 membership reconciliation"]
+    H --> I["B4 filtered dataset<br/>577 records"]
+    I --> J["Frozen B4 manifest and reproducibility package"]
+    I --> K["B4 adapter backup"]
+
+    E --> L["Manual review / judging"]
+    L --> M["Validated pool merge<br/>170 records"]
+    M --> N["Previous accepted 105<br/>+ V2 accepted 65"]
+
+    H --> O["23 exclusions with recorded dispositions"]
+    O --> P["5 approved duplicate removals"]
+    O --> Q["5 production-batch automated rejections"]
+    O --> R["2 production-batch human-audit rejections"]
+    O --> S["11 V2 pipeline judge rejections"]
+
+    T["Preparation V2 script<br/>strongly inferred, not execution-proven"] -.-> C
+    U["Exact historical B4 filtering script<br/>unidentified"] -.-> H

@@ -1,0 +1,144 @@
+{
+  "project": "ML CP",
+  "topic": "Domain-Specific Instruction-Tuning Dataset Curation Framework",
+  "phase": 10,
+  "status": "CONDITIONALLY_RECONSTRUCTED_EXIT_GATE_NOT_MET",
+  "scope": "Production V2 generation, judging, validated-pool merge, B3/B4 lineage, and Phase 3 preparation",
+  "generation": {
+    "original_output": {
+      "path": "data/interim/production_generation_v2/dataset_v0_additional_v2.jsonl",
+      "record_count": 72,
+      "script": "55_generate_production_v2.py",
+      "script_sha256": "22B11779BD2796503A54DD4D4D2E5BC51FF85CE43842028472372AD7847D718F"
+    },
+    "resumed_output": {
+      "path": "data/interim/production_generation_v2/dataset_v0_additional_v2_resumed.jsonl",
+      "record_count": 485,
+      "unique_ids": 485,
+      "sha256": "6316EC13A17EC7D06877EFC8C054225DF63276597D0F14151F6F67A44E81E077",
+      "script": "60_generate_production_v2_resumable.py",
+      "script_sha256": "D55C9E1D28209EE9E38DFA496F60C47B768281CFD7AC0554861EE23C381D25B4",
+      "reported_new_examples": 104,
+      "reported_previous_v2_examples": 381,
+      "arithmetic_reconciles": true,
+      "checkpoint_accepted_count_sum": 483,
+      "checkpoint_discrepancy": 2,
+      "checkpoint_discrepancy_resolved": false,
+      "recovery_seed_copy_during_run_proven": false
+    },
+    "frozen_chunk_sha256": "67e90d3428ff0a421111e19916ceb2dfc007460ae047f18131131be2f80bb827",
+    "model": "nvidia/nemotron-3.5-super-vl:free"
+  },
+  "validated_pool_merge": {
+    "script": "59_merge_and_audit_validated_pool.py",
+    "script_sha256": "F019A850C2B54996E2769D12A51237A8094816B7EEFA3F1E3106B3385749E8D0",
+    "previous_accepted": 105,
+    "v2_reviewed": 66,
+    "v2_accepted": 65,
+    "v2_rejected": 1,
+    "combined_count": 170,
+    "unique_ids": 170,
+    "missing_ids": 0,
+    "unexpected_ids": 0,
+    "evidence_valid": 170,
+    "evidence_invalid": 0,
+    "duplicate_id_groups": 0,
+    "near_duplicate_pairs_at_0_88": 0
+  },
+  "phase3_preparation": {
+    "candidate_script": "prepare_phase3_datasets_v2.py",
+    "script_sha256": "C2BE16FC22E90A53AB697FA615F10E64724C8B5CFABC82E0F5F94FACE2EF79D1",
+    "attribution": "STRONGLY_INFERRED_NOT_EXECUTION_PROVEN",
+    "reason": "Only inspected variant with report structure matching source_hashes_before, source_hashes_after, evidence_validation, output_hashes, and frozen_sources_modified; all six output hashes independently match report.",
+    "outputs": {
+      "b2_dolly_1000.jsonl": {
+        "records": 1000,
+        "sha256": "b2f565f3533222b5080f9df1bd037b483e020208082aea28621c39efdc4cbe06"
+      },
+      "b3_iot_unfiltered_reconstructed_600.jsonl": {
+        "records": 600,
+        "sha256": "f570c5596e28db4c2493988d344abe4efc632a5637d2471d366ef39124292960"
+      },
+      "b4_iot_filtered_577.jsonl": {
+        "records": 577,
+        "sha256": "73c0134aa49137f772418fbb4b58f7e5721f5e64d323080092e45218db77fb58"
+      },
+      "b5_domain_577.jsonl": {
+        "records": 577,
+        "sha256": "73c0134aa49137f772418fbb4b58f7e5721f5e64d323080092e45218db77fb58"
+      },
+      "b5_general_577.jsonl": {
+        "records": 577,
+        "sha256": "c4718ab256c4cffbf006b272932d36399165fcdf566b1902098186573759a505"
+      },
+      "b5_iot_plus_dolly_1154.jsonl": {
+        "records": 1154,
+        "sha256": "e2bec7d9ac16ba82cf21cf3a99acdd7e9a2176f24201e0e4b6fa9e3dc832de60"
+      }
+    },
+    "evidence_validation": {
+      "b3_records_validated": 600,
+      "b4_records_validated": 577,
+      "mismatches": 0,
+      "frozen_sources_modified": false
+    }
+  },
+  "b3_b4_membership": {
+    "b3_count": 600,
+    "b3_unique_ids": 600,
+    "b4_count": 577,
+    "b4_unique_ids": 577,
+    "b3_ids_missing_from_b4": 23,
+    "unexpected_b4_ids": 0,
+    "duplicate_b4_id_groups": 0,
+    "missing_b4_example_ids": 0,
+    "exclusion_dispositions": {
+      "approved_duplicate_removals": 5,
+      "production_batch_automated_judge_rejections": 5,
+      "production_batch_human_audit_rejections": 2,
+      "v2_pipeline_judge_rejections": 11,
+      "total": 23
+    },
+    "all_exclusions_have_recorded_disposition": true,
+    "exact_filtering_script_proven": false
+  },
+  "b4_artifact": {
+    "frozen_manifest_count": 577,
+    "frozen_manifest_unique_ids": 577,
+    "frozen_manifest_sha256": "9e541db71c7d5325e3817cd8c29469cfac7137aad0a399cb8b6a88a2e72007a3",
+    "phase3_output_sha256": "73c0134aa49137f772418fbb4b58f7e5721f5e64d323080092e45218db77fb58",
+    "repro_package_sha256": "73c0134aa49137f772418fbb4b58f7e5721f5e64d323080092e45218db77fb58",
+    "package_checksum_matches": true
+  },
+  "b4_adapter_backups": {
+    "archives": [
+      "B4_final_backup.zip",
+      "ml-cp-download/outputs/B4_final_backup.zip"
+    ],
+    "internal_files_compared": 8,
+    "internal_hash_matches": 8,
+    "internal_hash_mismatches": 0,
+    "archive_byte_identity": false,
+    "internal_content_equivalence": true
+  },
+  "unresolved": [
+    "Checkpoint accepted-count sum is 483 while resumed output contains 485 records.",
+    "Whether the recovery seed was copied during the resumed run is not established.",
+    "Exact historical B3-to-B4 filtering script and execution sequence are not established.",
+    "Phase 3 preparation V2 execution is strongly inferred, not directly proven.",
+    "The located 66-record judge file is not proven to be the historical original 88-record judge source.",
+    "Earlier and later judging stages contain differing decisions for some records; chronology must remain distinct.",
+    "Human-review independence is not established.",
+    "B4 human audit sampled 30 records; 549 retained records were not individually reviewed in that sample."
+  ],
+  "phase10_exit_gate": {
+    "exact_inputs_identified": true,
+    "generation_code_identified": true,
+    "preparation_variant_strongly_inferred": true,
+    "preparation_execution_proven": false,
+    "exact_b4_filtering_code_identified": false,
+    "exact_b4_filtering_execution_proven": false,
+    "exit_gate_satisfied": false,
+    "reason": "The exact historical filtering implementation and execution sequence responsible for B4 remain unproven."
+  }
+}
