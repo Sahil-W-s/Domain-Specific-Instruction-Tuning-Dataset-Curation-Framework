@@ -1,0 +1,16 @@
+{
+  "package": "ML_CP_Phase_07_Deliverables",
+  "created_for": "ML CP \u2014 Domain-Specific Instruction-Tuning Dataset Curation Framework",
+  "files": [
+    "configs/generation/generation_v2_judge_groq_reconstructed.json",
+    "configs/generation/generation_v2_production_reconstructed.json",
+    "docs/experiments/generation_model_benchmarks.md",
+    "docs/phase_reports/PHASE_07_REPORT.md",
+    "reports/metrics/generation_model_comparison.csv"
+  ],
+  "notes": [
+    "Documentation/configuration reconstruction only; no source datasets or historical evidence files included.",
+    "No API calls were made.",
+    "Do not stage or commit until reviewed and explicitly approved."
+  ]
+}

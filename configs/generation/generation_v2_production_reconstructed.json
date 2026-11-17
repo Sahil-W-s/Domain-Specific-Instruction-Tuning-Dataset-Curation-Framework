@@ -1,0 +1,72 @@
+{
+  "config_id": "generation_v2_production_reconstructed",
+  "project": "ML CP \u2014 Domain-Specific Instruction-Tuning Dataset Curation Framework",
+  "status": "reconstructed_from_source_and_run_manifest",
+  "provider": "OpenRouter",
+  "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+  "model": "nvidia/nemotron-3.5-super-vl:free",
+  "input": "data/frozen/chunks_v1_frozen.jsonl",
+  "output": "data/interim/production_generation_v2/dataset_v0_additional_v2_resumed.jsonl",
+  "frozen_input_sha256": "67e90d3428ff0a421111e19916ceb2dfc007460ae047f18131131be2f80bb827",
+  "execution_confirmed": {
+    "selected_chunks": 91,
+    "passes": 2,
+    "task_types": [
+      "qa",
+      "extraction",
+      "classification"
+    ],
+    "similarity_threshold": 0.88
+  },
+  "source_defaults_not_runtime_confirmed": {
+    "temperature": 0.35,
+    "max_tokens": 5000,
+    "timeout_seconds": 180,
+    "max_retries": 3,
+    "retry_wait_seconds": [
+      8,
+      16,
+      24
+    ],
+    "retry_wait_cap_seconds": 45,
+    "inter_request_delay_seconds": 15
+  },
+  "unknown_or_unrecorded": {
+    "top_p": null,
+    "reasoning_effort": null,
+    "actual_command_line": null,
+    "runtime_overrides": null,
+    "response_format_parameter": "Not established from run manifest"
+  },
+  "prompt_schema": {
+    "top_level": "JSON object",
+    "examples_array": "examples",
+    "example_fields": [
+      "task_type",
+      "instruction",
+      "response",
+      "evidence_block_ids"
+    ],
+    "task_type_values": [
+      "qa",
+      "extraction",
+      "classification"
+    ],
+    "optional_skip_array": "skipped",
+    "max_examples_per_chunk_pass": 3
+  },
+  "checkpointing": {
+    "directory": "data/interim/production_generation_v2/checkpoints",
+    "key": [
+      "chunk_id",
+      "pass_number"
+    ],
+    "resume_supported": true
+  },
+  "secrets": "No API keys or secret values included",
+  "caveats": [
+    "Script defaults are not proof of historical runtime values.",
+    "Checkpoint accepted_count total is 483 while final output has 485 records.",
+    "The 485-record output includes 73 recovered-seed IDs."
+  ]
+}

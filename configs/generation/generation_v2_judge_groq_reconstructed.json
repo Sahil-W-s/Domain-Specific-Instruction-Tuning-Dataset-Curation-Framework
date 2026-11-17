@@ -1,0 +1,29 @@
+{
+  "config_id": "generation_v2_judge_groq_reconstructed",
+  "status": "source_and_execution_summary_reconstructed",
+  "provider": "Groq",
+  "endpoint": "https://api.groq.com/openai/v1/chat/completions",
+  "judge_model": "openai/gpt-oss-120b",
+  "generator_model": "nvidia/nemotron-3.5-super-vl:free",
+  "source_confirmed_parameters": {
+    "temperature": 0,
+    "max_completion_tokens": 1200,
+    "reasoning_effort": "low",
+    "response_format": {
+      "type": "json_object"
+    }
+  },
+  "execution_confirmed_full_run": {
+    "input_examples": 485,
+    "judged_examples": 485,
+    "accepted": 474,
+    "rejected": 11,
+    "mean_faithfulness": 4.971,
+    "minimum_faithfulness": 2,
+    "errors_this_run": 0
+  },
+  "acceptance_rule": "faithfulness >= 4 AND relevant AND correct AND complete AND evidence_supports_answer AND NOT unsupported_claims",
+  "resumption": "Per-example result persistence; already-completed example IDs are reused",
+  "secrets": "No API keys or secret values included",
+  "caveat": "Automated judge results are not human review."
+}
