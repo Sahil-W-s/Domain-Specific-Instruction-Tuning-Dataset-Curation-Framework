@@ -379,3 +379,43 @@ Report: docs/phase_reports/PHASE_04_P4_3_SOURCE_RIGHTS_REVIEW.md.
 ### Next task
 
 P4.3 Step 3B — reconcile the exact reproducibility-package metadata and source provenance: Dolly revision/subset lineage, MMLU revision/split/sample manifest, package configuration and hash manifests, and provenance/rights evidence for the four IoT PDFs. Do not inspect dataset/model payloads, configure DVC, or migrate artifacts.
+
+## Authoritative current status — Phase 8 historical generation reconstruction
+
+**Updated:** 2026-11-17
+**Current phase:** Phase 8 — Historical original synthetic dataset generation/evaluation reconstruction
+**Status:** Reconstruction artifacts created; targeted validation passed; commit pending.
+
+### Reconstructed evidence
+
+- 91 frozen source chunks were available.
+- The recovered request log contains 36 requests: 22 successful and 14 failed.
+- All 22 successful requests have valid checkpoints containing four examples each and two unique chunk IDs.
+- The 14 failed requests recorded duplicate-normalized-question validation errors.
+- The recovered raw dataset contains 88 examples with 88 unique IDs. All 88 IDs reconcile with the evaluation records.
+- Evaluation decisions: 80 accepted and 8 rejected. Evidence relevance was false for 4 records; unsupported claims were flagged for 5 records; invalid evidence provenance was 0. These issue counts may overlap.
+- The 30-row human audit file contains 15 original and 15 improved-pilot examples. No verdicts were entered; human evaluation is not complete.
+- Script comments describe a 1,000-example target (80 existing plus 920 new). Completion of that target is not established by the recovered 88 examples.
+- Complete runtime parameter provenance is not established.
+
+### Phase 8 artifacts
+
+- `docs/methodology/synthetic_data_generation.md`
+- `docs/experiments/initial_dataset_evaluation.md`
+- `reports/inventory/generation_batch_lineage.csv`
+- `reports/validation/initial_generation_reconciliation.json`
+- `reports/validation/phase_08_validation.json`
+- `docs/phase_reports/PHASE_08_REPORT.md`
+- `manifests/phase_08_outputs.json`
+
+Targeted verification: all six manifest-listed output files matched their recorded byte sizes and SHA-256 hashes; all three JSON files parsed; lineage contained 36 rows (22 successful, 14 failed), with no missing or incorrectly sized successful checkpoints. Phase validation recorded 5 passed, 0 failed, and 3 warnings.
+
+### Scope and limitations
+
+This was a historical reconstruction. Generation/evaluation scripts were not executed and no provider API calls were made. Original datasets, frozen chunks, checkpoints, request logs, and evaluation files were not modified. The original `dataset_v0_raw` workflow is distinct from Phase 7's `production_generation_v2` reconstruction.
+
+Phase 8 is conditionally complete as a reconstruction, not as proof of the 1,000-example target or human-validated dataset quality. Human evaluation, full runtime parameter provenance, and target completion remain unresolved.
+
+### Next action
+
+Finalize and push the Phase 8 documentation, lineage, reconciliation, validation, manifest, and continuity updates. Then consult the approved master plan for the next phase scope. Preserve unrelated untracked historical inventory, backup, state, and handoff artifacts.

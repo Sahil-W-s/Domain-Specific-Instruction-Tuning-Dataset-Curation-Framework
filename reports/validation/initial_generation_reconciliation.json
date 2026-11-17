@@ -1,0 +1,115 @@
+{
+  "phase_id": "phase_08",
+  "generated_at": "2026-11-17T04:41:14.4028622Z",
+  "scope": "Historical reconstruction of the original dataset_v0_raw generation and evaluation pipeline. Separate from Phase 7 production_generation_v2.",
+  "source_artifacts": [
+    "data/frozen/chunks_v1_frozen.jsonl",
+    "data/interim/dataset_v0_raw.jsonl",
+    "data/interim/production_request_log.jsonl",
+    "data/interim/production_checkpoints/",
+    "data/interim/groq_evaluation_results.jsonl",
+    "data/interim/human_audit_30.csv",
+    "data/interim/human_audit_30_summary.json"
+  ],
+  "generation": {
+    "frozen_chunks": 91,
+    "request_records": 36,
+    "successful_requests": 22,
+    "failed_requests": 14,
+    "checkpoint_files": 22,
+    "checkpoint_examples": 88,
+    "raw_examples": 88,
+    "unique_raw_example_ids": 88,
+    "successful_batch_ids": [
+      "production_batch_001",
+      "production_batch_002",
+      "production_batch_003",
+      "production_batch_004",
+      "production_batch_005",
+      "production_batch_006",
+      "production_batch_007",
+      "production_batch_008",
+      "production_batch_009",
+      "production_batch_010",
+      "production_batch_011",
+      "production_batch_012",
+      "production_batch_013",
+      "production_batch_014",
+      "production_batch_015",
+      "production_batch_016",
+      "production_batch_017",
+      "production_batch_018",
+      "production_batch_019",
+      "production_batch_020",
+      "production_batch_024",
+      "production_batch_033"
+    ],
+    "failed_batch_ids": [
+      "production_batch_021",
+      "production_batch_022",
+      "production_batch_023",
+      "production_batch_025",
+      "production_batch_026",
+      "production_batch_027",
+      "production_batch_028",
+      "production_batch_029",
+      "production_batch_030",
+      "production_batch_031",
+      "production_batch_032",
+      "production_batch_034",
+      "production_batch_035",
+      "production_batch_036"
+    ]
+  },
+  "evaluation": {
+    "evaluation_records": 88,
+    "unique_evaluation_ids": 88,
+    "raw_without_evaluation": 0,
+    "evaluation_without_raw": 0,
+    "accepted": 80,
+    "rejected": 8,
+    "evidence_relevance_false": 4,
+    "unsupported_claims_true": 5,
+    "invalid_evidence_provenance": 0
+  },
+  "human_audit": {
+    "rows_prepared": 30,
+    "verdicts_entered": 0,
+    "verdicts_completed": false,
+    "summary": {
+      "human_audit_sample_size": 30,
+      "original_dataset_selected": 15,
+      "improved_pilot_selected": 15,
+      "original_accepted_candidates_available": 80,
+      "improved_pilot_accepted_candidates_available": 27,
+      "seed": 20261112,
+      "selection_method": "deterministic round-robin stratified by source document and task type within each dataset",
+      "task_type_counts": {
+        "unspecified": 15,
+        "classification": 5,
+        "extraction": 5,
+        "qa": 5
+      },
+      "source_document_counts": {
+        "iot_cloud_case_studies": 12,
+        "iot_unit1": 11,
+        "iot_unit2": 4,
+        "iot_unit4_protocols_security": 3
+      },
+      "output_csv": "data\\interim\\human_audit_30.csv",
+      "source_datasets_modified": false,
+      "reviewer_instruction": "For each row, inspect instruction, response, evidence_span, and full_source_chunk. Enter human_verdict as ACCEPT or REJECT. If rejecting, enter an issue_category and explain in reviewer_notes."
+    }
+  },
+  "interpretation_and_limitations": [
+    "The 22 successful request records correspond to 22 valid checkpoint files, each containing four examples.",
+    "The 14 failed requests were reported as duplicate normalized question validation failures; they are not evaluation rejections.",
+    "The 88 raw records and 88 evaluation records have matching unique example IDs.",
+    "The evaluation results contain 80 accepted and 8 rejected examples.",
+    "The human audit CSV contains 30 prepared rows but no entered human verdicts.",
+    "The generation script comments describe a 1,000-example target (80 existing plus 920 new). The recovered 88-example raw dataset does not establish completion of that target.",
+    "The current script configuration and historical execution records are not sufficient to establish every runtime override or the complete intended generation history.",
+    "Script 28's OpenRouter/Gemma configuration must not be assumed to have produced the Groq evaluation file.",
+    "The reconstructed original dataset_v0_raw pipeline is distinct from Phase 7 production_generation_v2."
+  ]
+}

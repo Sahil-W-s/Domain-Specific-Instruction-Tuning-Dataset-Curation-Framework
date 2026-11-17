@@ -1,0 +1,66 @@
+{
+  "phase_id": "phase_08",
+  "generated_at": "2026-11-17T04:44:03.8511975Z",
+  "outputs": [
+    {
+      "path": "docs/methodology/synthetic_data_generation.md",
+      "byte_size": 2939,
+      "sha256": "90b04309d79d81757818c8b98af3dfa2275473421e19f6852f00ee72663c62a2",
+      "status": "created",
+      "notes": ""
+    },
+    {
+      "path": "docs/experiments/initial_dataset_evaluation.md",
+      "byte_size": 2312,
+      "sha256": "cf9a9e9230f356764422291c562237954f86f8287540aadbcb6ea09cdcd5ea8d",
+      "status": "created",
+      "notes": ""
+    },
+    {
+      "path": "reports/inventory/generation_batch_lineage.csv",
+      "byte_size": 10179,
+      "sha256": "989ff38d6c86dc030ac7f6e5aa84fc468d257805fd441fe326f3e57148ef2568",
+      "status": "created",
+      "notes": ""
+    },
+    {
+      "path": "reports/validation/initial_generation_reconciliation.json",
+      "byte_size": 4619,
+      "sha256": "bc10eb6d6d484cc1aa57bf7bc58614d8f845d67ec1c2030b0a2401179b75f3f8",
+      "status": "created",
+      "notes": ""
+    },
+    {
+      "path": "reports/validation/phase_08_validation.json",
+      "byte_size": 2242,
+      "sha256": "a93682f586098086e941a9b7e8d723538410ed50d11e8a0edc62a20a336fe678",
+      "status": "created",
+      "notes": ""
+    },
+    {
+      "path": "docs/phase_reports/PHASE_08_REPORT.md",
+      "byte_size": 3851,
+      "sha256": "606D7DC96BDB43901073E43EEB0FC96C2DE3ECEA55DEE59016C8320251D21E2F",
+      "status": "created",
+      "notes": ""
+    },
+    {
+      "path": "PROJECT_STATE.md",
+      "byte_size": 23029,
+      "sha256": "F75DBC9B156921CEA203DCE4CF12C8C89E81DB577A7E06AA77B23819FDDACCCE",
+      "status": "updated"
+    },
+    {
+      "path": "NEXT_ACTION.md",
+      "byte_size": 20999,
+      "sha256": "4CA533D89A1FCB38B4BA2B86BE138FD893053D549763666E9BC65A9C86B00B6D",
+      "status": "updated"
+    },
+    {
+      "path": "docs/ai_handoff/CURRENT_HANDOFF.md",
+      "byte_size": 31332,
+      "sha256": "38D778EB7B48A0739C1C77EF8EB0C59BED37431627BCF164384BD1A8C9142B47",
+      "status": "updated"
+    }
+  ]
+}

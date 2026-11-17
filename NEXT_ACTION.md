@@ -233,3 +233,22 @@ By root: MLCP_RECOVERY 42,114; MLCP_UPLOAD 41,255; MLCP_KAGGLE_WORK 3,465; MLCP_
 These structured-file concentrations are consistent with numeric-field false positives but do not prove every match is benign. Repeated-looking paths across roots are separate source records; do not deduplicate or delete.
 
 Next: inspect headers/field names only for the two highest-concentration CSV classes and one trainer_state JSON; no cell values or matched strings. Then inspect sanitized scanner diagnostics for 31 unavailable and 2 path/size mismatch records. Report: docs/phase_reports/PHASE_04_P4_4_PRIVACY_REVIEW.md.
+
+## Authoritative next action — Phase 8 finalization
+
+**Updated:** 2026-11-17
+
+Phase 8 historical generation/evaluation reconstruction artifacts have been created and passed targeted file/hash/lineage checks. Validation records 5 passed, 0 failed, and 3 warnings.
+
+### Immediate next action
+
+1. Review the Phase 8 report and continuity update.
+2. Stage only the intended Phase 8 deliverables and the three continuity files.
+3. Run `git diff --cached --check`; inspect the exact staged file list and diff summary.
+4. Commit and push to `origin main` only after staged-scope verification.
+
+Phase 8 caveats: the recovered raw dataset has 88 examples, not the 1,000-example target described in script comments; 14 generation requests failed duplicate-normalized-question validation; human audit is 0/30 completed; complete runtime parameter provenance is unavailable.
+
+Do not stage unrelated untracked inventory, backup, state, or generated handoff artifacts. Do not rerun source generation or evaluation scripts. Do not modify original datasets, checkpoints, request logs, or evaluation outputs.
+
+After the Phase 8 commit is verified on the remote, consult the approved master plan to determine the next phase's scope.

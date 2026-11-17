@@ -479,3 +479,49 @@ Owner aggregated phone-like findings by artifact ID/path/root. Highest concentra
 Interpretation: numeric-field false positives are plausible given the file types, but no blanket benign classification is justified. Similar paths across roots remain separate source copies. Do not deduplicate/delete.
 
 Next: inspect headers/field names only for the top inventory CSV classes and one trainer_state JSON, without cell values or matched strings; then inspect sanitized skip diagnostics for 31 unavailable and 2 mismatch records. Report: docs/phase_reports/PHASE_04_P4_4_PRIVACY_REVIEW.md. Migration remains unauthorized.
+
+## Current authoritative handoff — ML CP Phase 8
+
+**Updated:** 2026-11-17
+**Project:** ML CP — Domain-Specific Instruction-Tuning Dataset Curation Framework
+**Last confirmed commit before Phase 8 finalization:** `a273395` — Complete Phase 7 production generation reconstruction
+**Branch:** `main`, aligned with `origin/main` before Phase 8 files were staged.
+
+### Current work
+
+Phase 8 reconstructs the original `data/interim/dataset_v0_raw.jsonl` generation/evaluation history. It is separate from Phase 7's `production_generation_v2` reconstruction.
+
+Recovered facts:
+- 91 frozen chunks.
+- 36 generation requests: 22 success and 14 failed.
+- Each successful request has a checkpoint with four examples and two unique chunk IDs.
+- Failed requests reported `ValueError: Duplicate normalized question`; these are generation validation failures, not established API/network failures.
+- 88 raw examples, 88 unique IDs, and exact ID reconciliation with 88 evaluation records.
+- Evaluation: 80 accepted, 8 rejected. Evidence relevance false: 4; unsupported claims true: 5; invalid provenance: 0. Issue counts may overlap.
+- Human audit: 30 rows, comprising 15 original and 15 improved-pilot examples. All verdict fields remain blank; human evaluation completion is 0/30.
+- The generator script comments describe a target of 1,000 examples (80 existing plus 920 new); recovered evidence does not establish target completion.
+- Runtime parameter provenance is incomplete.
+
+### Phase 8 outputs
+
+- `docs/methodology/synthetic_data_generation.md`
+- `docs/experiments/initial_dataset_evaluation.md`
+- `reports/inventory/generation_batch_lineage.csv`
+- `reports/validation/initial_generation_reconciliation.json`
+- `reports/validation/phase_08_validation.json`
+- `docs/phase_reports/PHASE_08_REPORT.md`
+- `manifests/phase_08_outputs.json`
+
+Targeted verification passed: JSON parsing succeeded; all six manifest entries matched actual file sizes and SHA-256 hashes; lineage has 36 rows, 22 successful and 14 failed requests, and all successful checkpoints have four examples. Validation summary: 5 passed, 0 failed, 3 warnings.
+
+No source generation/evaluation scripts were run and no provider API calls were made during reconstruction. Source datasets, chunks, checkpoints, request logs, and evaluation files were not modified.
+
+### Required handling
+
+Treat Phase 8 as conditionally complete reconstruction only. Do not claim the 1,000-example target was achieved or that human evaluation validated the dataset. Preserve the 483-vs-485 Phase 7 checkpoint discrepancy as a separate Phase 7 caveat; it is unrelated to Phase 8's 88 examples.
+
+Do not stage unrelated untracked historical inventory, backup, state, or generated handoff files. Do not use `git add .`. Stage only explicitly reviewed Phase 8 deliverables and continuity files.
+
+### Next action
+
+Finalize the Phase 8 Git commit and push after exact staged-scope review. Then consult the approved master plan for the next phase; do not infer or invent its scope.

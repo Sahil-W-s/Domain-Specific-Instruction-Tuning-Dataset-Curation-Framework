@@ -1,0 +1,68 @@
+{
+  "phase_id": "phase_08",
+  "generated_at": "2026-11-17T04:41:15.2124490Z",
+  "summary": {
+    "total": 8,
+    "passed": 5,
+    "failed": 0,
+    "warnings": 3
+  },
+  "checks": [
+    {
+      "details": "Successful request count compared with recovered checkpoint count.",
+      "expected": 22,
+      "actual": 22,
+      "check_id": "request_checkpoint_count",
+      "status": "passed"
+    },
+    {
+      "details": "Total checkpoint examples compared with raw dataset record count.",
+      "expected": 88,
+      "actual": 88,
+      "check_id": "checkpoint_raw_count",
+      "status": "passed"
+    },
+    {
+      "details": "Unique example IDs reconciled between raw and evaluation datasets.",
+      "expected": "No unmatched IDs",
+      "actual": "Raw without evaluation: 0; evaluation without raw: 0",
+      "check_id": "raw_evaluation_id_reconciliation",
+      "status": "passed"
+    },
+    {
+      "details": "Accepted and rejected decisions compared with total evaluation records.",
+      "expected": 88,
+      "actual": 88,
+      "check_id": "evaluation_decision_counts",
+      "status": "passed"
+    },
+    {
+      "details": "Each successful request has a checkpoint containing four examples.",
+      "expected": "Four examples per successful request",
+      "actual": "Successful requests: 22",
+      "check_id": "successful_batch_checkpoint_lineage",
+      "status": "passed"
+    },
+    {
+      "details": "Human-audit rows exist, but verdicts are not complete.",
+      "expected": 30,
+      "actual": 0,
+      "check_id": "human_audit_completion",
+      "status": "warning"
+    },
+    {
+      "details": "Script comments describe a 1,000-example target; recovered raw dataset contains 88. Target completion is not established.",
+      "expected": 1000,
+      "actual": 88,
+      "check_id": "intended_generation_target",
+      "status": "warning"
+    },
+    {
+      "details": "Complete runtime parameter provenance and comprehensive human evaluation are not established.",
+      "expected": "Complete provenance and human evaluation",
+      "actual": "Unresolved",
+      "check_id": "runtime_provenance_and_human_evaluation",
+      "status": "warning"
+    }
+  ]
+}
