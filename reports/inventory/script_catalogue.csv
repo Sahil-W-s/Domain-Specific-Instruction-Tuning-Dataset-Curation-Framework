@@ -1,0 +1,342 @@
+﻿FileName,RelativePath,SizeBytes,SHA256,ArchiveMembership,InspectionStatus,ExecutionStatus,ExecutionEvidence,Role,ModuleDocstring,Imports,ExternalAPIIndicators,PotentialWriteOperations,PotentialOverwriteRisk,PathReferences,Lifecycle,LineageNotes,ParseError
+01_extract_pdfs.py,scripts\01_extract_pdfs.py,8253,BA0DA5301AB739071881DF4EBE0A8804BA255E8219BE9F738E03CC8FA14325A7,MLCP_scripts.zip,inspected,executed_verified,PDF extraction completed,01 extract pdfs,,hashlib;json;logging;pandas;pathlib;pymupdf;re;tqdm,,copy;dumps;replace;write,review_required,data/manifests/source_manifest.csv,not_determined,,
+02_inspect_empty_pages.py,scripts\02_inspect_empty_pages.py,3896,E208F3EBD3CEEFCC23B4750CB531B7AE051A4D7442AD6D6A89786CDEB1AED682,MLCP_scripts.zip,inspected,executed_verified,36 pages inspected,02 inspect empty pages,,csv;logging;pandas;pathlib;pymupdf;tqdm,,save,review_required,data/extracted/empty_page_diagnostics.csv;data/extracted/extraction_quality.csv;data/manifests/source_manifest.csv;logs/empty_page_diagnostics.log,not_determined,,
+03_create_contact_sheets.py,scripts\03_create_contact_sheets.py,1929,4FC603FA4DF5645347A41E80E6840D5816811A7C016DF15D47B51D4AF2F19E9E,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,03 create contact sheets,,PIL;math;pandas;pathlib,,save,review_required,data/extracted/empty_page_diagnostics.csv,not_determined,,
+04_recover_image_pages.py,scripts\04_recover_image_pages.py,13733,AB15074A09DF2FBC1E62E264C19BF23E688CF83B7DE8FCFE22B3C219FC8B482E,MLCP_scripts.zip,inspected,executed_verified,Partial recovery; final session stopped on HTTP 402 quota exhaustion,04 recover image pages,,dotenv;google;google.genai;json;logging;os;pandas;pathlib;pymupdf;time;tqdm,google.genai,dumps;write,review_required,data/extracted/extraction_quality.csv;data/manifests/source_manifest.csv;logs/image_recovery.log,not_determined,,
+04a_test_gemini.py,scripts\04a_test_gemini.py,1467,B44C9A61FA434D9063573E42004C6F5E7DDD86B3197BE4BFF1BC1400FA9BD7EE,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,04a test gemini,,dotenv;google;google.genai;os;pathlib;pymupdf;time,google.genai,,not_detected_by_static_scan,,not_determined,,
+05_merge_page_content.py,scripts\05_merge_page_content.py,9144,BAF9ACFEA249E9E99CC6EDA6E5C0EE5DFAFDC3C4BA2E42F3874C1D0CC2947A2E,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,05 merge page content,,collections;csv;json;pathlib,,DictWriter;dump;dumps;write;writeheader;writerow,review_required,data/extracted/extracted_text.jsonl;data/recovered/recovered_image_pages.jsonl,not_determined,,
+06_validate_merged_pages.py,scripts\06_validate_merged_pages.py,4130,54F6B473A74A8DB99464E21497D1651A2486833295E089E3C49C40C80AC011ED,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,06 validate merged pages,,collections;json;pathlib,,,not_detected_by_static_scan,data/processed/merged_pages.jsonl,not_determined,,
+07_analyze_chunk_distribution.py,scripts\07_analyze_chunk_distribution.py,2840,9CDB1D831B0478727436B4C0A821811BD78DC6A397FB54A4895864AE7378F9AD,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,07 analyze chunk distribution,,json;pathlib;transformers,transformers,,not_detected_by_static_scan,data/processed/merged_pages.jsonl,not_determined,,
+08_create_chunks.py,scripts\08_create_chunks.py,7289,B6CC689F1F2BEA2BA37D5C50454CCFE145854F01204A581D3ED7C3C31173343D,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,08 create chunks,,collections;json;pathlib;transformers,transformers,dump;dumps;write,review_required,data/processed/merged_pages.jsonl,not_determined,,
+08b_create_semantic_chunks.py,scripts\08b_create_semantic_chunks.py,15267,3DF25C1C329702719C6BF9A2B87B067A15FDE73940ABB37B6A736CCBE9B786FE,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,08b create semantic chunks,,collections;json;pathlib;re;transformers,transformers,dump;dumps;write,review_required,data/processed/chunk_quality_report_v2.json;data/processed/chunks_v2.jsonl;data/processed/merged_pages.jsonl,historical_variant,Separate semantic chunking implementation; writes V2 chunk outputs.,
+09_inspect_chunks.py,scripts\09_inspect_chunks.py,2990,2C91DE47B8FDF84E8E72A8DF7AA03976BF12B35F19EBC2FA47C9A690F46F0A9C,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,09 inspect chunks,,collections;json;pathlib,,,not_detected_by_static_scan,data/processed/chunks.jsonl;data/processed/merged_pages.jsonl,not_determined,,
+10_audit_semantic_chunks.py,scripts\10_audit_semantic_chunks.py,4495,F74DFCEEDA6ECF13D01DAC2F39A40597B62C853F8CAB8B681B0FD89C46130254,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,10 audit semantic chunks,,collections;json;pathlib,,,not_detected_by_static_scan,data/processed/chunks_v2.jsonl;data/processed/merged_pages.jsonl,not_determined,,
+11_audit_content_preservation.py,scripts\11_audit_content_preservation.py,3522,70734F03FC4EBCE864131F4D9651C20BBF19F939A012BC5CF147194AD50298DF,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,11 audit content preservation,,collections;json;pathlib;re,,,not_detected_by_static_scan,data/processed/chunks_v2.jsonl;data/processed/merged_pages.jsonl,not_determined,,
+12_inspect_semantic_chunks.py,scripts\12_inspect_semantic_chunks.py,1371,0E125414540F2A12F46C90A1D9254717421558B51B69A6AFD477CC99BE3E5BFB,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,12 inspect semantic chunks,,collections;json;pathlib,,,not_detected_by_static_scan,data/processed/chunks_v2.jsonl,not_determined,,
+13_sanitize_training_chunks.py,scripts\13_sanitize_training_chunks.py,5194,F8EF1B4758510A58771D306C091698F14B2EEF4967FC96A9804D76D3F0BC807D,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,13 sanitize training chunks,,collections;json;pathlib;re,,dumps;replace;write;write_text,review_required,,not_determined,,
+14_audit_sanitized_chunks.py,scripts\14_audit_sanitized_chunks.py,5060,1419B00E85063431AA808D2758BFC6F264ADCA530B9532FC86BA9EB3E270CDEF,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,14 audit sanitized chunks,,json;pathlib;re,,,not_detected_by_static_scan,data/processed/chunks_sanitized.jsonl;data/processed/chunks_v2.jsonl,not_determined,,
+15_test_gemini_api.py,scripts\15_test_gemini_api.py,3230,E58B33E21911C68D5E0EED300419876841B4AABB89ADF2AA2060D7F7E2B610FD,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,15 test gemini api,,dotenv;google;google.genai;os;pathlib;sys;time,google.genai,replace,review_required,,not_determined,,
+16_test_openrouter_api.py,scripts\16_test_openrouter_api.py,2510,8C40B032F9FDEE2FC981D4CFF97852DD9D3912EA15D32FEA5BD7794967684ADD,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,16 test openrouter api,,dotenv;openai;os;pathlib;sys,openai;openrouter.ai,replace,review_required,,not_determined,,
+17_check_openrouter_limits.py,scripts\17_check_openrouter_limits.py,1282,E508EE5BC12916B7E2A47BDCC2340BC6FBE204183CECAB24FED8896396D96E69,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,17 check openrouter limits,,dotenv;os;pathlib;requests;sys,openrouter.ai;requests,,not_detected_by_static_scan,,not_determined,,
+18_test_structured_generation.py,scripts\18_test_structured_generation.py,10291,0AAC7FDBC007A8F5ACB75EEF6D668D98D68BB1222C7320DF1FED581CD2C9AE0F,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,18 test structured generation,,dotenv;json;openai;os;pathlib;re;sys,openai;openrouter.ai,dumps;model_dump;replace;write_text,review_required,data/interim/empty_response_diagnostic.json;data/interim/generation_smoke_test.json,not_determined,,
+19_test_batch_generation.py,scripts\19_test_batch_generation.py,9596,461A362228B201D3B2105E330339231FAC6BED557E714F8761DDB8364C4685E5,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,19 test batch generation,,dotenv;json;openai;os;pathlib;re;sys,openai;openrouter.ai,dumps;model_dump;replace;write_text,review_required,data/interim/batch_generation_smoke_test.json,not_determined,,
+20_inspect_batch_output.py,scripts\20_inspect_batch_output.py,775,4DF15AF5CBFE6CF27CF856792C108E68D894B25DC85ED76F45808EFE29372A0B,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,20 inspect batch output,,json;pathlib,,,not_detected_by_static_scan,,not_determined,,
+21_test_stronger_models.py,scripts\21_test_stronger_models.py,1874,BDFA60FA66D1F37AEA6977E0441868A5C162E66372FE761E5864276C98249FD8,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,21 test stronger models,,dotenv;openai;os;pathlib,openai;openrouter.ai,,not_detected_by_static_scan,,not_determined,,
+22_benchmark_model_quality.py,scripts\22_benchmark_model_quality.py,11960,B3162CDBFC18B1019738A093BA89E50C91883A8638D4AD7ED35BCB87D7BF96CD,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,22 benchmark model quality,,datetime;dotenv;json;openai;os;pathlib;re;time,openai;openrouter.ai,dump;model_dump,review_required,,not_determined,,
+23_inspect_model_benchmark.py,scripts\23_inspect_model_benchmark.py,1423,599E2F4C327DFC37EF4265C6DE45940B164534B3E6E99DF492158C607D588F16,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,23 inspect model benchmark,,json;pathlib,,,not_detected_by_static_scan,,not_determined,,
+24_test_supervl_multi_chunk.py,scripts\24_test_supervl_multi_chunk.py,11391,6F4A9F2975DC6439DC3ED30318D63220149A299DC298FD791D63EC2AA5F25531,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,24 test supervl multi chunk,,datetime;dotenv;json;openai;os;pathlib;re;time,openai;openrouter.ai,dump;model_dump,review_required,,not_determined,,
+25_inspect_supervl_multi_chunk.py,scripts\25_inspect_supervl_multi_chunk.py,1531,0304B9EEDD836522FDE1DC8F3AA3DBB1BBC31C27CE2D3C53E06D01A953C14706,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,25 inspect supervl multi chunk,,json;pathlib,,,not_detected_by_static_scan,,not_determined,,
+26_test_supervl_large_batch.py,scripts\26_test_supervl_large_batch.py,12279,40055A3DE8E830A8594FEB8243AFCDD67B75AAFBEACA130D2677B63E85230B8D,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,26 test supervl large batch,,datetime;dotenv;json;openai;os;pathlib;re;time,openai;openrouter.ai,dump;model_dump,review_required,,not_determined,,
+27_inspect_supervl_large_batch.py,scripts\27_inspect_supervl_large_batch.py,1694,1A5B0045FF9DD35B53B4185DDD553F6EFF147E65875591017D6BF2382977A69B,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,27 inspect supervl large batch,,json;pathlib,,,not_detected_by_static_scan,,not_determined,,
+28_evaluate_dataset.py,scripts\28_evaluate_dataset.py,11089,7B11DB649D9C219B1C26F83ECE5671C848BAA86E29F032C2725E2C48B9367CE6,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,28 evaluate dataset,,collections;dotenv;json;openai;os;pathlib;re;time,openai;openrouter.ai,dump;dumps;save_jsonl;write,review_required,data/frozen/chunks_v1_frozen.jsonl;data/interim/dataset_v0_raw.jsonl,not_determined,,
+29_generate_production_batch.py,scripts\29_generate_production_batch.py,23348,251B1062D56C993E2B2D4D321F66E078A716E1756D0571AF9FB09714C3286E28,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,29 generate production batch,,argparse;collections;datetime;dotenv;json;openai;os;pathlib;re;time,openai;openrouter.ai,atomic_write_json;atomic_write_jsonl;dump;dumps;model_dump;replace;write,review_required,data/frozen/chunks_v1_frozen.jsonl,not_determined,,
+30_rebuild_raw_dataset.py,scripts\30_rebuild_raw_dataset.py,4879,849158754037CEBDC5839FDD0F70751880D667EE9B856A20E75199C7944CA3D9,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,30 rebuild raw dataset,,json;pathlib,,dumps;replace;unlink;write,review_required,data/interim/dataset_v0_raw.jsonl,not_determined,,
+31_audit_generated_examples.py,scripts\31_audit_generated_examples.py,6492,27C71D8630DAEBC00057D4406D1D350DCFE0AB6C650A1907266506038F7C5797,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,31 audit generated examples,,collections;csv;difflib;json;pathlib;re,,DictWriter;dump;writeheader;writerows,review_required,data/frozen/chunks_v1_frozen.jsonl;data/interim/dataset_v0_raw.jsonl,not_determined,,
+32_audit_evidence_blocks.py,scripts\32_audit_evidence_blocks.py,6027,483A7E4C160644A4A82B92A01B5D86BD9F86C1DF625BC6F94E5C19D013650F4F,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,Audit evidence-block provenance for generated examples.,"Audit evidence-block provenance for generated examples.
+
+This corrects the false-positive check in script 31: evidence_span may contain
+multiple source blocks joined with blank lines, so the whole span need not be
+one contiguous substring of the source chunk.
+
+Run from project root:
+    python scripts/32_audit_evidence_blocks.py",collections;json;pathlib;re,,dumps;write_text,review_required,data/frozen/chunks_v1_frozen.jsonl;data/interim/dataset_v0_raw.jsonl,not_determined,,
+33_test_semantic_judge.py,scripts\33_test_semantic_judge.py,6558,F2EEC83AD780C7AF74150FF7091511B0D325F03ADD973E7D269BE6BCF6D8D25B,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,One-example smoke test for the independent semantic judge.,"One-example smoke test for the independent semantic judge.
+
+Run from project root:
+    python scripts/33_test_semantic_judge.py
+
+Uses OPENROUTER_API_KEY from .env. Does not modify dataset_v0_raw.jsonl.",dotenv;json;os;pathlib;random;re;requests,openrouter.ai;requests,dumps;write_text,review_required,data/frozen/chunks_v1_frozen.jsonl;data/interim/dataset_v0_raw.jsonl,not_determined,,
+34_test_groq_semantic_judge.py,scripts\34_test_groq_semantic_judge.py,6248,029699C637820FDE20B60945027E07E67D92B508A9EA14D1B2ABF00C1362EBF0,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,One-example Groq semantic-judge smoke test.,"One-example Groq semantic-judge smoke test.
+Run from project root:
+    python scripts/34_test_groq_semantic_judge.py
+Reads GROQ_API_KEY from .env. Does not modify dataset_v0_raw.jsonl.",dotenv;json;os;pathlib;re;requests,api.groq.com;requests,dumps;write_text,review_required,data/frozen/chunks_v1_frozen.jsonl;data/interim/dataset_v0_raw.jsonl,not_determined,,
+35_benchmark_groq_judge.py,scripts\35_benchmark_groq_judge.py,9105,391267A210508B455645A297A244D69F0084D6411DDE3592548C6D6BAC888D5A,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,"Small-batch Groq judge benchmark: 8 examples, 2 per source document.","Small-batch Groq judge benchmark: 8 examples, 2 per source document.
+
+Run from project root:
+    python scripts/35_benchmark_groq_judge.py
+
+Reads GROQ_API_KEY from .env. Does not alter raw dataset or frozen chunks.",collections;dotenv;json;os;pathlib;re;requests;time,api.groq.com;requests,dumps;write;write_text,review_required,data/frozen/chunks_v1_frozen.jsonl;data/interim/dataset_v0_raw.jsonl,not_determined,,
+35b_benchmark_groq_judge.py,scripts\35b_benchmark_groq_judge.py,10226,A6F9E83EEE6594431A3C543A74A70934AB7A76DCCEF3C3470A79E2BBFC8E8E2D,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,Corrected Groq judge benchmark: exactly 2 examples per source document (8 total).,"Corrected Groq judge benchmark: exactly 2 examples per source document (8 total).
+
+Run from project root:
+    python scripts/35b_benchmark_groq_judge.py
+
+Reads GROQ_API_KEY from .env. Does not modify raw dataset or frozen chunks.",collections;dotenv;json;os;pathlib;re;requests;time,api.groq.com;requests,dumps;write;write_text,review_required,data/frozen/chunks_v1_frozen.jsonl;data/interim/dataset_v0_raw.jsonl,identical_content_historical_variants,Byte-identical content to 35c; retain both historical filenames.,
+35c_resume_groq_judge_benchmark.py,scripts\35c_resume_groq_judge_benchmark.py,10226,A6F9E83EEE6594431A3C543A74A70934AB7A76DCCEF3C3470A79E2BBFC8E8E2D,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,Corrected Groq judge benchmark: exactly 2 examples per source document (8 total).,"Corrected Groq judge benchmark: exactly 2 examples per source document (8 total).
+
+Run from project root:
+    python scripts/35b_benchmark_groq_judge.py
+
+Reads GROQ_API_KEY from .env. Does not modify raw dataset or frozen chunks.",collections;dotenv;json;os;pathlib;re;requests;time,api.groq.com;requests,dumps;write;write_text,review_required,data/frozen/chunks_v1_frozen.jsonl;data/interim/dataset_v0_raw.jsonl,identical_content_historical_variants,Byte-identical content to 35b; retain both historical filenames.,
+35d_resume_groq_judge_benchmark.py,scripts\35d_resume_groq_judge_benchmark.py,11414,3E3B3559251298F48D6DBE445E85900CF16E06FEFD2A31C98E522AACF3814A64,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,Robustly resume the 8-example Groq benchmark.,"Robustly resume the 8-example Groq benchmark.
+
+Run from project root:
+    python scripts/35d_resume_groq_judge_benchmark.py
+
+- Reuses successful rows in groq_judge_benchmark_v2.jsonl.
+- Evaluates only missing benchmark examples.
+- Waits 20 seconds between requests.
+- On TPM 429, waits 65 seconds and retries (up to 3 attempts).
+- Writes each successful evaluation immediately.
+- Never modifies dataset_v0_raw.jsonl or frozen chunks.",dotenv;json;os;pathlib;re;requests;time,api.groq.com;requests,dumps;replace;write;write_text,review_required,data/frozen/chunks_v1_frozen.jsonl;data/interim/dataset_v0_raw.jsonl;data/interim/groq_judge_benchmark_v2.jsonl,historical_variant,Distinct resumable benchmark implementation.,
+36_evaluate_dataset_groq.py,scripts\36_evaluate_dataset_groq.py,19204,8BE49AAFFB2D8343CF8F04E490A9F6C8E9D063B52A000E21545E19CAC3DEFA63,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,Production Groq evaluator for the IoT instruction dataset.,"Production Groq evaluator for the IoT instruction dataset.
+
+Run from project root:
+    python scripts/36_evaluate_dataset_groq.py
+
+Inputs (read-only):
+    data/interim/dataset_v0_raw.jsonl
+    data/frozen/chunks_v1_frozen.jsonl
+
+Outputs (new files; does not overwrite the old OpenRouter/Gemma evaluator):
+    data/interim/groq_heuristic_results.jsonl
+    data/interim/groq_evaluation_results.jsonl
+    data/interim/groq_evaluation_summary.json
+
+Design:
+- Exact evidence provenance is checked by reconstructing selected evidence blocks.
+- One example per Groq request to control the 8K TPM limit.
+- Sequential requests, 20-second cooldown, retry handling for HTTP 429.
+- Every successful judge result is persisted immediately.
+- Resume skips examples with a saved successful result.",dotenv;json;os;pathlib;re;requests;time,api.groq.com;requests,dumps;replace;write;write_jsonl_atomic;write_text,review_required,data/frozen/chunks_v1_frozen.jsonl;data/interim/dataset_v0_raw.jsonl,not_determined,,
+37_inspect_rejected_examples.py,scripts\37_inspect_rejected_examples.py,5042,45CA15C88C58236A53C014B004D866B94B1F2DEC9A259DD798828A100F374900,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,Inspect rejected Groq judge evaluations.,"Inspect rejected Groq judge evaluations.
+
+Run from the project root:
+    python scripts/37_inspect_rejected_examples.py
+
+Reads:
+    data/interim/groq_evaluation_results.jsonl
+    data/interim/dataset_v0_raw.jsonl
+    data/frozen/chunks_v1_frozen.jsonl
+
+Does not modify any dataset or evaluation file.",json;pathlib,,dumps;write_text,review_required,data/frozen/chunks_v1_frozen.jsonl;data/interim/dataset_v0_raw.jsonl;data/interim/groq_evaluation_results.jsonl,not_determined,,
+38_generate_improved.py,scripts\38_generate_improved.py,19878,974BDD3914F90CEBAAAAB1195810F31A75C856D1F406A5CC05EB4BD4E033FAAD,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,"Improved, independently checkpointed Phase 2 instruction-data generator.","Improved, independently checkpointed Phase 2 instruction-data generator.
+
+Default behavior is a controlled pilot:
+  - first 12 eligible frozen chunks
+  - 3 examples per chunk: QA, extraction, classification
+  - writes ONLY to data/interim/improved_generation/
+  - never edits dataset_v0_raw.jsonl or production_checkpoints/
+
+After reviewing the pilot, scale with --all-chunks. The generator uses
+OpenRouter's chat-completions API and the existing Nemotron model family.",__future__;argparse;datetime;difflib;dotenv;hashlib;json;os;pathlib;re;requests;sys;time;tqdm;typing,openrouter.ai;requests,dumps;write;write_jsonl;write_text,review_required,data/frozen/chunks_v1_frozen.jsonl;data/interim/dataset_v0_raw.jsonl,not_determined,,
+39_diagnose_openrouter.py,scripts\39_diagnose_openrouter.py,1339,5CCE885DFB17F7BCE2164372F69823AFEBEFCF7325DF01F57F8F4F90A0864990,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,39 diagnose openrouter,,dotenv;os;pathlib;requests,openrouter.ai;requests,,not_detected_by_static_scan,,not_determined,,
+40_test_model_text_output.py,scripts\40_test_model_text_output.py,1867,3ABDD80CBAE7C916B533B2118154C3A389049B885BB3D81CCC6ADB7A84DCF5B5,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,40 test model text output,,dotenv;os;pathlib;requests,openrouter.ai;requests,,not_detected_by_static_scan,,not_determined,,
+41_generate_improved_safe.py,scripts\41_generate_improved_safe.py,21507,3DE87D5F72DF219673568C179A56DFC122B4746B44CFE1916CAD8869EB0E88DC,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,"Improved, independently checkpointed Phase 2 instruction-data generator.","Improved, independently checkpointed Phase 2 instruction-data generator.
+
+Default behavior is a controlled pilot:
+  - first 12 eligible frozen chunks
+  - 3 examples per chunk: QA, extraction, classification
+  - writes ONLY to data/interim/improved_generation/
+  - never edits dataset_v0_raw.jsonl or production_checkpoints/
+
+After reviewing the pilot, scale with --all-chunks. The generator uses
+OpenRouter's chat-completions API and the existing Nemotron model family.",__future__;argparse;datetime;difflib;dotenv;hashlib;json;os;pathlib;re;requests;sys;time;tqdm;typing,openrouter.ai;requests,dumps;write;write_jsonl;write_text,review_required,data/frozen/chunks_v1_frozen.jsonl;data/interim/dataset_v0_raw.jsonl,not_determined,,
+42_audit_improved_pilot.py,scripts\42_audit_improved_pilot.py,7786,68395EFC6B9ECCC21E3ECB5F5DEAE9C469B5012820474F4003F056FCAA88E566,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,Read-only audit of the improved-generation pilot dataset.,Read-only audit of the improved-generation pilot dataset.,__future__;collections;difflib;json;pathlib;re,,dumps;write_text,review_required,data/frozen/chunks_v1_frozen.jsonl;data/interim/dataset_v0_raw.jsonl;data/interim/improved_generation/dataset_v0_additional.jsonl,not_determined,,
+43_evaluate_improved_pilot_groq.py,scripts\43_evaluate_improved_pilot_groq.py,15231,4F359EA2B939F3AAB03BDF9DE54687157AB430194F22DAC92289EBA5CA5519FC,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,Independent Groq judge for the improved-generation pilot.,"Independent Groq judge for the improved-generation pilot.
+
+Reads:
+  data/interim/improved_generation/dataset_v0_additional.jsonl
+  data/frozen/chunks_v1_frozen.jsonl
+
+Writes only:
+  data/interim/improved_generation/groq_pilot_heuristic_results.jsonl
+  data/interim/improved_generation/groq_pilot_judge_results.jsonl
+  data/interim/improved_generation/groq_pilot_evaluation_summary.json
+  data/interim/improved_generation/groq_pilot_evaluation_failures.jsonl
+
+Does not modify dataset_v0_raw.jsonl, the additional dataset, old evaluation
+outputs, or any generation checkpoints.",__future__;argparse;datetime;dotenv;json;os;pathlib;re;requests;time;tqdm;typing,api.groq.com;requests,dumps;write;write_text,review_required,data/frozen/chunks_v1_frozen.jsonl;data/interim/improved_generation/dataset_v0_additional.jsonl,not_determined,,
+44_prepare_human_audit_30.py,scripts\44_prepare_human_audit_30.py,8830,9DDFD0404DDD00602C0DA2299E98925411D4947A4175F126B2CE13C26FB4CD35,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,Create exactly 30 accepted examples for the Phase 2 human audit.,"Create exactly 30 accepted examples for the Phase 2 human audit.
+
+Sampling design:
+  - 15 accepted examples from the original raw dataset
+  - 15 accepted examples from the improved pilot
+  - deterministic, balanced round-robin across source document/task groups
+  - includes instruction, response, evidence span, full source chunk, and judge result
+
+Outputs:
+  data/interim/human_audit_30.csv
+  data/interim/human_audit_30_summary.json
+
+This script does not modify any dataset or evaluation result.",__future__;collections;csv;json;pathlib;random;re,,DictWriter;dumps;write_text;writeheader;writerows,review_required,data/frozen/chunks_v1_frozen.jsonl;data/interim/dataset_v0_raw.jsonl;data/interim/groq_evaluation_results.jsonl;data/interim/improved_generation/dataset_v0_additional.jsonl;data/interim/improved_generation/groq_pilot_judge_results.jsonl,not_determined,,
+45_production_heuristic_filter.py,scripts\45_production_heuristic_filter.py,13812,054F55F8E2B9E9E9A904BFF73B8D3316ED2A0BF32D26B463BFBC3BA2D00A87B3,MLCP_scripts.zip;pipeline_source_scripts.zip,inspected,unknown,No direct execution evidence established,Production heuristic filter for the IoT instruction dataset.,"Production heuristic filter for the IoT instruction dataset.
+
+Reads (read-only):
+  data/interim/dataset_v0_raw.jsonl                         (88 examples)
+  data/interim/improved_generation/dataset_v0_additional.jsonl
+  data/frozen/chunks_v1_frozen.jsonl
+
+Writes only to:
+  data/interim/production_filter/
+
+Near-duplicate candidates are flagged for review, NOT automatically rejected.
+Exact duplicate instruction+response pairs are rejected after the first occurrence.",__future__;collections;csv;difflib;json;pathlib;re;sys,,DictWriter;dumps;replace;write;write_jsonl;write_text;writeheader;writerows,review_required,data/frozen/chunks_v1_frozen.jsonl,not_determined,,
+46_apply_approved_deduplication.py,scripts\46_apply_approved_deduplication.py,8306,BA83703E4421E06360A7D0BA7C9BA54308064D00B651733772879DDAEF678D05,MLCP_scripts.zip;pipeline_source_scripts.zip,inspected,unknown,No direct execution evidence established,Apply the approved manual near-duplicate decisions to the 115-example,"Apply the approved manual near-duplicate decisions to the 115-example
+heuristic-accepted pool. Source files are read-only.
+
+Input:
+  data/interim/production_filter/heuristic_accepted.jsonl
+
+Outputs:
+  data/interim/production_filter/deduplicated_candidates.jsonl
+  data/interim/production_filter/duplicate_decisions.json
+  data/interim/production_filter/deduplication_summary.json
+
+This script removes only the five explicitly approved records.
+It does not run fuzzy matching or make new duplicate decisions.",collections;json;pathlib;sys,,dumps;replace;write;write_jsonl;write_text,review_required,data/interim/production_filter/heuristic_accepted.jsonl,not_determined,,
+47_reconcile_judge_results.py,scripts\47_reconcile_judge_results.py,9429,E5212F643F6B1D0AD262E0699232E12A8757CC4EDF5F1014E80A2E9B1D9E013D,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,47 reconcile judge results,,collections;csv;json;pathlib;re,,DictWriter;dumps;write;write_jsonl;write_text;writeheader;writerows,review_required,data/frozen/chunks_v1_frozen.jsonl;data/interim/groq_evaluation_results.jsonl,historical_variant,Earlier reconciliation variant; compare with 48.,
+48_reconcile_judge_results_fixed.py,scripts\48_reconcile_judge_results_fixed.py,9435,9E531B6280E66267FF4B26385D698C29809F4D09FA0140C90E11B3A43EB2F9E6,MLCP_scripts.zip;pipeline_source_scripts.zip,inspected,unknown,No direct execution evidence established,48 reconcile judge results fixed,,collections;csv;json;pathlib;re,,DictWriter;dumps;write;write_jsonl;write_text;writeheader;writerows,review_required,data/frozen/chunks_v1_frozen.jsonl;data/interim/groq_evaluation_results.jsonl,historical_variant,Changes source text field and isolates reconciliation_v2 output.,
+49_repair_evidence_candidates.py,scripts\49_repair_evidence_candidates.py,6958,7883D310CD5EB50B1E027D88D9F1D4E70AF54E95806802DDF93D8F9E553DB964,MLCP_scripts.zip;pipeline_source_scripts.zip,inspected,unknown,No direct execution evidence established,49 repair evidence candidates,,collections;json;pathlib;re,,dumps;write;write_text,review_required,data/frozen/chunks_v1_frozen.jsonl;data/interim/production_filter/reconciliation_v2/reconciled_candidates.jsonl,not_determined,,
+50_judge_repaired_examples_groq.py,scripts\50_judge_repaired_examples_groq.py,10384,A8247462255F98642B27E1AC09BB9369792A26886B6DDE183CA606D9578AAEAD,MLCP_scripts.zip;pipeline_source_scripts.zip,inspected,unknown,No direct execution evidence established,50 judge repaired examples groq,,datetime;dotenv;json;openai;os;pathlib;re;time,api.groq.com;openai,dumps;model_dump;write;write_text,review_required,data/frozen/chunks_v1_frozen.jsonl;data/interim/production_filter/repair_v1/repair_candidates.jsonl,not_determined,,
+51_repair_hma_evidence.py,scripts\51_repair_hma_evidence.py,3661,FFE96122891D904191AC99EC88D7F70AA8D8ACFC3FA1BB91E7348CD4F0C5FE4D,MLCP_scripts.zip;pipeline_source_scripts.zip,inspected,unknown,No direct execution evidence established,51 repair hma evidence,,json;pathlib;re,,dumps;write;write_text,review_required,data/frozen/chunks_v1_frozen.jsonl;data/interim/production_filter/repair_v1/repair_candidates.jsonl,not_determined,,
+52_judge_hma_repair_groq.py,scripts\52_judge_hma_repair_groq.py,7619,091BDE1313CADCB16FB4903B43B86CBAEFB80B60B3CE780B3CFD2FF292F7AD64,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,52 judge hma repair groq,,__future__;datetime;dotenv;json;os;pathlib;re;requests;sys,api.groq.com;requests,dumps;write_json;write_text,review_required,data/interim/production_filter/repair_v2/repair_candidates.jsonl,historical_variant,Earlier HMA judge variant; compare with 53.,
+53_judge_hma_repair_groq_fixed.py,scripts\53_judge_hma_repair_groq_fixed.py,8839,7183D7FE70747696ADC9FB7EC663BA55D7BAD22AFA92AC5BE92681B4AA381E77,MLCP_scripts.zip;pipeline_source_scripts.zip,inspected,unknown,No direct execution evidence established,53 judge hma repair groq fixed,,__future__;datetime;dotenv;json;os;pathlib;re;requests;sys,api.groq.com;requests,dumps;write_json;write_text,review_required,data/frozen/chunks_v1_frozen.jsonl;data/interim/production_filter/repair_v2/repair_candidates.jsonl,historical_variant,Adds retrieval of full source chunks from frozen corpus.,
+54_finalize_judge_reconciliation.py,scripts\54_finalize_judge_reconciliation.py,10831,C7D74828DF2E7786B130659BE7F26BF1BD2D9A8B93F8C9E3AD1FB70B7C4C1B47,MLCP_scripts.zip;pipeline_source_scripts.zip,inspected,unknown,No direct execution evidence established,54 finalize judge reconciliation,,__future__;collections;datetime;hashlib;json;pathlib;re,,dumps;write;write_jsonl;write_text,review_required,data/frozen/chunks_v1_frozen.jsonl,not_determined,,
+55_generate_production_v2.py,scripts\55_generate_production_v2.py,25717,22B11779BD2796503A54DD4D4D2E5BC51FF85CE43842028472372AD7847D718F,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,Production generation v2 for the IoT technical instruction dataset.,"Production generation v2 for the IoT technical instruction dataset.
+
+Safety:
+- Reads only the frozen training chunks and existing datasets.
+- Writes only to data/interim/production_generation_v2/.
+- Does not modify dataset_v0_raw.jsonl, dataset_v0_additional.jsonl,
+  the frozen corpus, or any earlier checkpoint directory.
+- One request per chunk/pass; asks for one QA, one extraction, and one
+  classification example in each batch.
+- Four passes provide a theoretical ceiling of 91 * 4 * 3 = 1,092
+  candidate slots. Actual yield will be lower because unsupported tasks,
+  invalid outputs, and duplicates are skipped.
+
+Start with the default two-chunk pilot. Scale only after inspecting it.",__future__;argparse;datetime;difflib;dotenv;hashlib;json;os;pathlib;re;requests;sys;time;tqdm;typing,openrouter.ai;requests,dumps;replace;write;write_json;write_jsonl;write_text,review_required,data/frozen/chunks_v1_frozen.jsonl;data/interim/dataset_v0_raw.jsonl;data/interim/improved_generation/dataset_v0_additional.jsonl,historical_variant,Earlier V2 generator; uses temporary-file replacement strategy.,
+56_audit_generation_v2.py,scripts\56_audit_generation_v2.py,13537,C09E0418B73F9E8BC28CA38CCE33B1D7650C23793906201D53A357036B33CD1B,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,Read-only audit for Production Generation v2.,"Read-only audit for Production Generation v2.
+
+Checks:
+- JSONL structure and unique IDs
+- chunk references against the frozen corpus
+- evidence block IDs and reconstructed evidence spans
+- task-type / chunk distributions
+- exact and near-duplicate instructions against the existing 115 examples
+- a few source-specific review flags
+
+This script does NOT modify any dataset or checkpoint.
+Run from the project root:
+    python .\scripts._audit_generation_v2.py",__future__;collections;csv;difflib;json;pathlib;re;sys;typing,,dumps;write_text,review_required,data/frozen/chunks_v1_frozen.jsonl;data/interim/production_generation_v2/dataset_v0_additional_v2.jsonl,historical_variant,Earlier V2 audit implementation.,
+57_apply_v2_manual_review.py,scripts\57_apply_v2_manual_review.py,7496,2C4AE4572FEE3A00DDA8933841C3C972D8E9E06E600A81B3700184E5FB3EF2F0,MLCP_scripts.zip;pipeline_source_scripts.zip,inspected,unknown,No direct execution evidence established,Apply the seven manually reviewed decisions to Generation v2.,"Apply the seven manually reviewed decisions to Generation v2.
+
+Reads the original v2 JSONL and writes a separate reviewed candidate file.
+The original v2 file, frozen corpus, and all prior datasets remain unchanged.
+
+Run from project root:
+    python .\scripts/_apply_v2_manual_review.py",__future__;json;pathlib;typing,,dumps;write;write_text,review_required,"
+Apply the seven manually reviewed decisions to Generation v2.
+
+Reads the original v2 JSONL and writes a separate reviewed candidate file.
+The original v2 file, frozen corpus, and all prior datasets remain unchanged.
+
+Run from project root:
+    python ./scripts/_apply_v2_manual_review.py
+;data/interim/production_generation_v2/dataset_v0_additional_v2.jsonl",not_determined,,
+58_judge_v2_candidates_groq.py,scripts\58_judge_v2_candidates_groq.py,16218,D40CF49B221A68B898034A03B663AAF4C1309A6DFADBB2CEEE68AAD18F8F0A62,MLCP_scripts.zip;pipeline_source_scripts.zip,inspected,unknown,No direct execution evidence established,Cross-model judge for the 66 manually reviewed Generation v2 candidates.,"Cross-model judge for the 66 manually reviewed Generation v2 candidates.
+
+Generator: NVIDIA Nemotron 3.5 Super VL (OpenRouter)
+Judge: OpenAI GPT-OSS 120B (Groq)
+
+Reads the reviewed v2 dataset and frozen source chunks.
+Writes resumable judge results to a separate directory.
+Never modifies source datasets, manual-review outputs, or frozen chunks.
+
+Run from project root:
+    python .\scripts8_judge_v2_candidates_groq.py
+
+Optional:
+    python .\scripts8_judge_v2_candidates_groq.py --delay 20",__future__;argparse;datetime;dotenv;json;os;pathlib;re;requests;sys;time;typing,api.groq.com;requests,dumps;write;write_summary;write_text,review_required,data/frozen/chunks_v1_frozen.jsonl;data/interim/production_generation_v2/manual_review/dataset_v2_reviewed.jsonl,not_determined,,
+59_merge_and_audit_validated_pool.py,scripts\59_merge_and_audit_validated_pool.py,13379,F019A850C2B54996E2769D12A51237A8094816B7EEFA3F1E3106B3385749E8D0,MLCP_scripts.zip;pipeline_source_scripts.zip,inspected,unknown,No direct execution evidence established,Merge the previously reconciled 105 candidates with the 65 accepted v2,"Merge the previously reconciled 105 candidates with the 65 accepted v2
+candidates, then run a read-only global provenance and duplicate audit.
+
+Inputs:
+  data/interim/production_filter/final_reconciliation/final_accepted_candidates.jsonl
+  data/interim/production_generation_v2/manual_review/dataset_v2_reviewed.jsonl
+  data/interim/production_generation_v2/groq_judge/v2_judge_results.jsonl
+  data/frozen/chunks_v1_frozen.jsonl
+
+Outputs:
+  data/interim/validated_candidate_pool/
+    combined_validated_candidates.jsonl
+    global_duplicate_candidates.json
+    global_pool_audit_errors.json
+    global_pool_summary.json
+
+No source dataset, frozen corpus, judge result, or prior reconciliation file
+is modified. Near-duplicates are flagged for human review, never auto-removed.
+
+Run from project root:
+  python .\scripts9_merge_and_audit_validated_pool.py",__future__;collections;difflib;json;pathlib;re;sys;typing,,dumps;write;write_text,review_required,data/frozen/chunks_v1_frozen.jsonl;data/interim/production_filter/final_reconciliation/final_accepted_candidates.jsonl;data/interim/production_generation_v2/groq_judge/v2_judge_results.jsonl;data/interim/production_generation_v2/manual_review/dataset_v2_reviewed.jsonl,not_determined,,
+60_generate_production_v2_resumable.py,scripts\60_generate_production_v2_resumable.py,28654,D55C9E1D28209EE9E38DFA496F60C47B768281CFD7AC0554861EE23C381D25B4,MLCP_scripts.zip;pipeline_source_scripts.zip,inspected,unknown,No direct execution evidence established,Resumable production generation v2 for the IoT technical instruction dataset.,"Resumable production generation v2 for the IoT technical instruction dataset.
+
+This recovery-safe version seeds from the verified 73-record recovery copy,
+then appends records directly. It does not replace the existing v2 dataset.
+
+Safety:
+- Reads only the frozen training chunks and existing datasets.
+- Writes only to data/interim/production_generation_v2/.
+- Does not modify dataset_v0_raw.jsonl, dataset_v0_additional.jsonl,
+  the frozen corpus, or any earlier checkpoint directory.
+- One request per chunk/pass; asks for one QA, one extraction, and one
+  classification example in each batch.
+- Four passes provide a theoretical ceiling of 91 * 4 * 3 = 1,092
+  candidate slots. Actual yield will be lower because unsupported tasks,
+  invalid outputs, and duplicates are skipped.
+
+Start with the default two-chunk pilot. Scale only after inspecting it.",__future__;argparse;datetime;difflib;dotenv;hashlib;json;os;pathlib;re;requests;shutil;sys;time;tqdm;typing,openrouter.ai;requests,copy2;dumps;write;write_json,review_required,data/frozen/chunks_v1_frozen.jsonl;data/interim/dataset_v0_raw.jsonl;data/interim/improved_generation/dataset_v0_additional.jsonl,historical_variant,Recovery-safe resumable V2 generator; direct append and fsync behavior.,
+61_audit_generation_v2.py,scripts\61_audit_generation_v2.py,14191,13DA58508DE751429B691E2569C763546D85DD42B91E13D433380256467CFA9D,MLCP_scripts.zip;pipeline_source_scripts.zip,inspected,unknown,No direct execution evidence established,Read-only comprehensive audit for the expanded IoT generation-v2 dataset.,"Read-only comprehensive audit for the expanded IoT generation-v2 dataset.
+
+Reads:
+  data/frozen/chunks_v1_frozen.jsonl
+  data/interim/dataset_v0_raw.jsonl
+  data/interim/improved_generation/dataset_v0_additional.jsonl
+  data/interim/production_generation_v2/dataset_v0_additional_v2_resumed.jsonl
+
+Writes reports only to:
+  data/interim/production_generation_v2/audit_v1/
+
+No source dataset, checkpoint, or frozen corpus is modified.
+Near-duplicate pairs are flagged for review; they are never automatically removed.",__future__;collections;csv;difflib;hashlib;json;pathlib;re;sys;typing,,DictWriter;dumps;write_text;writeheader;writerows,review_required,data/frozen/chunks_v1_frozen.jsonl;data/interim/dataset_v0_raw.jsonl;data/interim/improved_generation/dataset_v0_additional.jsonl;data/interim/production_generation_v2/dataset_v0_additional_v2_resumed.jsonl,historical_variant,Expanded/resumed V2 audit implementation with broader scope.,
+inspect_evidence_schema.py,scripts\inspect_evidence_schema.py,639,A6319E90BDF01DEDD3A85EB3C47C27006CCC4821BCD6FFC573667D60B820F267,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,inspect evidence schema,,json;pathlib,,,not_detected_by_static_scan,data/frozen/chunks_v1_frozen.jsonl;data/interim/production_filter/deduplicated_candidates.jsonl,not_determined,,
+inspect_hma_evidence_blocks.py,scripts\inspect_hma_evidence_blocks.py,572,A39B0BD6C714A00A43DCBEBD54D2394A00C3D40AA2063FC8B5E4FE6EB6463021,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,inspect hma evidence blocks,,json;pathlib;re,,,not_detected_by_static_scan,data/frozen/chunks_v1_frozen.jsonl,not_determined,,
+inspect_recoverable_examples.py,scripts\inspect_recoverable_examples.py,1116,1B29770454F2179A0B52FBC0928673C854B8C427845D62E76F96DAC676B4C676,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,inspect recoverable examples,,json;pathlib,,,not_detected_by_static_scan,data/frozen/chunks_v1_frozen.jsonl;data/interim/production_filter/reconciliation_v2/reconciled_candidates.jsonl,not_determined,,
+pipeline_judge.py,scripts\pipeline_judge.py,16513,2833DED2C694BFD68865632928AD7A268BC759C57BCF4C73A6224BFD34CE2D0A,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,Cross-model judge for the 66 manually reviewed Generation v2 candidates.,"Cross-model judge for the 66 manually reviewed Generation v2 candidates.
+
+Generator: NVIDIA Nemotron 3.5 Super VL (OpenRouter)
+Judge: OpenAI GPT-OSS 120B (Groq)
+
+Reads the reviewed v2 dataset and frozen source chunks.
+Writes resumable judge results to a separate directory.
+Never modifies source datasets, manual-review outputs, or frozen chunks.
+
+Run from project root:
+    python .\scripts8_judge_v2_candidates_groq.py
+
+Optional:
+    python .\scripts8_judge_v2_candidates_groq.py --delay 20",__future__;argparse;datetime;dotenv;json;os;pathlib;re;requests;sys;time;typing,api.groq.com;requests,dumps;write;write_summary;write_text,review_required,data/frozen/chunks_v1_frozen.jsonl;data/interim/production_generation_v2/manual_review/dataset_v2_reviewed.jsonl,historical_variant,Related to script 58; supports environment-variable input/output overrides.,
+prepare_phase3_datasets_corrected.py,scripts\prepare_phase3_datasets_corrected.py,8193,8F9723135ADC55E7A5FF11CDE00C3A8840C3C410989A28CF1EFD67334F789B96,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,prepare phase3 datasets corrected,,datasets;datetime;hashlib;json;pathlib;pydantic;random;re,,dumps;write;write_jsonl;write_text,review_required,data/frozen/chunks_v1_frozen.jsonl;data/frozen/dataset_v1_filtered.jsonl;data/interim/dataset_v0_raw.jsonl;data/interim/improved_generation/dataset_v0_additional.jsonl;data/interim/production_generation_v2/dataset_v0_additional_v2_resumed.jsonl,historical_variant,Adds exact evidence-block reconstruction and validation.,
+prepare_phase3_datasets_v2.py,scripts\prepare_phase3_datasets_v2.py,16271,C2BE16FC22E90A53AB697FA615F10E64724C8B5CFABC82E0F5F94FACE2EF79D1,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,Prepare and validate the B2/B3/B4/B5 training datasets for Phase 3.,"Prepare and validate the B2/B3/B4/B5 training datasets for Phase 3.
+
+This script is read-only with respect to all source datasets. It writes new
+normalized JSONL exports under data/phase3/ and refuses to overwrite outputs.
+
+Domain evidence is validated by reproducing the exact evidence-block extraction
+used during generation, selecting the stored evidence_block_ids, and comparing
+the reconstructed text byte-for-byte (Unicode code points) with evidence_span.",__future__;datasets;datetime;hashlib;json;pathlib;pydantic;random;re;sys;typing,,dump;dumps;write;write_jsonl_exclusive,review_required,data/frozen/chunks_v1_frozen.jsonl;data/frozen/dataset_v1_filtered.jsonl;data/interim/dataset_v0_raw.jsonl;data/interim/improved_generation/dataset_v0_additional.jsonl;data/interim/production_generation_v2/dataset_v0_additional_v2_resumed.jsonl,historical_variant,"Adds source fingerprints, count checks and exclusive output creation.",
+prepare_phase3_datasets.py,scripts\prepare_phase3_datasets.py,6562,48AD69F18AABA3BD484067F151E133961585D125564659C981D868BCF6A7E49B,MLCP_scripts.zip,inspected,unknown,No direct execution evidence established,prepare phase3 datasets,,datasets;datetime;hashlib;json;pathlib;pydantic;random,,dumps;write;write_jsonl;write_text,review_required,data/frozen/chunks_v1_frozen.jsonl;data/frozen/dataset_v1_filtered.jsonl;data/interim/dataset_v0_raw.jsonl;data/interim/improved_generation/dataset_v0_additional.jsonl;data/interim/production_generation_v2/dataset_v0_additional_v2_resumed.jsonl,historical_variant,Earlier Phase 3 preparation variant.,
+pipeline.py,pipeline.py,12610,A2E6599167347CE9C311BC6C9769F749314069BD1C1F3ECE9CCA98AF4796D9A8,standalone source,inspected,unknown,No direct execution evidence established,Reusable orchestrator for the IoT technical instruction dataset.,"Reusable orchestrator for the IoT technical instruction dataset.
+
+Examples (run from project root):
+  python pipeline.py --stage status
+  python pipeline.py --stage generate
+  python pipeline.py --stage audit
+  python pipeline.py --stage judge --input <reviewed_candidates.jsonl>
+  python pipeline.py --stage prepare-human-audit
+  python pipeline.py --stage apply-human-audit
+  python pipeline.py --stage all-automated
+
+Human review is an explicit gate. No stage silently approves examples.
+All source datasets and frozen chunks are read-only.",__future__;argparse;collections;csv;datetime;hashlib;json;os;pathlib;random;subprocess;sys;typing,,DictWriter;copy;dumps;write_json;write_text;writeheader;writerow,review_required,,not_determined,,
