@@ -1,0 +1,177 @@
+{
+  "schema_version": "1.0",
+  "generated_utc": "2026-11-17T03:30:39.5639646Z",
+  "project": "ML CP - Domain-Specific Instruction-Tuning Dataset Curation Framework",
+  "extraction": {
+    "extracted_records": 429,
+    "nonempty_records": 393,
+    "initially_empty_records": 36,
+    "merged_records": 429,
+    "merged_usable_records": 407,
+    "merged_unusable_records": 22,
+    "missing_merged_pages": 0,
+    "extra_merged_pages": 0,
+    "per_document": [
+      {
+        "doc_id": "iot_cloud_case_studies",
+        "source_file": "6-iot-physical-servers-cloud-offereings-iot-case-studies.pdf",
+        "extracted_pages": 99,
+        "extracted_nonempty_pages": 96,
+        "initially_empty_pages": 3,
+        "recovery_records": 0,
+        "meaningful_recoveries": 0,
+        "confirmed_blank_recoveries": 0,
+        "recovery_error_records": 3,
+        "merged_usable_pages": 96,
+        "merged_unusable_pages": 3
+      },
+      {
+        "doc_id": "iot_unit1",
+        "source_file": "IOT Unit 1 Contents.pdf",
+        "extracted_pages": 151,
+        "extracted_nonempty_pages": 130,
+        "initially_empty_pages": 21,
+        "recovery_records": 19,
+        "meaningful_recoveries": 14,
+        "confirmed_blank_recoveries": 5,
+        "recovery_error_records": 3,
+        "merged_usable_pages": 144,
+        "merged_unusable_pages": 7
+      },
+      {
+        "doc_id": "iot_unit2",
+        "source_file": "Unit 2-Iot-platform-design-methodology (1).pptx.pdf",
+        "extracted_pages": 60,
+        "extracted_nonempty_pages": 55,
+        "initially_empty_pages": 5,
+        "recovery_records": 0,
+        "meaningful_recoveries": 0,
+        "confirmed_blank_recoveries": 0,
+        "recovery_error_records": 5,
+        "merged_usable_pages": 55,
+        "merged_unusable_pages": 5
+      },
+      {
+        "doc_id": "iot_unit4_protocols_security",
+        "source_file": "4-iot-protocols-and-security.pdf",
+        "extracted_pages": 119,
+        "extracted_nonempty_pages": 112,
+        "initially_empty_pages": 7,
+        "recovery_records": 0,
+        "meaningful_recoveries": 0,
+        "confirmed_blank_recoveries": 0,
+        "recovery_error_records": 7,
+        "merged_usable_pages": 112,
+        "merged_unusable_pages": 7
+      }
+    ]
+  },
+  "recovery": {
+    "successful_recovery_records": 19,
+    "meaningful_recoveries": 14,
+    "confirmed_blank_records": 5,
+    "error_records": 18,
+    "unique_failed_pages": 17,
+    "duplicate_error_page_keys": [
+      "iot_unit1|131"
+    ],
+    "recovery_merge_mismatches": [],
+    "unrecovered_page_keys": [
+      "iot_cloud_case_studies|79",
+      "iot_cloud_case_studies|83",
+      "iot_cloud_case_studies|92",
+      "iot_unit1|131",
+      "iot_unit1|143",
+      "iot_unit2|14",
+      "iot_unit2|39",
+      "iot_unit2|57",
+      "iot_unit2|59",
+      "iot_unit2|60",
+      "iot_unit4_protocols_security|89",
+      "iot_unit4_protocols_security|92",
+      "iot_unit4_protocols_security|93",
+      "iot_unit4_protocols_security|94",
+      "iot_unit4_protocols_security|95",
+      "iot_unit4_protocols_security|96",
+      "iot_unit4_protocols_security|97"
+    ]
+  },
+  "chunking": {
+    "standard": {
+      "count": 104,
+      "total_tokens": 46634,
+      "average_tokens": 448.4,
+      "minimum_tokens": 338.0,
+      "maximum_tokens": 452.0,
+      "underfilled": 0,
+      "overfilled": 0
+    },
+    "boundary_aware_v2": {
+      "count": 91,
+      "total_tokens": 40172,
+      "average_tokens": 441.45,
+      "minimum_tokens": 67.0,
+      "maximum_tokens": 592.0,
+      "underfilled": 10,
+      "overfilled": 0
+    },
+    "standard_page_references": {
+      "total_references": 540,
+      "unique_pages_referenced": 405,
+      "missing_reference_count": 0,
+      "unusable_reference_count": 0,
+      "missing_references": [],
+      "unusable_references": []
+    },
+    "v2_page_references": {
+      "total_references": 456,
+      "unique_pages_referenced": 407,
+      "missing_reference_count": 0,
+      "unusable_reference_count": 0,
+      "missing_references": [],
+      "unusable_references": []
+    }
+  },
+  "sanitization": {
+    "input_chunks": 91,
+    "output_chunks": 91,
+    "missing_chunk_ids": 0,
+    "extra_chunk_ids": 0,
+    "metadata_mismatches": [],
+    "content_changed_chunk_ids": [
+      "iot_cloud_case_studies_chunk_0008"
+    ]
+  },
+  "frozen_corpus": {
+    "record_count": 91,
+    "size_bytes": 213930,
+    "sha256": "67e90d3428ff0a421111e19916ceb2dfc007460ae047f18131131be2f80bb827",
+    "expected_sha256": "67e90d3428ff0a421111e19916ceb2dfc007460ae047f18131131be2f80bb827",
+    "original_copy_verified": true,
+    "recovery_copy_verified": true,
+    "recovery_copy_sha256": "67e90d3428ff0a421111e19916ceb2dfc007460ae047f18131131be2f80bb827",
+    "frozen_record_mismatches": []
+  },
+  "checks": {
+    "extraction_merge_page_sets_match": true,
+    "recovery_merge_consistent": true,
+    "standard_chunk_references_valid": true,
+    "v2_chunk_references_valid": true,
+    "sanitized_chunk_ids_match": true,
+    "sanitized_metadata_consistent": true,
+    "frozen_corpus_matches_sanitized": true,
+    "frozen_hash_matches_registry": true,
+    "recovery_copy_hash_matches": true
+  },
+  "limitations": [
+    "17 image pages remain unrecovered in the merged corpus.",
+    "Recovery logs contain 18 error records for 17 unique failed pages; iot_unit1 page 131 is duplicated.",
+    "The historical recovery log reports 36 image-only pages and 5 confirmed blanks inconsistently; final merged classifications are used for page-level accounting.",
+    "Source PDF author, publisher, edition, URL, and license are not established by the available evidence.",
+    "Redistribution rights have not been cleared.",
+    "Tokenizer model revision is not pinned to an immutable commit.",
+    "The reason for selecting boundary-aware V2 over standard chunking is not historically established.",
+    "Sanitization is heuristic and its prior report requires manual review; absence of detected patterns does not prove absence of all secrets.",
+    "Historical console transcripts for all pipeline scripts are not available."
+  ]
+}
