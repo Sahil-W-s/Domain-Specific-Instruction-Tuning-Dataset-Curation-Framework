@@ -129,7 +129,8 @@
     "The located 66-record judge file is not proven to be the historical original 88-record judge source.",
     "Earlier and later judging stages contain differing decisions for some records; chronology must remain distinct.",
     "Human-review independence is not established.",
-    "B4 human audit sampled 30 records; 549 retained records were not individually reviewed in that sample."
+    "B4 human audit sampled 30 records; 549 retained records were not individually reviewed in that sample.",
+    "The sole Kaggle experimental notebook consumes existing B3/B4 inputs and creates the reproducibility package; it does not prove the upstream B3-to-B4 filtering execution or historical Kaggle dataset upload version."
   ],
   "phase10_exit_gate": {
     "exact_inputs_identified": true,

@@ -22,3 +22,16 @@ flowchart TD
 
     T["Preparation V2 script<br/>strongly inferred, not execution-proven"] -.-> C
     U["Exact historical B4 filtering script<br/>unidentified"] -.-> H
+
+
+    %% Downstream Kaggle experimental and packaging workflow
+    B2["B2 Dolly dataset"] --> K["Kaggle experimental notebook<br/>B0-B5 workflow"]
+    F --> K
+    I --> K
+    J --> K
+    K --> K1["B0/B1 baseline and few-shot experiments"]
+    K --> K2["B2-B5 model training and evaluation"]
+    K --> K3["IoT CP reproducibility package"]
+
+    K4["Existing Kaggle dataset inputs<br/>B3 and B4 already available"] -.-> K
+    K5["Notebook does not establish<br/>upstream B3-to-B4 filtering execution"] -.-> K

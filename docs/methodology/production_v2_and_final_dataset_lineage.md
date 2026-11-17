@@ -272,3 +272,33 @@ The Production V2 output, merge membership, B3 composition, B3-to-B4 membership 
 The Phase 3 preparation V2 variant is strongly inferred but not proven to have executed. The exact historical filtering implementation responsible for B4 remains unidentified.
 
 Accordingly, Phase 10 documentation is reconstructed, but the approved exit gate is not fully satisfied. Do not claim exact end-to-end reproducibility and do not begin Phase 11 on the assumption that the filtering implementation has been identified.
+
+## 10. Kaggle experimental notebook and reproducibility package
+
+### Notebook role
+
+The sole Kaggle notebook used for the B0-B5 experimental workflow was inspected. It is a downstream consumer of the prepared datasets and the producer of the IoT CP reproducibility package. It is not evidence of the upstream B3-to-B4 filtering execution.
+
+### Confirmed notebook responsibilities
+
+| Notebook location | Observed responsibility |
+|---|---|
+| Cell 3 | Loads and validates the available dataset artifacts |
+| Cell 19 | Compares B3 and B4 membership |
+| Cell 20 | Creates comparable training and validation splits |
+| Cells 23-44 | Performs the downstream baseline/model training workflow |
+| Cells 47-50 | Inspects B4 training records and prepares B1 few-shot examples |
+| Cell 82 | Checks B3 and B4 dataset availability |
+| Cell 83 | Creates the IoT CP reproducibility package |
+
+The notebook covers the B0-B5 experimental workflow. It consumes B3 and B4 from the Kaggle input dataset location. The B3/B4 membership comparison and split construction are downstream operations on those existing inputs.
+
+### Provenance boundary
+
+The notebook establishes the downstream experimental workflow and reproducibility-package construction. It does not establish:
+
+- The exact historical script that transformed B3 into B4.
+- The complete filtering, review, and judging execution sequence that produced the 577-record B4 artifact.
+- The historical Kaggle dataset version or upload event that first supplied the B4 artifact.
+
+The notebook's existence must not be used to attribute B3-to-B4 filtering to Kaggle notebook execution. The upstream filtering provenance remains unresolved.

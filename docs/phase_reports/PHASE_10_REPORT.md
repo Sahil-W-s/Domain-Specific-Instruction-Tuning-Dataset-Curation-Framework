@@ -67,3 +67,21 @@ The exact generation inputs and generation code are identified. The preparation 
 **Phase 10 exit gate: NOT SATISFIED.**
 
 Phase 10 artifacts document the reconstructed lineage and unresolved evidence. Phase 11 must not be treated as authorized by a claim that Phase 10 is fully complete. Further work should target only the missing execution evidence if it is recoverable; do not rerun historical scripts or regenerate datasets.
+
+## Kaggle experimental notebook and reproducibility package
+
+The sole Kaggle notebook used for the B0-B5 experimental workflow was inspected. It is the downstream experimental and packaging notebook, not the upstream B3-to-B4 filtering implementation.
+
+Confirmed notebook responsibilities:
+
+- Cell 3: loads and validates the available dataset artifacts.
+- Cell 19: compares B3 and B4 membership.
+- Cell 20: creates comparable training and validation splits.
+- Cells 23-44: downstream baseline/model training workflow.
+- Cells 47-50: inspects B4 training records and prepares B1 few-shot examples.
+- Cell 82: checks the B3 and B4 dataset artifacts.
+- Cell 83: packages the datasets, training code, and evaluation artifacts into the reproducibility package.
+
+The notebook covers the B0-B5 experimental workflow and creates the IoT CP reproducibility package. It consumes B3 and B4 as existing Kaggle input datasets. Its membership comparison and training/validation split logic operate on those existing datasets; they do not establish the historical execution that created B4.
+
+The notebook therefore provides downstream experimental and packaging provenance, but does not identify or prove the exact B3-to-B4 filtering script or execution sequence.
